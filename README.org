@@ -10,7 +10,7 @@
 Use org-mode markup.
 
 
-** WIP 002: [[./rfcs/002_semantic-changelog.org][Semantic Changelog]]
+** WIP 002: Semantic Changelog
 
 - nexp :: ~rfc:salotz.002_semantic-changelog.org~
 
