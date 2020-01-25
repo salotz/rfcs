@@ -86,6 +86,34 @@ available to tooling.
 #+end_quote
 
 
+*** IDEA 007: Python Library Repo Layout
+
+- nexp :: ~rfc:salotz.007_py-lib-layout~
+
+Proposal: [[file:./rfcs/salotz.007_py-lib-layout.org]]
+
+Executive Summary:
+
+#+begin_quote
+A layout and content specification that follows best practices that
+strives for effectiveness rather than complete compatibility.
+#+end_quote
+
+
+*** WIP 008: Linux Shell Startup Indirection Layer
+
+- nexp :: ~rfc:salotz.008_linux-shell-startup~
+
+Proposal: [[file:./rfcs/salotz.008_linux-shell-startup.org]]
+
+Executive Summary:
+
+#+begin_quote
+A collection of script files which add a layer of indirection to
+standard linux shells (i.e. POSIX ~sh~ and ~bash~) that allows for a
+more modular, composable, and semantic organization.
+#+end_quote
+
 * Network
 
 RFCs from around the net I support:

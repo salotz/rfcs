@@ -1,0 +1,8 @@
+* 007: Python Library Repo Layout
+
+Influences:
+
+- https://blog.ionelmc.ro/2014/05/25/python-packaging/
+- https://blog.ionelmc.ro/2014/06/25/python-packaging-pitfalls/
+- https://blog.ionelmc.ro/2015/02/24/the-problem-with-packaging-in-python/
+- http://andrewsforge.com/article/python-new-package-landscape/

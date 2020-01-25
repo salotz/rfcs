@@ -1,0 +1,3 @@
+* 008: Linux Shell Startup Indirection Layer
+
+For now see: [[https://github.com/salotz/bimhaw]]
