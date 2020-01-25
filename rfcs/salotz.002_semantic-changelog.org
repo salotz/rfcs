@@ -1,4 +1,4 @@
-* Semantic Changelog
+* 002: Semantic Changelog
 
 This is an RFC (Request For Comments) stage project for determining a
 general purpose format for writing changelog messages so that they are

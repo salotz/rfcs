@@ -7,4 +7,136 @@ pre-eminently: [[https://www.python.org/dev/peps/pep-0350/][PEP 350]]
 In this proposal we define a format for codetags as well as a standard
 set of code tags along with their meanings and interpretations.
 
+** Code Tags
+
+Categories:
+
+- tasks :: things that have been scheduled for attention
+- warnings :: things that degrade the quality of the code but have not
+  been scheduled for attention
+- resolved :: things that document resolutions in the code
+- temporary :: things that are for temporary usage
+- growth :: things that signify opportunities for growth in the code,
+  but which do not degrade the quality of the code currently
+- statements :: neutral statements about the code
+
+The presence of tags from each category have implications for what can
+get put into production or master branches, we call this "production".
+
+*** Tasks
+Tasks should ideally never be put into production and should always
+have an associated issue in an issue tracker (i.e. scheduled).
+
+Task tags:
+
+- TODO :: A specific item (and location) for a change to be made
+- FIXME :: References a specific piece of code that is broken and is
+  in need of fixing.
+- TOREV :: flags a portion of code for review
+- TODOC :: indicates that a portion of code is undocumented
+- REFACT :: A refactoring of code is necessary and scheduled, but
+  otherwise not broken
+
+*** Warnings
+
+
+Distinct from tasks but still indicating negativity, warnings can be
+put into production and typically don't have an issue associated with
+them (although they can). This is for quick tagging of sections of
+code when it is not critical that they are fixed, but that you would
+like to show up in a review.
+
+Warning tags:
+
+- ALERT :: indication that some edge-cases might not be handled but
+  they have not yet been formally enumerated or tested for
+- HACK :: a piece of code was not structured according to best design
+  practices, but is still useful for its utility. Indicates desire for
+  a rewrite.
+- WKRD :: "workaround"; Code is overly complex due to specific
+  workarounds that are necessary. Ideally, should be cleaned up with
+  refactoring.
+- SMELL :: Code smells, indicating that the author suspects a problem
+  with a piece of code but not quite sure if it is a problem.
+- UGLY :: Code is not properly formatted or following style guide, or
+  is otherwise bas taste.
+- GOTCHA :: interfacing with a particular piece of code may be
+  difficult or unintuitive.
+
+*** Resolved
+
+
+Resolved tags, for the most part shouldn't actually be in the code,
+and typically result in a resolution of an issue in the tracker and
+thus a cleaning up of the code to remove tags or replace them with
+neutral statements about the code. Resolved tags are for when issues
+are resolved, but in an idealistically unsatisfactory way that either
+goes against standards generally adhered to by the codebase, good
+taste, or may be targetted by future reviewers for changes. The idea
+here is to reduce the chance of old unsolvable issue being re-raised
+after they were forgotten about.
+
+Resolved tags:
+
+- REVD :: "reviewed"; piece of code has been reviewed. Should be signed.
+- WONTFIX :: Fixing code is out of scope for the projects goals as
+  determined by author. Usually means that if someone else fixes it
+  and makes it frictionless to integrate and fully tested it can be
+  changed though.
+- CANTFIX :: Code that cant be fixed due to limitations in either the
+  requirements, language, or tools itself.
+- DONTFIX :: Indicates that a piece of code is extremely delicate in
+  it's organization and is highly unintuitive to fix, but nonetheless
+  is in a "stable" state.
+
+
+*** Temporary
+
+Temporary tags are used by someone writing code when they need to
+resolve certain small things before they check it in. For example
+putting in debugging checkpoints or logging and print statements.
+
+Temporary tags:
+
+- DEBUG :: To indicate that there are debugging code that should be
+  removed.
+- QUEST :: "question"; for marking up code when trying to understand a
+  code base.
+
+*** Growth
+
+Growth tags are for an author or reviewer to place in observations on
+how specific pieces of code could be improved in the future, but are
+not necessary now. These don't include real issues like potential bugs
+etc. This means things like optimization opportunities.
+
+Growth tags:
+
+- STUB :: a piece of code put in to satisfy an interface but without
+  an implementation yet.
+- SNIPPET :: Used to show how a setting or functionality would be
+  implemented, but currently isn't needed. Saves the reader from
+  having to dig through documentation in the future, or if the
+  solution is a little clever.
+- OPT :: An opportunity for optimization is present that isn't obvious.
+- IDEA :: Ideas for improving the code. Not neutral like NOTE.
+- TEST :: A sketch of, pseudocode, or code to specify a test of a
+  piece of code that hasn't been formally introduced to the test suite
+- REQ :: A statement or specification requirement of the code's
+  behavior that hasn't been reified to a requirements system in the
+  code (like proofs, formatl models etc.)
+
+*** Statements
+
+Neutral statements about a piece of code.
+
+Statement Tags:
+
+- CREDIT :: to give credit to somebody for the code itself, the idea, or
+  even finding the bugfix or feature idea.
+- NOTE :: A neutral statement about code. Without a tag this is
+  assumed (by tooling).
+
+
+
 

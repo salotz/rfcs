@@ -114,6 +114,20 @@ standard linux shells (i.e. POSIX ~sh~ and ~bash~) that allows for a
 more modular, composable, and semantic organization.
 #+end_quote
 
+*** IDEA 009: Repo Layout Templates
+
+- nexp :: ~rfc:salotz.009_repo-layout~
+
+Proposal: [[file:./rfcs/salotz.009_repo-layout.org]]
+
+Executive Summary:
+
+#+begin_quote
+A template format for generating and specifying repo layouts in
+directories, i.e. cookiecutter.
+#+end_quote
+
+
 * Network
 
 RFCs from around the net I support:
