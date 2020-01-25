@@ -1,0 +1,10 @@
+
+* 006: Codetags
+
+This proposal draws on ideas from other projects and proposals most
+pre-eminently: [[https://www.python.org/dev/peps/pep-0350/][PEP 350]]
+
+In this proposal we define a format for codetags as well as a standard
+set of code tags along with their meanings and interpretations.
+
+

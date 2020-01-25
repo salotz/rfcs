@@ -16,7 +16,7 @@ Use org-mode markup.
 
 Proposal: [[file:rfcs/salotz.002_semantic-changelog.org][file:./rfcs/salotz.002_semantic-changelog.org]]
 
-Executive summary:
+Abstract:
 
 #+begin_quote
 A mini-format for git commit messages that supports machine
@@ -31,7 +31,7 @@ expression of impacts of code change.
 
 Proposal: [[file:./rfcs/salotz.003_rfc-specs.org]]
 
-Executive Summary:
+Abstract:
 
 #+begin_quote
 Specifications for necessary information for an RFC and how to format
@@ -47,7 +47,7 @@ it.
 
 Proposal: [[file:./salotz.004_nexps.org]]
 
-Executive Summary:
+Abstract:
 
 #+begin_quote
 A proposal that defines how to name digital document entities:
@@ -63,11 +63,26 @@ e.g. ~format:namespace.field-1_field-2~
 
 Proposal: [[file:./rfcs/salotz.005_rect-buffers.org]]
 
-Executive Summary:
+Abstract:
 
 #+begin_quote
 Specification for a format and display protocol oriented around plane
 text rectangles, rather than lines.
+#+end_quote
+
+
+*** WIP 006: Codetags
+
+- nexp :: ~rfc:salotz.006_codetags~
+
+Proposal: [[file:./rfcs/salotz.006_codetags.org]]
+
+Abstract:
+
+#+begin_quote
+Tags that are added in comments to code that add semantic meaning to
+otherwise freeform comments, making them searchable by machine and
+available to tooling.
 #+end_quote
 
 

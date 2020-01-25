@@ -18,7 +18,7 @@
 
   Proposal: [[file:./rfcs/$4.org]]
 
-  Executive Summary:
+  Abstract:
 
   ,#+begin_quote
   $5

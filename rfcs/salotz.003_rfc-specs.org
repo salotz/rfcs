@@ -59,3 +59,20 @@ Some other valid prexps are:
 - ~rfc:salotz.20X6_strongbad-fantasy~
 - ~rfc:salotz.BADBADNOTGOOD_good-for-your-ears~
 
+
+
+*** Proposal Format and Sections
+
+We draw on a number of other formats in other communities:
+
+- Python Enhancement Proposals
+
+
+See this list for more:
+
+- https://github.com/franckverrot/awesome-rfcs
+- https://github.com/palash25/best-practices-checklist
+- https://github.com/ethereum/snake-charmers-tactical-manual
+- https://github.com/jcoady9/awesome-best-practices
+- https://github.com/18F/development-guide
+- https://github.com/hugo53/awesome-best-practices
