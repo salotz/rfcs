@@ -7,15 +7,14 @@
 # key: vars
 # --
 
-** ${1:IDEA} $2: $3
+*** ${1:IDEA} $2: $3
 
-- nexp :: ~$4~
+- nexp :: ~rfc:$4~
 
+Proposal: [[file:./rfcs/$4.org]]
 
 Executive Summary:
 
-#+begin_center
+#+begin_quote
 $5
-#+end_center
-
-Proposal: [[file:./rfc:$4.org]]
+#+end_quote

@@ -3,14 +3,14 @@
 * Request For Comments
 
 
-* Proposals
+** Proposals
 
-** IDEA 001: Written Document Format
+*** IDEA 001: Written Document Format
 
 Use org-mode markup.
 
 
-** WIP 002: Semantic Changelog
+*** WIP 002: Semantic Changelog
 
 - nexp :: ~rfc:salotz.002_semantic-changelog.org~
 
@@ -25,7 +25,7 @@ expression of impacts of code change.
 #+end_quote
 
 
-** WIP 003: RFC specifications
+*** WIP 003: RFC Specifications
 
 - nexp :: ~rfc:salotz.003_rfc-specs~
 
@@ -41,7 +41,7 @@ it.
 
 
 
-** WIP 004: Name Expressions (nexps)
+*** WIP 004: Name Expressions (nexps)
 
 - nexp :: ~rfc:salotz.004_nexps~
 
@@ -54,36 +54,23 @@ A proposal that defines how to name digital document entities:
 e.g. ~format:namespace.field-1_field-2~
 #+end_quote
 
-* COMMENT Tooling
 
 
-** Snippets and Templates
+
+*** IDEA 005: Rectangular Character Buffers
+
+- nexp :: ~rfc:salotz.005_rect-buffers~
+
+Proposal: [[file:./rfcs/salotz.005_rect-buffers.org]]
+
+Executive Summary:
+
+#+begin_quote
+Specification for a format and display protocol oriented around plane
+text rectangles, rather than lines.
+#+end_quote
 
 
-#+begin_src snippet :tangle yasnippets/org-mode/proposal-listing
-  # name: rfc/proposal-listing
-  # key: trigger-key
-  # keybinding : keybinding
-  # expand-env : ()
-  # contributor : salotz
-  # expand-env : ()
-  # key: vars
-  # --
-
-  ,** ${1:IDEA} $2: $3
-
-  - nexp :: ~$4~
-
-  Proposal: [[file:./rfcs/$4.org]]
-
-  Executive Summary:
-
-  ,#+begin_quote
-  $5
-  ,#+end_quote
-
-
-#+end_src
 * COMMENT Local variables
 
 # Local Variables:

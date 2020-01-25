@@ -1,0 +1,28 @@
+* Yasnippet
+
+** Proposal Listing
+
+#+begin_src snippet :tangle yasnippets/org-mode/proposal-listing
+  # name: rfc/proposal-listing
+  # key: trigger-key
+  # keybinding : keybinding
+  # expand-env : ()
+  # contributor : salotz
+  # expand-env : ()
+  # key: vars
+  # --
+
+  ,*** ${1:IDEA} $2: $3
+
+  - nexp :: ~rfc:$4~
+
+  Proposal: [[file:./rfcs/$4.org]]
+
+  Executive Summary:
+
+  ,#+begin_quote
+  $5
+  ,#+end_quote
+
+
+#+end_src
