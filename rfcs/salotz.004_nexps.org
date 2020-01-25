@@ -1,0 +1,16 @@
+
+* 004: Name Expressions (nexps)
+
+Example:
+
+~format:namespace.field-1_field-2~
+
+The '.' is used as a namespace separator. Items to the right of it are
+said to be "refinements" of the name to the left.  Underscores '_'
+separate different "fields" in a refinement. Fields have equal
+priority in describing the refinement. Hyphens are used as whitespace
+or other symbolic separator within a field name.
+
+This approach was chosen for compatibility with POSIX filenames and
+was inspired in part by the Rebol programming language (which
+unfortunately cannot be expressed in filenames).
