@@ -1,0 +1,21 @@
+# name: rfc/proposal-listing
+# key: trigger-key
+# keybinding : keybinding
+# expand-env : ()
+# contributor : salotz
+# expand-env : ()
+# key: vars
+# --
+
+** ${1:IDEA} $2: $3
+
+- nexp :: ~$4~
+
+
+Executive Summary:
+
+#+begin_center
+$5
+#+end_center
+
+Proposal: [[file:./rfc:$4.org]]

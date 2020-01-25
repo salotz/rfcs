@@ -1,0 +1,99 @@
+#+TODO: IDEA WIP | DRAFT | STABLE
+
+* Request For Comments
+
+
+* Proposals
+
+** IDEA 001: Written Document Format
+
+Use org-mode markup.
+
+
+** WIP 002: [[./rfcs/002_semantic-changelog.org][Semantic Changelog]]
+
+- nexp :: ~rfc:salotz.002_semantic-changelog.org~
+
+Proposal: [[file:rfcs/salotz.002_semantic-changelog.org][file:./rfcs/salotz.002_semantic-changelog.org]]
+
+Executive summary:
+
+#+begin_center
+A mini-format for git commit messages that supports machine
+readability (without sacrificing human readability) semantic
+expression of impacts of code change.
+#+end_center
+
+
+** WIP 003: RFC specifications
+
+- nexp :: ~rfc:salotz.003_rfc-specs~
+
+Executive Summary:
+
+#+begin_center
+Specifications for necessary information for an RFC and how to format
+it.
+#+end_center
+
+Proposal: [[file:./rfcs/salotz.003_rfc-specs.org]]
+
+
+** WIP 004: Name Expressions (nexps)
+
+- nexp :: ~rfc:salotz.004_nexps~
+
+A proposal that defines how to name digital document entities.
+
+~format:namespace.field-1_field-2~
+
+The '.' is used as a namespace separator. Items to the right of it are
+said to be "refinements" of the name to the left.  Underscores '_'
+separate different "fields" in a refinement. Fields have equal
+priority in describing the refinement. Hyphens are used as whitespace
+or other symbolic separator within a field name.
+
+This approach was chosen for compatibility with POSIX filenames and
+was inspired in part by the Rebol programming language (which
+unfortunately cannot be expressed in filenames).
+
+
+
+
+* Tooling
+
+
+** Snippets and Templates
+
+
+#+begin_src snippet :tangle yasnippets/org-mode/proposal-listing
+  # name: rfc/proposal-listing
+  # key: trigger-key
+  # keybinding : keybinding
+  # expand-env : ()
+  # contributor : salotz
+  # expand-env : ()
+  # key: vars
+  # --
+
+  ,** ${1:IDEA} $2: $3
+
+  - nexp :: ~$4~
+
+
+  Executive Summary:
+
+  ,#+begin_center
+  $5
+  ,#+end_center
+
+  Proposal: [[file:./rfc:$4.org]]
+#+end_src
+* COMMENT Local variables
+
+# Local Variables:
+# mode: org
+# org-todo-keyword-faces: (("IDEA" . "magenta") ("WIP" . "magenta") ("DRAFT" . "orange") ("STABLE" . org-done))
+# End:
+
+

@@ -1,0 +1,61 @@
+* 003: RFC specifications
+
+*** Required information
+
+- nexp :: the identifier for the RFC
+- name :: more accurate description in long form
+- executive summary :: TL;DR explanation maximum 500 words.
+
+*** States of RFC proposals
+
+- IDEA :: simply an idea that may deserve further consideration
+- WIP :: an idea that has had some fleshing out but isn't a complete proposal yet
+- DRAFT :: a potentially complete proposal but hasn't either been
+  stabilized (i.e. may still change) or been accepted and put into
+  real use by anyone
+- STABLE :: Is considered stable and accepted for use. Should be
+  signed by at least one contributor to certify this.
+- DEPRECATED :: Regardless of previous status this one is now
+  deprecated. This may be due to it being found to not be useful, or
+  it may have moved.
+
+Beyond stable status there may be other community processes to elevate
+the status of proposals of exceptional quality and utility. These are
+not described in this proposal though.
+
+*** Naming RFC proposals
+
+RFC in the traditional usage is from a particular collection of
+organizations.
+
+However, this proposes a more decentralized and open process for
+community driven proposals, formats, protocols, and best practices.
+
+Thus we propose using a namespaced identification of RFCS.
+
+RFC names then should be prefixed using the online "handle" of whoever
+(or whatever organization) takes ownership of it. More formal methods
+of assigning namespaces could be considered, but we propose this
+assuming good faith in the community and that handles are fairly well
+disambiguated. This will allow many people to contribute with means
+under their own control (i.e. source code repo).
+
+For example the RFC listings of my handle ~salotz~ would look like:
+~salotz.XXX_short-description~. Where ~XXX~ is typically a series of
+digits 0-9. We impose no restriction on the number or ordering of
+these, however we suggest using a strategy of starting with ~001~ and
+increasing monotonically ~002~, ~003~, etc. until ~999~. Letters are
+also allowed, but they must be capitalized. This must be unique within
+a namespace. The ~short-description~ segment is optional, but if
+present should attempt to be some string that gives some memorability
+or description to the proposal. These should also be unique, but
+exceptions can be made.
+
+RFC identifiers are called 'prexps' for "proposal expressions" and
+follow ~rfc:salotz.004_nexps~.
+
+Some other valid prexps are:
+
+- ~rfc:salotz.20X6_strongbad-fantasy~
+- ~rfc:salotz.BADBADNOTGOOD_good-for-your-ears~
+
