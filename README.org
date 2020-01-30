@@ -57,17 +57,18 @@ e.g. ~format:namespace.field-1_field-2~
 
 
 
-*** IDEA 005: Rectangular Character Buffers
+*** IDEA 005: Syxel Buffers Format
 
-- nexp :: ~rfc:salotz.005_rect-buffers~
+- nexp :: ~rfc:salotz.005_syxel-buffers~
 
-Proposal: [[file:./rfcs/salotz.005_rect-buffers.org]]
+Proposal: [[file:./rfcs/salotz.005_syxel-buffers.org]]
 
 Abstract:
 
 #+begin_quote
-Specification for a format and display protocol oriented around plane
-text rectangles, rather than lines.
+Format that utilizes a granular unit of 'syxel' (symbolic pixel) in a
+rectangular plane similar to a pixel based image format. Syxels are
+basically character points.
 #+end_quote
 
 
@@ -114,6 +115,7 @@ standard linux shells (i.e. POSIX ~sh~ and ~bash~) that allows for a
 more modular, composable, and semantic organization.
 #+end_quote
 
+
 *** IDEA 009: Repo Layout Templates
 
 - nexp :: ~rfc:salotz.009_repo-layout~
@@ -126,6 +128,21 @@ Executive Summary:
 A template format for generating and specifying repo layouts in
 directories, i.e. cookiecutter.
 #+end_quote
+
+
+*** IDEA 010: Growth Mindset Versioning
+
+- nexp :: ~rfc:010_growth-versioning~
+
+Proposal: [[file:./rfcs/010_growth-versioning.org]]
+
+Executive Summary:
+
+#+begin_quote
+Version formatting that doesn't lie.
+#+end_quote
+
+
 
 
 * Network
