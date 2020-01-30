@@ -145,6 +145,21 @@ Version formatting that doesn't lie.
 
 
 
+*** IDEA 011: Writetags
+
+- nexp :: ~rfc:011_write-tags~
+
+Proposal: [[file:./rfcs/011_write-tags.org]]
+
+Executive Summary:
+
+#+begin_quote
+Tags (see [[*006: Codetags][rfc:salotz.006_codetags]] for a similar proposal) that are
+added in comments to prose (documentation, whitepapers, technical
+documents, etc.) that add semantic meaning to otherwise freeform
+comments, making them searchable by machine and available to tooling.
+#+end_quote
+
 * Network
 
 RFCs from around the net I support:

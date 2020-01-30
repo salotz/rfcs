@@ -1,0 +1,23 @@
+* 011: Writetags
+
+
+** Tags
+
+- tasks
+- warnings
+- resolved
+- temporary
+- growth
+- statements
+
+*** Tasks
+
+*** Warnings
+
+*** Resolved
+
+*** Temporary
+
+*** Growth
+
+*** Statements
