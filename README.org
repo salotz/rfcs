@@ -160,6 +160,23 @@ documents, etc.) that add semantic meaning to otherwise freeform
 comments, making them searchable by machine and available to tooling.
 #+end_quote
 
+
+*** IDEA 012: Errors as Information
+
+- nexp :: ~rfc:012_information-errors~
+
+Proposal: [[file:./rfcs/012_information-errors.org]]
+
+Executive Summary:
+
+#+begin_quote
+Errors in information systems, like event logs, should take on a role
+of providing information rather than being categorized based on their
+operational importance as is the case in most languages (e.g. checked
+vs. unchecked exceptions). Inspired by Stuart Holloway and
+specifically this talk: https://youtu.be/oOON--g1PyU?t=965
+#+end_quote
+
 * Network
 
 RFCs from around the net I support:

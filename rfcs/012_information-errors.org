@@ -1,0 +1,59 @@
+* 012: Errors as Information
+
+The idea is to be able to put exceptions and errors on an event log.
+
+Additionally, the distinction in error codes is designed so that each
+maps closely to next actions handler code would take.
+
+** Previous Art
+
+*** Java Exception Hierarchy
+
+- Object
+  - Throwable
+    - Error
+    - Exception
+      - RuntimeException
+    - SQLException
+      - Error
+      - Exception
+        - ...
+
+*** Python Exception Hierarchy
+
+*** HTTP Status Codes
+
+- 1XX :: information
+- 2XX :: success
+- 3XX :: redirection
+- 4XX :: client error
+- 5XX :: server error
+
+
+*** Hall and Oates song
+
+** Types
+
+Error types:
+
+- unavailable :: resource unavailable
+- interrupted :: operation was unable to complete
+- incorrect :: operation returned wrong results
+- forbidden :: requested operation is not allowed
+- unsupported :: requested operation was not possible
+- not_found :: requested operation was not able to find a resource
+- conflict :: 
+- fault :: 
+- busy :: 
+
+Example responses:
+
+- unavailable :: wait for availability, query for next availability
+- interrupted :: try again, query cause, adjust parameters
+- incorrect :: propogate error for telemetrics or debugging
+- forbidden :: ask user for password, try other credentials
+- unsupported :: try another method, try another query
+- not_found :: 
+- conflict :: 
+- fault :: 
+- busy :: try again later, try another service
