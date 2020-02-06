@@ -177,6 +177,53 @@ vs. unchecked exceptions). Inspired by Stuart Holloway and
 specifically this talk: https://youtu.be/oOON--g1PyU?t=965
 #+end_quote
 
+
+*** IDEA 013: Code Targets
+
+- nexp :: ~rfc:013_code-targets~
+
+Proposal: [[file:./rfcs/013_code-targets.org]]
+
+Executive Summary:
+
+#+begin_quote
+Code targets are a specification for a syntax which should be
+recognized by metaprogramming tools like template engines, editors,
+etc.
+#+end_quote
+
+*** IDEA 014: Project & Maintainence Intentions for OSS
+
+- nexp :: ~rfc:014_project-intent~
+
+Proposal: [[file:./rfcs/014_project-intent.org]]
+
+Executive Summary:
+
+#+begin_quote
+A proposal for a best practice that includes a clear statement of
+intent on open source projects that would allow for greater
+understanding by consumers about the current state and intentions of
+developers in fairly unambiguous terms. Extensions could provide
+optional semantic vocabularies for very clear intent and to provide a
+set of choices for developers so they don't have to think as much from
+scratch.
+#+end_quote
+
+
+*** IDEA 014: Project & Maintainence Intentions for OSS
+
+- nexp :: ~rfc:~
+
+Proposal: [[file:./rfcs/.org]]
+
+Executive Summary:
+
+#+begin_quote
+
+#+end_quote
+
+
 * Network
 
 RFCs from around the net I support:

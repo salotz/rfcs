@@ -1,0 +1,22 @@
+* 013: Code Targets
+
+Code targets are a specification for a micro-format that allows
+"holes" or hole-like constructs in source code of any language.
+
+Here is a python example:
+
+#+begin_src python
+
+  def <<target1>>(a, b):
+
+      if a < b:
+          return True
+      else:
+          return False
+
+  if __name__ == "__main__":
+
+      <<target1>>(1, 3)
+
+
+#+end_src
