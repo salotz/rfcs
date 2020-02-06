@@ -211,19 +211,6 @@ scratch.
 #+end_quote
 
 
-*** IDEA 014: Project & Maintainence Intentions for OSS
-
-- nexp :: ~rfc:~
-
-Proposal: [[file:./rfcs/.org]]
-
-Executive Summary:
-
-#+begin_quote
-
-#+end_quote
-
-
 * Network
 
 RFCs from around the net I support:
