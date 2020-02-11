@@ -1,0 +1,36 @@
+
+* 010: Growth Mindset Versioning
+
+There are two "epochs" in growth versioning:
+
+- move fast and break things
+- stability
+
+Most projects implicitly follow this by having a rough development
+period before a major "1.0" release. This is typically perceived as
+the project having reached some significant milestone in maturity as
+well as some expression of an intent to maintain compatibility with
+this release going forward.
+
+In growth versioning we have the same system except in the epoch
+before what we call the "covenental" (i.e. 1.0) release instead of
+supporting semantics behind the meaning of the numbers
+(i.e. monotonically increasing integers that "tick" up when changes
+varying from bad to probably good) there is only dates. The
+granularity of these dates can be decided by the team but a
+'YEAR.MONTH.DAY' scheme seems to make sense for daily development
+releases.
+
+Following the covenental release (or perhaps just the "covenent")
+follow the same parsing format as ~semver~ and PEP 440 except that the
+parts have the following semantics: 'b.r.g' where 'g' stands for
+growth versions, 'b' stands for breakage releases, and 'r' stands for
+regression releases.
+
+The semantics of 'breakage', 'growth', and 'regression' are detailed
+in [[file:./salotz.002_semantic-changelog.org][Semantic Changelog]]
+Alternatively, if you don't wish to have a permanent record of
+regressions in your version number you can just do a two-part one of
+'b.g'.
+These are still monotically increasing numbers (to allow for
+dependency solvers in determining the most recent releases).
