@@ -2,7 +2,6 @@
 
 * Request For Comments
 
-
 ** Proposals
 
 *** IDEA 001: Written Document Format
@@ -175,6 +174,23 @@ of providing information rather than being categorized based on their
 operational importance as is the case in most languages (e.g. checked
 vs. unchecked exceptions). Inspired by Stuart Holloway and
 specifically this talk: https://youtu.be/oOON--g1PyU?t=965
+#+end_quote
+
+
+*** IDEA 013: Bunker: User De-Militarized Zone
+
+- nexp :: ~rfc:salotz.013_bunker~
+
+Proposal: [[file:./rfcs/salotz.013_bunker.org]]
+
+Executive Summary:
+
+#+begin_quote
+Introduces the concept of a ~bunker~ directory for user only data in
+their respective $HOME directories which is simply ~.${USER}~ or
+~.${USER}.d~. This is to allow a safe-space for customization and
+configuration that will be unmolested by other programs since it is
+unlikely that they will have this hardcoded in their behavior.
 #+end_quote
 
 * Network
