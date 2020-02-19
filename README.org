@@ -224,6 +224,18 @@ A protocol and format to facilitate low-friction editing of
 line-oriented document formats like LaTeX, Markdown, Org-mode, etc.
 #+end_quote
 
+*** IDEA 016: Nearly Trivial Plaintext Formats
+
+- nexp :: ~rfc:salotz.trivial-plaintext-formats~
+
+Proposal: [[file:./rfcs/salotz.trivial-plaintext-formats.org]]
+
+Executive Summary:
+
+#+begin_quote
+A small collection of nearly trivial plaintext formats along with file
+extensions. Includes things like a line based list format.
+#+end_quote
 
 * Network
 
