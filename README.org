@@ -211,6 +211,20 @@ scratch.
 #+end_quote
 
 
+*** IDEA 015: Collaborative Line-Oriented Plaintext Document Editing Protocol
+
+- nexp :: ~rfc:salotz.collab-line-editing~
+
+Proposal: [[file:./rfcs/salotz.collab-line-editing.org]]
+
+Executive Summary:
+
+#+begin_quote
+A protocol and format to facilitate low-friction editing of
+line-oriented document formats like LaTeX, Markdown, Org-mode, etc.
+#+end_quote
+
+
 * Network
 
 RFCs from around the net I support:
