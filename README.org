@@ -251,6 +251,22 @@ configuration that will be unmolested by other programs since it is
 unlikely that they will have this hardcoded in their behavior.
 #+end_quote
 
+
+*** IDEA 018: Secrets Database
+
+- nexp :: ~rfc:salotz.018_secret-database~
+
+Proposal: [[file:./rfcs/salotz.018_secret-database.org]]
+
+
+#+begin_quote
+A specification for a secrets database using GPG and mostly compatible
+with tools like ~pass~.
+#+end_quote
+
+
+
+
 * Network
 
 RFCs from around the net I support:
