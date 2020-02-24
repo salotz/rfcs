@@ -1,0 +1,7 @@
+* 015: Collaborative Line-Oriented Plaintext Document Editing Protocol
+
+
+- one sentence per line
+  - no wrapping, use ~visual-line-mode~ and ~visual-fill-column-mode~
+- Use code tags (specialized for writing)
+- communication should be done through issues

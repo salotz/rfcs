@@ -177,13 +177,71 @@ specifically this talk: https://youtu.be/oOON--g1PyU?t=965
 #+end_quote
 
 
-*** IDEA 013: Bunker: User De-Militarized Zone
+*** IDEA 013: Code Targets
 
-- nexp :: ~rfc:salotz.013_bunker~
+- nexp :: ~rfc:013_code-targets~
 
-Proposal: [[file:./rfcs/salotz.013_bunker.org]]
+Proposal: [[file:./rfcs/013_code-targets.org]]
 
 Executive Summary:
+
+#+begin_quote
+Code targets are a specification for a syntax which should be
+recognized by metaprogramming tools like template engines, editors,
+etc.
+#+end_quote
+
+*** IDEA 014: Project & Maintainence Intentions for OSS
+
+- nexp :: ~rfc:salotz.014_project-intent~
+
+Proposal: [[file:./rfcs/salotz.014_project-intent.org]]
+
+Executive Summary:
+
+#+begin_quote
+A proposal for a best practice that includes a clear statement of
+intent on open source projects that would allow for greater
+understanding by consumers about the current state and intentions of
+developers in fairly unambiguous terms. Extensions could provide
+optional semantic vocabularies for very clear intent and to provide a
+set of choices for developers so they don't have to think as much from
+scratch.
+#+end_quote
+
+
+*** IDEA 015: Collaborative Line-Oriented Plaintext Document Editing Protocol
+
+- nexp :: ~rfc:salotz.015_collab-line-editing~
+
+Proposal: [[file:./rfcs/salotz.015_collab-line-editing.org]]
+
+Executive Summary:
+
+#+begin_quote
+A protocol and format to facilitate low-friction editing of
+line-oriented document formats like LaTeX, Markdown, Org-mode, etc.
+#+end_quote
+
+*** IDEA 016: Nearly Trivial Plaintext Formats
+
+- nexp :: ~rfc:salotz.016_trivial-plaintext-formats~
+
+Proposal: [[file:./rfcs/salotz.016_trivial-plaintext-formats.org]]
+
+Executive Summary:
+
+#+begin_quote
+A small collection of nearly trivial plaintext formats along with file
+extensions. Includes things like a line based list format.
+#+end_quote
+
+*** IDEA 017: Bunker: User De-Militarized Zone
+
+- nexp :: ~rfc:salotz.017_bunker~
+
+Proposal: [[file:./rfcs/salotz.017_bunker.org]]
+
 
 #+begin_quote
 Introduces the concept of a ~bunker~ directory for user only data in

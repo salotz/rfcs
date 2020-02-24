@@ -1,0 +1,12 @@
+* 016: Nearly Trivial Plaintext Formats
+
+This spec is more about being able to easily recognize when a file is
+truly simple and not actually more complex.
+
+
+** A "list" file
+
+A file where each line will be parsed as a separate
+string. Essentially a newline separated ("\n") list of tokens.
+
+Supports '#' comments.
