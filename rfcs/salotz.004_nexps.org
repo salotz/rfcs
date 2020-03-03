@@ -14,3 +14,5 @@ or other symbolic separator within a field name.
 This approach was chosen for compatibility with POSIX filenames and
 was inspired in part by the Rebol programming language (which
 unfortunately cannot be expressed in filenames).
+
+A field that starts with a '#' will be considered a tag.
