@@ -267,6 +267,21 @@ with tools like ~pass~.
 
 
 
+*** IDEA 019: Meta-Project Protocol (MPP)
+
+- nexp :: ~rfc:salotz.019_MPP~
+
+Proposal: [[file:./rfcs/salotz.019_MPP.org]]
+
+
+#+begin_quote
+Protocol for live-updating of file-based development projects.
+#+end_quote
+
+
+
+
+
 * Network
 
 RFCs from around the net I support:

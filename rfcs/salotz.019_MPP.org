@@ -1,0 +1,37 @@
+* 019: Meta-Project Protocol (MPP)
+
+Protocol for live-updating of file-based development projects.
+
+Inspiration for the name taken from the Common Lisp Meta-Object
+Protocol (MOP) as it is similar in spirit.
+
+The idea is that there really is only a handful of different project
+types that people use in there projects and within their own projects
+(or within an enterprise) it would be very good to have some sort of
+conformance between them. This includes sharing of common tooling
+code, APIs, and file structures & formats.
+
+Furthermore, this cannot be delivered by a one-size fits all tool such
+as those made for a specific programming language, such as the tools
+like ~poetry~, ~dephell~, ~pipenv~, ~flit~ etc. for python projects.
+
+While these can be useful for those kinds of projects what is really
+needed is a common way to deploy and update these meta-project
+workflows and tools from a variety of semi-standardized and developed
+workflows (we prefer the term *task sets* but the full suite of
+terminology has yet to be worked out).
+
+Towards this goal there is a project called [[https://github.com/salotz/jubeo][jubeo]] that is serving as
+the prototype and reference implementation. This tool will be used to
+live update task-sets for different projects from a common repository.
+
+The ~jubeo~ tool complements the ~cookiecutter~ project which is the
+reference implementation for /initializing/ projects, while ~jubeo~ is
+intended to be the maintenance and update mechanism.
+
+Currently, a *task-set* is implemented as an ~invoke~ collection of
+tasks with a particular structure which will allow for both divergent
+project-local tasks as well as a collection of "standard" modules.
+
+In lieu of a premature description of this format we refer the reader
+to the reference implementation in ~jubeo~.
