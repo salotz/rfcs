@@ -1,6 +1,6 @@
 #+TODO: IDEA WIP | DRAFT | STABLE
 
-* Request For Comments
+* Request For Comments (RFCs)
 
 ** Proposals
 
@@ -282,11 +282,125 @@ Protocol for live-updating of file-based development projects.
 
 
 
-* Network
 
-RFCs from around the net I support:
+* Proposal For Software (PFSs)
 
-- You could be the first
+In addition to merely specifying best practices, protocols, and
+standards via RFCs it has come to my attention that there is a need
+for a listing of concrete proposals for actual working software that
+perform critical functionality.
+
+The purpose here is not to "shout at clouds" but to attempt to
+actually evaluate and validate the need for the introduction of new
+software.
+
+In addition to describing the purpose and semantics of the propsed
+software in-depth analyses of prior art should be done as well with
+feature matrices showing gaps in the current functionality.
+
+It is unclear about how exactly to incorporate the idea of the ease of
+integration (or perhaps "civility") of a piece of software but
+attempts should be made to take this into account. E.g. is it
+open-source and licensed in such a way that it could be used in
+perpetuity.
+
+** Version Control for mixed collections of digital assets
+
+Categories of *reflection* capable for data objects:
+
+- "black" objects :: opaque binary blobs
+- "grey" objects :: e.g. PostScript files, XML, image formats
+  - specialized and customizable diffing functionality
+- "white" objects :: those with well-known (semi-universal) diffing
+  strategies and merge techniques
+
+Ideas:
+
+*** Beyond decentralized vs centralized
+
+There should be a middle-ground between Decentralized and Centralized
+VCS which is more similar to federated systems.
+
+The idea is that authority over the "master copy" (centralized
+vs. decentralized) is controlled (by some means) and can be delegated
+to a collection of hub servers.
+
+A purely decentralized system (like git) is fundamentally unable to
+handle *black objects* because the source of these can only be
+controlled either through shear replacement (called *arbitrary
+replacement* in which no merge strategy is possible and decisions are
+completely arbitrary and determined by authority) or through locking
+(*change control* again completely arbitrary if we are to avoid "wars"
+between users).
+
+While both *arbitrary replacement* (*arbitration*) and *change
+control* (*delegation*) are viable solutions in general for dealing
+with black objects, they can't be implemented with git without an
+extension to the protocol. These protocol extensions are typically
+performed by the hosting service which controls the "master copy"
+(like github or gitlab, called *forges*).
+
+This leads to lock-in and/or a lack of ability to cooperate with
+others and essentially a centralized, non-distributed paradigm that
+allows for offline work encoded as a temporary "fork" of authority,
+despite the "decentralized" moniker.
+
+While any new VCS system should surely support offline-work it should
+be reified in the protocol, rather than being implemented as a
+temporary fork.
+
+
+Furthermore, the usage of the two strategies for blackish objects
+(*arbitration* and *delegation*) should also be reified and be able to
+be composed.
+
+Here is an example:
+
+Lets say you are an organization that is working on a large product
+and you have more than one team.
+
+You don't want the progress of one team to hold up the other one and
+you would like them to work completely in parallel.
+
+However, you don't want them to make mutually incompatible changes to
+objects for which they really should be cooperating with other teams
+on (particularly to blackish objects which can't be intelligently
+merged).
+
+So you split up the entire repo image (the "monorepo" perhaps) into
+several regions:
+
+- team A's region :: region A
+- team B's region :: region B
+- shared resources region :: region S
+- innaccessible region (for other teams or administrators only etc.) :: region X
+
+This allows for work done region's A and B to happen quickly and
+according to the self-organization of the respective teams.
+
+This forbids access to region X which should either be irrelevant
+parts of the monorepo or sensitive reflective configuration data that
+should only be controlled by the reigning authority (such as the
+access control itself).
+
+Region S however both teams can use and merges therein should be
+performed by an authority.
+
+However, within this shared region we still want to implement locks
+for blackish objects or implement replacements.
+
+These should then be determined by the overarching authority (for
+consensus) and as such /must/ be centralized. Remember consensus means
+slow.
+
+Because we are able to isolate only the few contentious resources both
+teams must access regions A and B need not gain consensus between
+them.
+
+So in effect we have a hybrid decentralization and distribution
+strategy that is allowed by a hierarchy in which authority is
+delegated to allow for parallel work to be done, while still
+maintaining consensus.
 
 * COMMENT Local variables
 
