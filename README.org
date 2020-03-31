@@ -402,6 +402,51 @@ strategy that is allowed by a hierarchy in which authority is
 delegated to allow for parallel work to be done, while still
 maintaining consensus.
 
+*** Specifying Networks
+
+The main idea behind my refugue project is that you can manage your
+own *personal network* (PN) while using something like the internet or
+sneakernet to actually perform the transfers etc. Kind of like urbit.
+
+The point being that at a semantic level the personal network is what
+matters to an individual or enterprise and not really the internet or
+what ICANN says about domain names.
+
+This is something I always struggled with because it felt that control
+of my own network was out of my hands. In reality ICANN and the
+internet simply enable the underlying transport to take place
+conveniently and to build my network on top of.
+
+This network really isn't that complicated and simply relies on some
+mapping of unique pet names to a collection of addresses which you may
+find that *peer* on. Which can be: 
+
+- IP addresses
+- domain names
+- zeronet addresses
+- file paths to mounted volumes
+
+etc.
+
+
+The same is useful for a distributed/decentralized version control
+system. And is useful for allowing polymorphism in the data that
+resides on each peer.
+
+For example I want to check out just a portion of the enterprise
+"monorepo" because I either don't need all of it, can't hold all of
+it, or am not allowed to hold all of it.
+
+Specifying a network from a single holder of authority is a way to
+achieve this.
+
+How consensus on this single point of authority is decided can be
+customized but can be something like: 
+
+- zookeeper or raft
+- blockchain
+- held in a person i.e. CEO
+
 * COMMENT Local variables
 
 # Local Variables:
