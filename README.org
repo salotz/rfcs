@@ -278,9 +278,18 @@ Proposal: [[file:./rfcs/salotz.019_MPP.org]]
 Protocol for live-updating of file-based development projects.
 #+end_quote
 
+*** IDEA 020: In-Repo Issue Tracking Schema
 
+- nexp :: ~rfc:salotz.020-repo-issue-tracker~
 
+Proposal: [[file:./rfcs/salotz.020-repo-issue-tracker.org]]
 
+Executive Summary:
+
+#+begin_quote
+Schema for including issue tracking sources with a project, without
+having to rely on outside forges.
+#+end_quote
 
 
 * Proposal For Software (PFSs)
@@ -306,6 +315,9 @@ perpetuity.
 
 ** Version Control for mixed collections of digital assets
 
+
+*** Description
+
 Categories of *reflection* capable for data objects:
 
 - "black" objects :: opaque binary blobs
@@ -316,7 +328,7 @@ Categories of *reflection* capable for data objects:
 
 Ideas:
 
-*** Beyond decentralized vs centralized
+**** Beyond decentralized vs centralized
 
 There should be a middle-ground between Decentralized and Centralized
 VCS which is more similar to federated systems.
@@ -402,7 +414,7 @@ strategy that is allowed by a hierarchy in which authority is
 delegated to allow for parallel work to be done, while still
 maintaining consensus.
 
-*** Specifying Networks
+**** Specifying Networks
 
 The main idea behind my refugue project is that you can manage your
 own *personal network* (PN) while using something like the internet or
@@ -434,7 +446,7 @@ system. And is useful for allowing polymorphism in the data that
 resides on each peer.
 
 For example I want to check out just a portion of the enterprise
-"monorepo" because I either don't need all of it, can't hold all of
+monorepo because I either don't need all of it, can't hold all of
 it, or am not allowed to hold all of it.
 
 Specifying a network from a single holder of authority is a way to
@@ -446,6 +458,161 @@ customized but can be something like:
 - zookeeper or raft
 - blockchain
 - held in a person i.e. CEO
+
+
+
+
+
+*** Prior Art
+
+- boar
+- git-lfs
+- git-annex
+- subversion
+
+** In-Repo Issue Tracking 
+
+
+*** Description
+
+*** Prior Art
+
+**** git-issue
+
+https://github.com/dspinellis/git-issue
+
+Pros:
+- import/export to common forges like github and gitlab
+- implemented in shell scripts
+
+Cons:
+- fixed schema, oriented around small files of undescribed schemas, non-extendable
+- only works with git
+- not editable directly via editor easily:
+  - metadata and description spread across many files for each issue
+  - file/dir names based on hashes rather than anything meaningful
+
+**** deft
+
+https://github.com/npryce/deft
+
+Pros:
+- VCS agnostic
+- Text-editor friendly
+  - issues live in a renamable dir
+  - only 2 files: description + metadata
+  - files named after file
+
+Cons:
+- Python 2
+- no forge integration
+- must manually name issues
+
+**** git-dit
+
+https://github.com/neithernut/git-dit
+
+
+
+*** Requirements
+
+After reviewing the existing options I like the UX of ~deft~ the best
+but it suffers from some implementation issues mainly being
+implemented in Python 2.
+
+I want my issues to be able to be edited by a text editor as not onyl
+a secondary means, but as a first class thing.
+
+This doesn't preclude command line tools for this purpose but using
+only a text editor should be ergonomic.
+
+Ideally anyhow it would get integrated to emacs or VSCode etc. which
+is how these kinds of tools work better anyhow.
+
+**** Single file issues
+
+Each issue should be only a single file.
+
+It is too annoying to switch between different files to tweak and
+twiddle metadata.
+
+In the limit individual issues could be of different actual formats
+that allow for varying degrees of semantic data. (similar to git
+commits).
+
+Issues can be in SOML (my minor TOML variant for writing lots of text)
+where you can add tags, flags, and metadata as you please alongside
+long descriptions in different markup languages.
+
+They can also be in other formats as you wish and should be a decision
+each project should make.
+
+That is the schema/protocol for the directory layout etc. should be
+orthogonal to the content of the actual issues.
+
+This can only really be achieved with single file issues.
+
+However, there should be affordances for attaching resources (like
+images etc.) into sidecar directories. But these really should contain
+any issue writer writings.
+
+Other options for issue formats could be:
+
+- skribilio
+- org-mode
+- markdown
+- plaintext
+- XML, HTML
+- JSON
+
+Here is an example with SOML:
+
+#+begin_src soml
+  First line of the issue
+
+  [meta]
+
+  status = 'open'
+  assigned = '@salotz'
+  tags = [
+       'feature',
+       'bug',
+       'critical',
+  ]
+
+  [description]
+
+  Here is the longer description of the issue describing what to do
+  about it.
+
+  It should allow introspection with links and such.
+
+  Here I am linking the path to a piece of code I want to reference:
+
+  [[proj:/src/package/__init__.py?line=30;col=12][code here]]
+
+  [discussion]
+
+  [[comments]]
+
+  contributor = '@salotz'
+
+  message = [
+
+  I think this is a good issue, I can even do this myself.
+
+  ]
+
+  [[comments]]
+
+  contributor = '@wumpus'
+
+  message = [
+  I disagree, I don't think its worth our time.
+  ]
+#+end_src
+
+
 
 * COMMENT Local variables
 
