@@ -470,7 +470,7 @@ customized but can be something like:
 - git-annex
 - subversion
 
-** In-Repo Issue Tracking 
+* In-Repo Issue Tracking 
 
 
 *** Description
@@ -612,6 +612,42 @@ Here is an example with SOML:
   ]
 #+end_src
 
+
+**** Automatic issue naming
+
+Its not always easy to manually name issues. That is why things like
+github and gitlab use auto-naming things where they use numbers to
+refer to them.
+
+Tools should support this so that people don't have to name their
+issues.
+
+However, to keep things friendly the file names should support adding
+extra "fields" to add short descriptions.
+
+Examples:
+
+An uncommented issue should just be a number. Issues should increase
+monotonically and start at 0 and should include 0 padding for sorting
+of crummy legacy software. All tools should sort numerically.
+
+The zeroth issue:
+
+#+begin_example
+000000.issue.schema
+#+end_example
+
+The next issue:
+
+#+begin_example
+000001.issue.schema
+#+end_example
+
+The issue after with a name ~issue-key~ also:
+
+#+begin_example
+000002_issue-key.issue.schema
+#+end_example
 
 
 * COMMENT Local variables
