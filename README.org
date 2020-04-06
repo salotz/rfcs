@@ -470,7 +470,7 @@ customized but can be something like:
 - git-annex
 - subversion
 
-* In-Repo Issue Tracking 
+** In-Repo Issue Tracking 
 
 
 *** Description
