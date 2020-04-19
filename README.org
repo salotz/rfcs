@@ -649,6 +649,51 @@ The issue after with a name ~issue-key~ also:
 000002_issue-key.issue.schema
 #+end_example
 
+** Alternate 3rd Party Standard Library for Python
+
+I was looking for at one point an alternative to the standard library.
+
+Here is the example:
+
+the ~shutil~ module is only good in 3.8+ because of some basic options
+in the ~copytree~ function, and so it is pretty unreliable and
+confusing when you are trying to build standard tooling that should
+use that.
+
+Typically in tooling I would write:
+
+#+begin_src python
+cx.run("cp -r tree ~/scratch/tree")
+#+end_src
+
+But this is POSIX only, and using the python standard library should
+be cross platform, right?
+
+So I change to using ~shutil~:
+
+#+begin_src python
+import shutil as sh
+
+sh.copytree('tree', "/home/salotz/scratch/tree")
+#+end_src
+
+This will fail if "/home/salotz/scratch/tree" already exists. And is
+annoying, so you add the ~exist_ok~ option but this only is in python
+3.8....
+
+A lot of my tooling uses 3.6 or 3.7 because dependencies in other
+environments. This is super annoying.
+
+Also there is no features in py 3.8 that make shutil able to gain this
+super power. Its just an if statement.
+
+For something like this I wish there was just another library I could
+import to get this behavior on all relevant python versions.
+
+#+begin_src python
+import altstd.shutil as sh
+#+end_src
+
 
 * COMMENT Local variables
 
