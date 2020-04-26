@@ -280,9 +280,9 @@ Protocol for live-updating of file-based development projects.
 
 *** IDEA 020: In-Repo Issue Tracking Schema
 
-- nexp :: ~rfc:salotz.020-repo-issue-tracker~
+- nexp :: ~rfc:salotz.020_repo-issue-tracker~
 
-Proposal: [[file:./rfcs/salotz.020-repo-issue-tracker.org]]
+Proposal: [[file:./rfcs/salotz.020_repo-issue-tracker.org]]
 
 Executive Summary:
 
@@ -291,6 +291,19 @@ Schema for including issue tracking sources with a project, without
 having to rely on outside forges.
 #+end_quote
 
+*** IDEA 021: Org-mode Next-Gen
+
+- nexp :: ~rfc:salotz.021-org-mode-ng~
+
+Proposal: [[file:./rfcs/salotz.021_org-mode-ng.org]]
+
+Executive Summary:
+
+#+begin_quote
+Proposals for the next generation of org-mode involving simplifying,
+modularizing, and making it more extensible and amenable to a wider
+non-emacs ecosystem.
+#+end_quote
 
 * Proposal For Software (PFSs)
 

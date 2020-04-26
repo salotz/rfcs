@@ -1,0 +1,416 @@
+* 021: Org-mode Next-gen
+
+
+** What is Org-mode?
+
+Org-mode is an amazing piece of technology and I have enjoyed its
+benefits for many years. My enthusiasm for it has also made me acutely
+aware of the deficiencies of the format and worried about its
+longevity and impact outside of the enclave of hardcore emacs users.
+
+Here I will outline primarily what I think the pain points of org-mode
+are and how to solve them, through an evolutionary process of the
+format.
+
+First, let me describe the status of org-mode as a "plaintext"
+format. As this is important in understanding why it is different than
+other "plaintext" formats like markdown or XML.
+
+"Plaintext" formats have something of a fanboy-esque following which
+is detrimental to taking these formats seriously and making progress
+in the human-computer interfaces.
+
+Plaintext is usually touted (following the Unix philosophy) as being
+some sort of universal medium. This is true in some very limited
+aspects such as a very clear understanding of which symbols and their
+encodings are permitted in a given document. This is usually
+contrasted with some sort of so-called "binary" format which are
+usually looked down upon as being opaque to humans.
+
+The only difference between "plaintext" and binary formats is that
+most common editing and display programs know how to decode the binary
+format that plaintext is encoded in. That is all formats are "binary"
+because they are stored on computers.
+
+Plaintext is one useful binary format because many programs know how
+to decode it and has a very simple uniform structure which is just
+that "one-symbol comes after another" which lends itself well to
+stream-oriented structures like exist in the "everything is a file"
+(which should be "everything is a stream") orientation of the unix
+philosophy.
+
+In fact "plaintext" can come in different character encodings but
+typically is ASCII or UTF-8 or some other unicode encoding.
+
+The stream oriented nature of the format means that we don't really
+need sophisticated parsers and grammars to decode the meaning of the
+document. Really all we need is a binary "lexer" which just reads
+chunks of bytes in a row.
+
+So if we boil down what makes a "plaintext" format useful we have:
+
+- stream of characters :: no parser needed, only simple lexer
+- fonts for symbols commonly implemented on all systems
+
+Thats it!
+
+Unfortunately real world problems typically have more complexity
+involved in them and the heterogeneous, recursive, hierarchical,
+relational, and graphical nature of data will have to be dealt with.
+
+Anyone familiar with databases knows there are some common huge
+impedance mismatches between these kinds of systems:
+
+- the Object-relational mismatch :: AKA graph vs. relational structures
+- streaming vs. batch mismatch
+- the halting problem :: implicitly unsolvable problems when dealing
+  with grammar/tree structured data
+- performance :: fundamental latencies of interacting systems, human
+  or otherwise
+
+These aren't something to be shrugged off. Yelling about plaintext
+isn't going to solve the halting problem. In my experience the people
+that claim plaintext is the solution to everything don't really
+understand these issues at all and live their entire computing
+existences in small cold corners of the computing universe. More
+sophisticated and erudite users understand the virtues of plaintext
+but also understand it is not a panaceae.
+
+Finally, we shouldn't just become complacent with a particular format
+just because it is familiar, instead we should be looking to grow and
+improve the ability for people and systems interact with computers. To
+achieve this diversity while still maintaining a sane uniform system
+is not easy but it is certainly a noble pursuit. A pursuiut that
+requires a mix of pragmatism, convention, appeal to recalcitrant
+complexity of the medium (i.e. human nature) as well as understanding
+of the deeper algebras that provide objectivity and reality checks to
+our "arbitrary" social, psychological, and biological conventions.
+
+
+This philosophizing is somewhat necessary as these issues are flamewar
+inducing if people do not realize what the bigger goal is of all this
+convention building. But with it out of the way, let me describe how
+org-mode is not really a "plaintext" format in essence.
+
+
+To do this let me describe some of the interactive features any org
+mode user will immediately understand:
+
+- folding of nodes and subtrees via keybindings
+- navigating node trees via simple keybindings
+- folding of source blocks
+- insertion and expansion of snippets for commonly used patterns, like
+  code blocks, dates, nodes, node-properties, TODO attributes, node
+  tags, etc.
+- narrowing of focus of a particular subtree
+- special editing modes for code blocks in isolated environments
+- editing tables and spreadsheets
+
+All of these are some of the most used features of org-mode. These are
+all things that I would use to persuade someone to use
+org-mode. However, what this really means is "editing org mode in
+emacs".
+
+This is an extended "org-mode" that goes beyond the plaintext nature
+of it and into a series of protocols of text producing macros that are
+facilitated by a common interaction mechanism in emacs.
+
+In my opinion you can't really separate the "org" from the "mode". Org
+mode isn't a plaintext format.
+
+The state of an org mode document does however have a single plaintext
+representation.
+
+"Org-mode the plaintext state" isn't really much to behold when you
+compare it to other plaintext formats like Markdown, ASCIIdoc, or
+ReStructuredText. And in fact is inferior in some aspects to these
+other ones (and superior in others).
+
+For instance the syntax for blocks compared to Markdown looks ugly and
+verbose:
+
+Org-mode:
+
+#+begin_src org
+  ,#+begin_src python
+  print("Hello")
+  ,#+end_src
+#+end_src
+
+Markdown:
+
+
+#+begin_src markdown
+  ```
+  print("Hello")
+  ```
+#+end_src
+
+
+But an org-mode user almost never actually types all of that (at least
+I don't and wouldn't) and in fact uses a keybinding that brings up a
+quick menu of which kinds of things to expand to.
+
+The org-mode version is perhaps more powerful and more semantic when
+the blocks are used for things other than simple web oriented
+formatting (as Markdown intends). But this is lost on somebody who is
+just writing a comment on a blog where there isn't an emacs
+environment (or isn't one easily).
+
+However, for making a notebook of scripts with explanations of them
+which can be exported to different locations and edited in a real
+environment for that code (e.g. python), org-mode + emacs really
+shines over Markdown where this really isn't possible without
+copy-pasting and having to create and manage temporary files.
+
+I think through this demonstration that you see org-mode is more than
+a plaintext format and that this is good for some things and bad for
+other things.
+
+Now that we have this basic question examined, lets look at the actual
+feature set of org-mode and see how these map to the different
+use-cases. This will give us a roadmap for how to improve the format.
+
+
+** Improving Org-mode through decomplecting functionality
+
+As I see it org-mode has several main use cases which are somewhat
+orthogonal:
+
+1. note-taking / personal wiki software
+2. literate source code manager / notebook
+3. document preparation system
+4. data management / spreadsheet
+5. agenda, TODO management application
+
+Of these the first three are the most aligned while the last one tends
+to have it's own separate set of features the others don't really make
+use of.
+
+That is:
+
+- TODO states
+- DEADLINEs
+- Agenda view
+- priorities
+- check box list items
+
+While these are useful on their own you typically don't need to
+include these while you are writing documents or managing a code
+notebook.
+
+I do find having some lightweight TODO lists typically using the check
+box lists is useful as a markup item in some of these and I do use
+them as mini todo lists in my personal journal.
+
+However the other ones typically aren't really well suited to being
+embedded into a document with a structure determined by the content.
+
+That is typically these agenda or TODO documents are separate
+documents with their own structure which is constructed to support
+managing your TODOs.
+
+So the first proposal:
+
+#+begin_center
+Remove "tasking" metadata and protocols from the base org mode format.
+#+end_center
+
+I use these features heavily but having to support them in a single
+format is not helpful.
+
+As far as the the first four use-cases I rather like that they all
+share a common set of functionality.
+
+For note-taking in journals org mode provides an excellent
+light-weight format for writing stream of consciousness and organizing
+moment-to-moment thoughts. This along with support for easily
+inserting dates and folding and organizing past entries by headers is
+vastly more effective than if it was in a "flat" format like Markdown.
+
+For example:
+
+#+begin_src org
+  ,* <2020-04-23 Thu>
+
+  Today I am doing this.
+
+  Here is a small workflow of tiny things I need to do:
+
+  - [ ] compile new build
+  - [ ] read this article
+  - [ ] send an email to her
+
+
+  I got this weird error trace:
+
+  ,#+begin_example
+  root@guix-learn:~# ls --what
+  ls: unrecognized option '--what'
+  Try 'ls --help' for more information.
+  ,#+end_example
+
+  What does it mean?
+
+  - [ ] Send this data over there
+
+  ,#+begin_src bash
+  rsync -ravvhiz --stats here there
+  ,#+end_src
+
+  ,* <2020-04-24 Fri>
+
+
+  Not much going on today...
+#+end_src
+
+As a programmer or content creator that produces and works with
+plaintext the flexibility and editing environments for the blocks such
+as the bash block above is very useful.
+
+For instance you can write the commands you are using from moment to
+moment so you don't accidentally forget a flag or mistype a path and
+you don't have to rely on rifling through your shell history which
+easily becomes polluted with trial and error explorations.
+
+
+The code notebook functionality is also IMO first-class compared to
+other solutions out there. The only other competitors are the class of
+Jupyter notebooks out there which are massively complicated and
+underfeatured compared to the org-mode notebook.
+
+For one at a base level org-mode can be used just to produce and
+manage source code which is then executed in the standard way, via the
+shell. With other notebooks you can't really get away from the
+execution being a part of the format.
+
+Yes org-mode does have support for this, but it can be tricky to get
+working and I don't really use it. When you do use it though it
+doesn't rely on some special kernel and again is just using the
+standard method of invocation.
+
+Org-mode does fall behind in some graphical presentation ways, but I
+don't think this can really be improved upon without emacs itself
+being sufficiently altered.
+
+
+For document preparation and data management I would say that org-mode
+is a lightweight alternative to some other methods.
+
+While you can produce complex documents with org mode and fiddle with
+the different options (which I have done), if you have complex
+typesetting needs a system like Latex or Docbook is going to be a more
+viable alternative.
+
+That said org-mode I think provides an excellent on-ramp to these
+systems by letting you start your document, write drafts, mock up,
+outline etc. and then convert it to one of these formats for
+fine-tuning.
+
+So org-mode is a natural default choice to go for in writing something
+so that you don't have to make up-front choices as to document
+systems, that might severely hamper the early stage thinking that goes
+into writing a document.
+
+
+As a data management system, it is also a lightweight solution
+compared to something like MS Excel.  There currently isn't anything
+that really competes with Excel that is also better than org-mode.
+
+One benefit org-mode has in its approach is that you combine the
+hierarchical organization along with other useful data structures like
+lists and code blocks with the tables.
+
+For organizing a large number of small tables that require extensive
+documentation or other information organization org-mode beats excel.
+
+The tendency in Excel when information is a bit fuzzier is to get
+strange half-document half-spreadsheet beasts. While excel does the
+spreadsheet better, it does everything else worse and these documents
+are very bad, and very difficult to integrate into a pipeline.
+
+Org-mode could use some small improvements in terms of API to make
+extracting tables easier (like unifying with the tangle system) but
+does provide export options to formats like CSV.
+
+The spreadsheet formulas etc. available to org-mode through the GNU
+calc program are very interesting albeit a bit clumsy and necessitate
+learning GNU calc and some emacs lisp, making it not very
+practical. Most data processing these days should be done through
+languages which are well known for this such as Python, R, or
+Julia. GNU Calc could still be useful, but the syntax is not as
+intuitive as it could be and the construction of equations is
+forgettable.
+
+I can easily see the data management part becoming very fully-featured
+in org-mode with special editing environments but it is limited by the
+Emacs environment and is of relatively low priority.
+
+** The next notebook format
+
+While we should try to bend and break org-mode to all of our desires,
+the future of notebook style formats is going to be in the
+programmability of them.
+
+That is connecting code and data in the same document in such a way
+that they can be piped together and referenced.
+
+Because this is something that necessitates essentially a programming
+language its not clear that org-mode can support this without becoming
+totally different.
+
+It is our opinion that org-mode should focus its effort on being the
+lightweight, do-everything format for writing:
+
+- notes, journals, and wikis
+- documents
+- data management
+- code management
+
+And allow for external systems to integrate and process this for
+inclusion into more production systems.
+
+The success of this program should focus on:
+
+- simplification of the format with regards to programming language
+  like features such as variable names and configuration
+- clarification and reification of the configuration of the
+  presentational aspects of documents i.e. embedding configuration
+- delineation of the static features of the format and making them
+  work wonderfully.
+- clear "knobs" to turn, i.e. org mode is not the "lisp" of document
+  systems.
+- creating a core format that excludes "tasking" like features
+- creating sub-format dialects to support things like tasking, column
+  view, spreadsheets, literate coding.
+
+In closing the simplification and maturation of the format is needed
+so that it is clearer what exactly org-mode is and does. This will
+enable the uptake of the format on other platforms outside of emacs as
+implementators will have a manageable checklist of both syntactical
+and interactive features to support.
+
+While I haven't (and won't) elaborate here on the case of why, but its
+worth meditating on the difference between something like Emacs Lisp
+(or lisp in general) and org-mode.
+
+As Lispers we want our systems to be infinitely extensible and
+expressive. This is what draws us to org-mode. However, its plainly
+obvious that org-mode pales in comparison to a system like lisp. The
+syntax is huge, complicated, full of conventions, and may not even be
+"valid" in theoretical ways.
+
+Org-mode has been designed so that it is amenable to quick human
+understanding with a minimum of visual syntactic noise. We should
+praise it as such and not pretend it is a lisp. Thus the program of
+improvement of org-mode should be on strengthening the successful
+features and limiting the extensibility.
+
+Org-mode has been instrumental in pushing the boundaries of what a
+document can do however, I think it is time for a new generation of
+document formats that trade off a bit of the pragmatism of the
+org-mode format for more extensibility.
+
+More along the lines of languages like Rebol, Racket, XL, XML, mimix,
+or Skribilio which attempt to find a middle ground between hardcore
+programming languages and content creators.
