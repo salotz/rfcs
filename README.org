@@ -708,6 +708,14 @@ import altstd.shutil as sh
 #+end_src
 
 
+** Diff Collection
+
+A collection of custom diffs that can be plugged into a variety of
+things like VCS.
+
+Add support for things that aren't amenable to standard GNU diff like
+things.
+
 * COMMENT Local variables
 
 # Local Variables:
