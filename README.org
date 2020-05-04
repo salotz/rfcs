@@ -305,6 +305,23 @@ modularizing, and making it more extensible and amenable to a wider
 non-emacs ecosystem.
 #+end_quote
 
+
+
+*** IDEA 022: template inheritance
+
+- nexp :: ~rfc:salotz.022_templat-inheritance~
+
+Proposal: [[file:./rfcs/salotz.022_templat-inheritance.org]]
+
+Executive Summary:
+
+#+begin_quote
+Taking inspiration from gitignore.io and their template
+structure. Specifies a way to layout a repository of templates that
+allows for: stacks, inheritance, and ordering.
+#+end_quote
+
+
 * Proposal For Software (PFSs)
 
 In addition to merely specifying best practices, protocols, and
@@ -715,6 +732,64 @@ things like VCS.
 
 Add support for things that aren't amenable to standard GNU diff like
 things.
+
+
+** gitignore generator CLI w/ local repo support
+
+The gitignore.io collection is a great resource with a terrible
+website web API, local server mess used to implement it.
+
+Something much simpler should be devised that simply works with either
+local repos or from a git repo.
+
+You should also be able to combine different repos together.
+
+For instance I like to use community maintained gitignores for a lot
+of stuff because then I don't have to worry about stuff. But I
+typically end up home-growing my own sets of ignores that I use across
+many projects and I want to be able to compose them all.
+
+For instance you can make a single gitignore using the query system
+they have in some command line tools as well:
+
+#+begin_src bash
+giig python,emacs
+#+end_src
+
+Will give you both python and emacs.
+
+
+One: I want to be able to specify which repo to use for this.
+
+#+begin_src bash
+giig --url git+https://github.com/salotz/gitignore-salotz.git python,emacs
+#+end_src
+
+For lets say my personal one. But I also want to be able to compose
+them. (Do we need this to support that or can I just use piping?)
+
+Perhaps above this would implicit compose that and the default
+community one, to only get mine I might use:
+
+#+begin_src bash
+giig --no-default \
+     --url git+https://github.com/salotz/gitignore-salotz.git python,emacs
+#+end_src
+
+This is necessary for if there is conflicting names. I.e. both have
+~Python.gitignore~ in them.
+
+To allow for composition you can use in the secondary repos the name
+~Python.patch~ or specify some stacks ~Salotz-Python.Python.stack~
+which is a symlink to ~Python.stack~ and infers that we also want to
+use the ~Salotz-Python.gitignore~ template file.
+
+And for instance combining the default repo with a local one:
+
+#+begin_src bash
+giig --url file://~/my-ignores python,emacs
+#+end_src
+
 
 * COMMENT Local variables
 
