@@ -791,6 +791,30 @@ giig --url file://~/my-ignores python,emacs
 #+end_src
 
 
+** Source Code Tree Database & Query Language
+
+I have come across a number of tools which read your source code and
+then generate some set of quality metrics or other representations of
+your code that allows you to do high-level planning and understanding
+about your code base.
+
+(I am primarily interested in Python although this niche is necessary
+for really any code base.)
+
+All of these tools have to reinvent the same wheel which is generating
+an extended "AST" which is over the files in your project.
+
+The touchstone for this is my [[https://github.com/salotz/pymatuning][pymatuning]] which is a good prototype of
+this, albeit surely incomplete in many ways.
+
+So the proposals for software would then be:
+
+- reliable general purpose tree data structure in python that allows
+  for standard querying and outputs to various common formats like
+  JSON etc.
+- a standard Python module/package representation using this tree data
+  format.
+
 * COMMENT Local variables
 
 # Local Variables:
