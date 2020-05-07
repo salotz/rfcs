@@ -815,6 +815,14 @@ So the proposals for software would then be:
 - a standard Python module/package representation using this tree data
   format.
 
+
+** GNU Coreutils numfmt clone
+
+Should implement this in pure-python for maximum portability.
+
+This tool converts from bytes to higher units correctly and with
+optional formatting help.
+
 * COMMENT Local variables
 
 # Local Variables:
