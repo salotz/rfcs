@@ -322,7 +322,7 @@ allows for: stacks, inheritance, and ordering.
 #+end_quote
 
 
-* Proposal For Software (PFSs)
+* Request For Implementations (RFIs)
 
 In addition to merely specifying best practices, protocols, and
 standards via RFCs it has come to my attention that there is a need
@@ -342,6 +342,8 @@ integration (or perhaps "civility") of a piece of software but
 attempts should be made to take this into account. E.g. is it
 open-source and licensed in such a way that it could be used in
 perpetuity.
+
+Name is inspired by the Scheme Request For Implementations (SRFIs).
 
 ** Version Control for mixed collections of digital assets
 
@@ -822,6 +824,72 @@ Should implement this in pure-python for maximum portability.
 
 This tool converts from bytes to higher units correctly and with
 optional formatting help.
+
+** Local Prometheus-style monitoring & logging
+
+After having used Prometheus for some projects for monitoring
+programs, I find the model usable and a niche I haven't found in any
+existing profiling software.
+
+Often profilers (at least in the python world) inject code into your
+program and get metrics on *everything* that is going on.
+
+This is useful, but in many scenarios the results are overwhelming and
+quite complex.
+
+The Prometheus approach is much like a traditional logger in that you
+have to actually write code to make data samples. Prometheus differs
+in that it supports structured data (albeit a usefully small number of
+things like Gauges, Counters, etc.) while logging is just some strings
+usually and is then queried using a full-text search engine.
+
+The full text search on logs seems, unsatisfying. Not only have you
+gone the extra mile to both add logging in and collect performance
+data (object sizes timings etc.) but you now have a separate problem
+of parsing them.
+
+Having first class support for the most common monitoring use cases is
+something that should be supported.
+
+Logging software like ~eliot~ provides a vastly improved experience on
+standard loggers by outputting a JSON stream of log messages. By
+leveraging this you can report all kinds of data including numeric
+data.
+
+As an aside ~eliot~ has a focus on root cause analysis and not
+monitoring, and as such it has a much higher overhead in injecting the
+code into your "business" code. I.e. it wouldn't really be amenable in
+all cases to "aspect oriented" approaches like prometheus gauges would
+be. That said you don't need to use these features in ~eliot~.
+
+The extra things on top of eliot that a Prometheus like system would
+have, is a special purpose time series database and query engine
+(~PromQL~).
+
+The problems with ~Prometheus~ are that it is meant to be "cloud
+native" and as such is best deployed in a container cluster along with
+a bunch of other helper services that communicate via HTTP.
+
+While this is an approach suited to a networked environment it
+increases the overhead of getting up and started by a lot.
+
+The goal of this project would be to significantly reduce this
+complexity and not need to have http servers running for all programs
+being scraped.
+
+This could simply be done over a RESTful virtual file system like 9P
+on FUSE.
+
+Other than that prometheus places a great importance on shipping as a
+single binary (as most golang programs do) which is useful for moving
+it around and easing deployment.
+
+In our situation we could be more oriented towards plugins and
+shipping more like a traditional python framework.
+
+Plugins then would essentially replace the numerous side-car services
+that prometheus talks to (like the alertmanager) which are just
+"dockered" away so that the prometheus binary remains easy to deploy.
 
 * COMMENT Local variables
 
