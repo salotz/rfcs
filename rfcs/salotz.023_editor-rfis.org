@@ -1,0 +1,34 @@
+* 023: Editor RFIs
+
+Editor Request for Implementations.
+
+Similar to Scheme RFIs, I propose having a similar series of documents
+which outline specific behaviors that an editor can provide in a module.
+
+The goal with these proposals is to allow for a more uniform
+understanding of editor semantics. This stems from my postulate that
+editor sophistication (semantics) are dual to programming language
+syntax and semantics.
+
+For instance writing lisp is very hard without specific parentheses
+manipulating facilities. Programs like emacs provide excellent
+environments for this (along with the many modules). However, emacs is
+extremely bloated and complex which is unnecessary for doing the task
+at hand which is writing lisp.
+
+So in order to fight this complexity we provide smallish standards for
+specific editor behaviors that either standalone editors or modules
+can claim to implement. 
+
+This will allow for custom building of editor environments that are
+tailored to the needs of people in an environment.
+
+Furthermore, this makes the semantics of suggested editor capabilities
+more concrete and thus more able to be accounted for when assessing
+the complexity of a language, in addition to the syntax and semantics
+of the language itself.
+
+This should also provide a viable means to incrementally work on
+editors and provide a means of displaying progress. Rather than
+resorting to tribalism and marketing on how the entire "distro" is
+better or worse.

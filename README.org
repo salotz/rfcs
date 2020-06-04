@@ -309,9 +309,9 @@ non-emacs ecosystem.
 
 *** IDEA 022: template inheritance
 
-- nexp :: ~rfc:salotz.022_templat-inheritance~
+- nexp :: ~rfc:salotz.022_template-inheritance~
 
-Proposal: [[file:./rfcs/salotz.022_templat-inheritance.org]]
+Proposal: [[file:./rfcs/salotz.022_template-inheritance.org]]
 
 Executive Summary:
 
@@ -319,6 +319,20 @@ Executive Summary:
 Taking inspiration from gitignore.io and their template
 structure. Specifies a way to layout a repository of templates that
 allows for: stacks, inheritance, and ordering.
+#+end_quote
+
+
+*** IDEA 023: Editor RFIs
+
+- nexp :: ~rfc:salotz.023_editor-rfis~
+
+Proposal: [[file:./rfcs/salotz.023_editor-rfis.org]]
+
+Executive Summary:
+
+#+begin_quote
+Publish a series of RFI standards for editors that describe the
+behavior of specific features.
 #+end_quote
 
 
