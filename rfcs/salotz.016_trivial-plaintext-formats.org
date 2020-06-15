@@ -10,3 +10,19 @@ A file where each line will be parsed as a separate
 string. Essentially a newline separated ("\n") list of tokens.
 
 Supports '#' comments.
+
+Has a ~.list~ extension.
+
+** A "string" file
+
+Sometimes you want a file that has a single string in it that should
+just be read directly and not parsed.
+
+Has a ~.str~ extension.
+
+This is distinct from a ~.txt~ file in that the TXT file is freeform
+and no parsing is intended. The file is intended to be read by a user
+as-is.
+
+Furthermore, a TXT file shouldn't contain "data" like an 'str' file
+would in the sense of a programming language might.
