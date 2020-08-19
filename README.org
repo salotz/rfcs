@@ -4,9 +4,17 @@
 
 ** Proposals
 
-*** IDEA 001: Written Document Format
+*** IDEA 001: Use Org Mode
 
-Use org-mode markup.
+- nexp :: ~rfc:salotz.001_use-org.org~
+
+Proposal: [[file:rfcs/salotz.001_use-org.org][file:./rfcs/salotz.001_use-org.org]]
+
+Abstract:
+
+#+begin_quote
+Use org-mode LOL.
+#+end_quote
 
 
 *** WIP 002: Semantic Changelog

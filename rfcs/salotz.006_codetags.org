@@ -7,9 +7,140 @@ pre-eminently: [[https://www.python.org/dev/peps/pep-0350/][PEP 350]]
 In this proposal we define a format for codetags as well as a standard
 set of code tags along with their meanings and interpretations.
 
+The format is more important than the actual set of tags a team may
+adopt. But we provide them as "sane defaults" since these proposals
+are meant to be useful on their own.
+
 ** Code Tags
 
-Categories:
+*** Format
+
+Code tags take the form of a comment on a line preceding an area of
+concern. For example in ~python~ comments are lines started with a ~#~
+symbol. The simplest example would be:
+
+#+begin_src python
+  # TODO: remove hard-coding of number of iterations
+  for i in range(10):
+      print(i)
+#+end_src
+
+This codetag with comment fits on a single line and refers to a
+section of code below it which should be evident from the context of
+the code tag comment.
+
+Most code-tags are context dependent and thus should have a comment to
+explain that context. For example, ~TODO~ tags should explain what
+there is to do. Others may not that don't need extra context or will
+only live for a short time in between commits, e.g. the ~DEBUG~ tag
+which is simply meant to mark something for removal after debugging.
+
+So this would be an "invalid" code tag for obvious reasons:
+
+#+begin_src python
+  # TODO
+  for i in range(10):
+      print(i)
+#+end_src
+
+
+---
+
+If you have separate issues with the same "region" of code use
+separate code tags rather than conjunctions in prose. I.e. prefer:
+
+#+begin_src python
+  # TODO: remove hard-coding of number of iterations
+  # TODO: rename 'i' variable to something meaningful
+  for i in range(10):
+      print(i)
+#+end_src
+
+
+Over:
+
+#+begin_src python
+  # TODO: remove hard-coding of number of iterations and rename 'i'
+  # variable to something meaningful
+  for i in range(10):
+      print(i)
+#+end_src
+
+
+---
+
+Multiline code tags are okay. While we recommend breaking lines into
+fixed width, we'll let you and the team argue over that.
+
+If your language supports multiline comments use those, one comment
+per tag.
+
+If your language does not start the first line of the "block" with the
+code tag and every line after that beginning with a line comment
+character up until a white space line or a commented line beginning
+with a code tag will be interpreted as a block. You can escape code
+tag literals with either org mode or markdown verbatim syntax (~~TAG~~
+or ~`TAG`~).
+
+For example this is fine:
+
+#+begin_src python
+  # TODO: remove hard-coding of number of iterations, this is good
+  # practice and you need to do it, tisk tisk
+  # TODO: rename 'i' variable to something meaningful, you can escape
+  # ~TODO~ like this. Which is only useful if it falls at the beginning
+  # of the line break
+  for i in range(10):
+      print(i)
+#+end_src
+
+and so is this:
+
+#+begin_src python
+  # TODO: remove hard-coding of number of iterations, this is good
+  # practice and you need to do it, tisk tisk
+
+  # TODO: rename 'i' variable to something meaningful, you can escape
+  # ~TODO~ like this. Which is only useful if it falls at the beginning
+  # of the line break
+  for i in range(10):
+      print(i)
+#+end_src
+
+
+You can also add paragraphs within a single block by just prefixing
+with a line comment:
+
+#+begin_src python
+  # TODO: rename 'i' variable to something meaningful.
+  #
+  # You can escape ~TODO~ like this. Which is only useful if it falls at
+  # the beginning of the line break
+  for i in range(10):
+      print(i)
+#+end_src
+
+
+---
+
+Code tags can be parametrized (tagged) as well:
+
+#+begin_src bash
+  # TODO(paramA, paramB, keyC=paramC): here is teh comment
+  a = 8
+#+end_src
+
+Where the parameters follow python semantics, except that all of them
+must be keyword arguments. The first few can still have the
+positionality inferred though, like as in a function definition like:
+
+#+begin_src python
+
+  def TODO(keyA, keyB, *, keyC=None):
+      pass
+#+end_src
+
+** Categories:
 
 - tasks :: things that have been scheduled for attention
 - warnings :: things that degrade the quality of the code but have not
@@ -140,3 +271,163 @@ Statement Tags:
 
 
 
+
+
+** Outstanding Issues
+
+*** Referencing Code Tags
+
+There are a few possibilities for indexing and referencing code tags.
+
+**** Unique UUID
+
+The first is that each code tag could be assigned a unique UUID.
+
+This would allow tags to be referenced across history uniquely and
+unambiguously.
+
+The main problems here are:
+
+- generating UUIDs in an editor is cumbersome and too high-friction
+- this is overkill for many code tags, which will be resolved quickly
+- not human memorable
+
+This doesn't seem desirable to apply to all code tags, but could be
+useful in resolving recalcitrant and complex issues across many places
+in the code for a selected subset of tags. In this case however, the
+tag would likely be associated with a particular issue instead of
+having it's own standalone number.
+
+An incremental approach sound better here with support for UUIDs if
+desired or necessary.
+
+I.e. if you start with:
+
+#+begin_src python
+  # TODO, salotz: do this thing
+  a = 8
+#+end_src
+
+
+Then it becomes a bigger issue that will take time to resolve:
+
+#+begin_src python
+  # TODO, salotz, #001_BugZeroDay, 8be99f47-958a-44aa-b3ce-18ded085e898:
+  # do this thing
+  a = 8
+
+
+  # TODO, salotz, #001_BugZeroDay, 6bf19569-0adc-44af-ac64-c6dc9719f7ea
+  # do this other thing
+  b = a + 7
+#+end_src
+
+Using ~uuid~ on the command line and ~uuidgen~ in emacs isn't so bad
+though just newbs will complain. Also well supported in python.
+
+Could use something cleaner than UUID but would need access to project
+database and then you will run into conflicts and such and I would
+like to avoid that.
+
+
+
+**** Locator Based
+
+This is an implicit kind of indexing. IMO this should be available no
+matter what and could be used internally by editor tools and for
+auto-generating URLs for people.
+
+This would use a hybrid approach of an address following the form of:
+
+#+begin_example
+(commit_hash, rel_file_path, line_number_spec)
+#+end_example
+
+This admits a unique ordering via topological sort so that within a
+commit you can have only:
+
+#+begin_example
+(commit_hash, tag_idx)
+#+end_example
+
+If you wanted.
+
+Of course this is very unstable wrt to commits etc. and so would
+likely need to be used in tandem to the UUID + issue assignment
+approach.
+
+*** Block Delimiting Tags
+
+It might be interesting to support blocks delimiting the beginning and
+end of the area of concern of a block if not obvious from the normal
+programming language scopes.
+
+There are a few options here.
+
+**** UUIDs
+
+I have previously floated this idea for tools being able to do
+substitutions in "live" source code. That is you just make a block
+identified by a single UUID.
+
+#+begin_src bash
+
+  # BEGIN=31df1513-50ad-4aeb-8a4d-e82d29dabfce
+
+  Some code here
+
+  And here some other stuff.
+
+  # END=31df1513-50ad-4aeb-8a4d-e82d29dabfce
+#+end_src
+
+
+This allows you to do funky stuff like interleaving them:
+
+#+begin_src bash
+
+  # BEGIN=31df1513-50ad-4aeb-8a4d-e82d29dabfce
+
+  Some code here
+
+  # BEGIN=f3d3d0b2-5479-4055-9a13-90f7ee46f28b
+  And here some other stuff.
+
+  # END=31df1513-50ad-4aeb-8a4d-e82d29dabfce
+
+  And finally some stuff here.
+
+  # END=f3d3d0b2-5479-4055-9a13-90f7ee46f28b
+#+end_src
+
+
+
+
+although the comments are really ugly and same issues with generating 
+
+
+**** Hierarchically
+
+#+begin_src python
+  #### TODO: this is in the outer scope
+
+  ### TODO: one more inside
+
+  for i in range(10):
+
+      ## TODO
+      for j in range(5):
+
+          print(i,j)
+
+      ##
+
+  ###
+
+  something = func("hello")
+
+  ####
+#+end_src
+
+
+IDK..
