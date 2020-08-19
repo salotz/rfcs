@@ -150,6 +150,7 @@ positionality inferred though, like as in a function definition like:
 - growth :: things that signify opportunities for growth in the code,
   but which do not degrade the quality of the code currently
 - statements :: neutral statements about the code
+- review :: iterative review of regions of code
 
 The presence of tags from each category have implications for what can
 get put into production or master branches, we call this "production".
@@ -268,9 +269,52 @@ Statement Tags:
 - NOTE :: A neutral statement about code. Without a tag this is
   assumed (by tooling).
 
+*** Review
 
 
+Providing commentary and discussion on a region. For instance might take this flow:
 
+Request for review:
+
+#+begin_src python
+  # TOREV(req="salotz"): not sure this is the right way to do things
+  from numpy import *
+#+end_src
+
+Then the requested reviewer comments:
+
+#+begin_src python
+  # TOREV(asker="newb", req="salotz"): not sure this is the right way to do things
+
+  # REV("salotz", req="newb"): no its not, should either specifically
+  # import things or create a namespace that is more convenient
+
+  from numpy import array
+
+  # REV, SNIPPET: or
+  # import numpy as np
+#+end_src
+
+
+Asker resolves things:
+
+#+begin_src python
+  # REVD(newb)
+  import numpy as np
+#+end_src
+
+Reviewer can sign off:
+
+#+begin_src python
+  # REVD(newb, salotz)
+  import numpy as np
+#+end_src
+
+Should be committed and then can be removed.
+
+#+begin_src python
+  import numpy as np
+#+end_src
 
 
 ** Outstanding Issues
