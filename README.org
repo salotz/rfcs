@@ -748,6 +748,37 @@ import to get this behavior on all relevant python versions.
 import altstd.shutil as sh
 #+end_src
 
+** An Non-Standard Standard Library for Python
+
+The problem is that there are loads and loads of utilities that are
+very useful for doing common patterns or used during development
+(i.e. during debugging & prototyping etc.), and these are scattered
+across dozens and dozens of little tiny packages across the internet.
+
+This leads to a lot of issues that are well-known. For example you run
+into the famous "left pad" problem. Which is where one of these tiny
+projects becomes unavailable and you lose that dependency and break
+all your code.
+
+Other problems are that when you get into real projects there is a
+certain friction associated not only with making sure that these
+little tools are specified in the env files (i.e. ~requirements.in~
+etc.) and that every variation of these files gets updated as well.
+
+On top of that you simply have more dependencies that you have to
+manage and worry about breaking your code when they change something.
+
+My idea is to go around the internet and collect all of these little
+utilities into a single repository that is tracked as a single
+dependency.
+
+I would call this the "Non-Standard Standard Library" or the 'NSSL'.
+
+(Name liable to change)
+
+Some candidates that motivated this:
+
+- https://github.com/gruns/icecream
 
 ** Diff Collection
 
