@@ -1,0 +1,62 @@
+* 024: Next-Gen Vector Graphics Formats
+
+Executive Summary:
+
+#+begin_quote
+Specifications for a suite of vector graphics formats, namely
+providing both plain-text and efficient binary representations suited
+for different kinds of applications.
+#+end_quote
+
+
+SVG is a very useful format that has enabled a lot of technologies to
+flourish outside of the walled-off gardens of special purpose editors
+like MS PowerPoint.
+
+However, there are technical issues with the use of SVG itself as a
+format.
+
+Currently, we do not know enough to compare (or care) about the
+semantics of specifying vector graphics and (at present) this RFC has
+nothing to say about this. Perhaps it will, but in our experience SVG
+has been entirely suitable for making things like slideshows and
+diagrams.
+
+However, we have had issues with the scaling of the format. That is,
+once SVG documents get very large (a lot of simple features repeated)
+then parsing and writing occupies a larger and larger fraction of time
+spent manipulating these documents.
+
+We would like to be able to have fast editors for making assets for
+other kinds of applications (such as games) where you would have
+databases of perhaps hundreds or thousands of such files.
+
+In these cases a plaintext XML document is entirely not suited for
+this kind of workload.
+
+We emphasize that XML (perhaps) is very well suited for the designers
+of SVG, that is graphics on the web, but is poorly suited for more
+"closed" applications.
+
+Currently after surveying the landscape we have found no suitable
+replacement that would fix this.
+
+Here we outline some ideas and design principles that should give a
+decent product.
+
+We suggest doing a somewhat "automated" transformation of the SVG
+semantics from XML to an essentially isomorphic but simpler
+format. Perhaps JSON or S-Expressions.
+
+Basing off of this there are a few different binary representations
+which essentially could be transparently converted to for this, such
+as MessagePack.
+
+This would make the formats complementary and work very simply with
+existing SVG graphics for which there is wide support for.
+
+The only complicating factors where optimizations might need to be
+made specifically for SVG data is support for embedded binary data
+such as raster images into SVG files.
+
+One option might also be a direct conversion to EBML from the XML.

@@ -344,6 +344,21 @@ behavior of specific features.
 #+end_quote
 
 
+
+*** IDEA 024: Next-Gen Vector Graphics Formats
+
+- nexp :: ~rfc:nextgen-vector-graphics-formats~
+
+Proposal: [[file:./rfcs/nextgen-vector-graphics-formats.org]]
+
+Executive Summary:
+
+#+begin_quote
+Specifications for a suite of vector graphics formats, namely
+providing both plain-text and efficient binary representations suited
+for different kinds of applications.
+#+end_quote
+
 * Request For Implementations (RFIs)
 
 In addition to merely specifying best practices, protocols, and
