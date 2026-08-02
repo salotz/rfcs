@@ -1,5 +1,10 @@
 # 014: Project & Maintenance Intentions for OSS
 
+- nexp :: `salotz.014_project-intent`
+- long name :: Project & Maintenance Intentions for OSS
+- executive summary :: A proposal for a best practice that includes a clear statement of intent on open source projects (lifecycle phase + maintenance intent) so consumers better understand the current state and intentions of developers. Includes suggested vocabulary for common phases.
+
+
 Also including understanding of the software in its lifecycle stage.
 
 

@@ -1,6 +1,11 @@
 
 # 004: Name Expressions (nexps)
 
+- nexp :: `salotz.004_nexps`
+- long name :: Name Expressions (nexps)
+- executive summary :: A proposal that defines how to name digital document entities using a namespaced expression format (e.g. `format:namespace.field-1_field-2`). Uses dots for namespace separation and underscores/hyphens for fields.
+
+
 Example:
 
 `namespace.name`

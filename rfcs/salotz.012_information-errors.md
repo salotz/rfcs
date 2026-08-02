@@ -1,5 +1,10 @@
 # 012: Errors as Information
 
+- nexp :: `012_information-errors`
+- long name :: Errors as Information
+- executive summary :: Errors in information systems (e.g. event logs) should provide actionable information rather than just operational severity categories. Maps error types to next actions for handlers. Inspired by Stuart Halloway.
+
+
 The idea is to be able to put exceptions and errors on an event log.
 
 Additionally, the distinction in error codes is designed so that each

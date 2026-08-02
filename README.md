@@ -56,12 +56,12 @@ Executive Summary:
 > a namespaced expression format (e.g. `format:namespace.field-1_field-2`).
 > Uses dots for namespace separation and underscores/hyphens for fields.
 
-### WIP 006: Codetags {#rfc-006}
+### 006: Codetags {#rfc-006}
 
 - nexp :: `salotz.006_codetags`
 - status :: DRAFT
 
-Proposal: [rfcs/salotz.006_codetags.md](rfcs/salotz.006_codetags.md)
+Proposal: [rfcs/salotz.006_codetags/README.md](rfcs/salotz.006_codetags/README.md)
 
 Executive Summary:
 
@@ -130,7 +130,7 @@ Executive Summary:
 - nexp :: `salotz.020_repo-issue-tracker`
 - status :: DRAFT
 
-Proposal: [salotz.020_repo-issue-tracker.md](rfcs/salotz.020_repo-issue-tracker.md)
+Proposal: [rfcs/salotz.020_repo-issue-tracker.md](rfcs/salotz.020_repo-issue-tracker.md)
 
 Executive Summary:
 

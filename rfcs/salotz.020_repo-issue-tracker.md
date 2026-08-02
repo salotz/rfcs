@@ -1,5 +1,10 @@
 # 020: In-Repo Issue Tracking Schema
 
+- nexp :: `salotz.020_repo-issue-tracker`
+- long name :: In-Repo Issue Tracking Schema
+- executive summary :: Schema for including issue tracking sources with a project, without having to rely on outside forges.
+
+
 
 ## Configuration file
 

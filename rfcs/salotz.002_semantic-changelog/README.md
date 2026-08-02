@@ -1,5 +1,10 @@
 # 002: Semantic Changelog
 
+- nexp :: `salotz.002_semantic-changelog`
+- long name :: Semantic Changelog
+- executive summary :: A general-purpose format for semantic changelogs and git commit messages. Defines "Growth", "Breakage", and "Regression" change categories with specific sub-keywords, version numbering (B.R.G), and structured metadata via git trailers. Includes recommendations for both human-readable changelogs and machine-readable commit messages.
+
+
 This is an RFC (Request For Comments) stage project for determining a
 general purpose format for writing changelog and git commit messages
 so that they are human writable, machine readable, and semantically

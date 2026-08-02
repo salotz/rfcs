@@ -1,5 +1,10 @@
 # 016: Nearly Trivial Plaintext Formats
 
+- nexp :: `salotz.016_trivial-plaintext-formats`
+- long name :: Nearly Trivial Plaintext Formats
+- executive summary :: A small collection of nearly trivial plaintext formats along with file extensions. Includes a line-based list format (.list) and a single-string format (.str).
+
+
 This spec is more about being able to easily recognize when a file is
 truly simple and not actually more complex.
 

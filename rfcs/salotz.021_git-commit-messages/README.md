@@ -1,5 +1,10 @@
 # Git Commit Message Behaviors
 
+- nexp :: `salotz.021_git-commit-messages`
+- long name :: Git Commit Message Behaviors
+- executive summary :: Standard behaviors and markup for git commit messages, including `wip!` prefix for work-in-progress commits, issue reference trailers (Completes/Progresses/References) with namespaced values, and project domains.
+
+
 Various explanations and meanings of markups used in git commit
 messages at a basic level.
 

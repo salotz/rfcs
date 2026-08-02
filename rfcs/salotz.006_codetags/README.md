@@ -1,6 +1,11 @@
 
 # 006: Codetags
 
+- nexp :: `salotz.006_codetags`
+- long name :: Codetags
+- executive summary :: Tags that are added in comments to code that add semantic meaning to otherwise freeform comments, making them searchable by machine and available to tooling. Defines a standard set of codetags (TODO, FIXME, etc.) and categories (tasks, warnings, growth, etc.).
+
+
 This proposal draws on ideas from other projects and proposals most
 pre-eminently: [PEP 350](https://www.python.org/dev/peps/pep-0350/)
 
