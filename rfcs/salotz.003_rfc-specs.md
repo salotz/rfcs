@@ -1,4 +1,3 @@
-
 # 003: RFC specifications
 
 ### Required information

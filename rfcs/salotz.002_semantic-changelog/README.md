@@ -144,16 +144,16 @@ of 0. Until this is incremented to 1 all breakages should be recorded
 as regressions rather than breakages. This communicates the common
 pattern of only sticking to a particular interface after "1.0".
 
-# Artifacts
+## Artifacts
 
 These are recommendations for specific artifacts that leverage the
 above semantic recommendations.
 
-## Changelogs
+### Changelogs
 
-Where applicable we adapt from [Keep A
+Where applicable we adapt from [Keep a
 Changelog](https://keepachangelog.com/en/1.1.0/) directly but change
-the names of the fields.
+the names of the fields (see [Keep a Changelog Format Summary](keep-a-changelog-summary.md) for the base structure).
 
 Here is an example:
 
@@ -186,7 +186,12 @@ changelog is the End Users.
 See the section on [Version Numbers](#version-numbers) on how version
 numbers are decided and formatted.
 
-## Git Commit Messages
+**Note for agents**: The base Keep a Changelog file structure and
+syntax rules are summarized in the non-overlapping reference document
+[Keep a Changelog Format Summary](keep-a-changelog-summary.md). This
+RFC only defines the adapted section names and semantics.
+
+### Git Commit Messages
 
 See the section on [Audiences](#audiences). The audience for the
 changelog is End Users and Contributors.
