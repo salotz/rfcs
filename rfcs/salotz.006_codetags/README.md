@@ -78,18 +78,12 @@ per tag.
 If your language does not start the first line of the "block" with the
 code tag and every line after that beginning with a line comment
 character up until a white space line or a commented line beginning
-with a code tag will be interpreted as a block. You can escape code
-tag literals with either org mode or markdown verbatim syntax (~`TAG`~
-or ``TAG``).
-
-For example this is fine:
+with a code tag will be interpreted as a block.
 
 ```python
   # TODO: remove hard-coding of number of iterations, this is good
   # practice and you need to do it, tisk tisk
   # TODO: rename 'i' variable to something meaningful, you can escape
-  # ~TODO~ like this. Which is only useful if it falls at the beginning
-  # of the line break
   for i in range(10):
       print(i)
 ```
@@ -101,7 +95,6 @@ and so is this:
   # practice and you need to do it, tisk tisk
 
   # TODO: rename 'i' variable to something meaningful, you can escape
-  # ~TODO~ like this. Which is only useful if it falls at the beginning
   # of the line break
   for i in range(10):
       print(i)
@@ -114,7 +107,7 @@ with a line comment:
 ```python
   # TODO: rename 'i' variable to something meaningful.
   #
-  # You can escape ~TODO~ like this. Which is only useful if it falls at
+  # You can escape TODO like this. Which is only useful if it falls at
   # the beginning of the line break
   for i in range(10):
       print(i)
@@ -142,20 +135,21 @@ positionality inferred though, like as in a function definition like:
 
 ## Categories:
 
-- tasks :: things that have been scheduled for attention
-- warnings :: things that degrade the quality of the code but have not
+- tasks: things that have been scheduled for attention
+- warnings: things that degrade the quality of the code but have not
   been scheduled for attention
-- resolved :: things that document resolutions in the code
-- temporary :: things that are for temporary usage
-- growth :: things that signify opportunities for growth in the code,
+- resolved: things that document resolutions in the code
+- temporary: things that are for temporary usage
+- growth: things that signify opportunities for growth in the code,
   but which do not degrade the quality of the code currently
-- statements :: neutral statements about the code
-- review :: iterative review of regions of code
+- statements: neutral statements about the code
+- review: iterative review of regions of code
 
 The presence of tags from each category have implications for what can
 get put into production or master branches, we call this "production".
 
 ### Tasks
+
 Tasks should ideally never be put into production and should always
 have an associated issue in an issue tracker (i.e. scheduled).
 
@@ -170,7 +164,6 @@ Task tags:
   otherwise not broken
 
 ### Warnings
-
 
 Distinct from tasks but still indicating negativity, warnings can be
 put into production and typically don't have an issue associated with

@@ -26,3 +26,10 @@ as-is.
 
 Furthermore, a TXT file shouldn't contain "data" like an 'str' file
 would in the sense of a programming language might.
+
+## A "list" line
+
+A single line with multiple entries. Separated by a separator. By
+default uses a `,` comma as the separator,
+e.g. `1,2,3,hello`. Alternatively use `:` as a separator when `,` is a
+valid character.
