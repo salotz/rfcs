@@ -1,26 +1,26 @@
-* 016: Nearly Trivial Plaintext Formats
+# 016: Nearly Trivial Plaintext Formats
 
 This spec is more about being able to easily recognize when a file is
 truly simple and not actually more complex.
 
 
-** A "list" file
+## A "list" file
 
 A file where each line will be parsed as a separate
 string. Essentially a newline separated ("\n") list of tokens.
 
 Supports '#' comments.
 
-Has a ~.list~ extension.
+Has a `.list` extension.
 
-** A "string" file
+## A "string" file
 
 Sometimes you want a file that has a single string in it that should
 just be read directly and not parsed.
 
-Has a ~.str~ extension.
+Has a `.str` extension.
 
-This is distinct from a ~.txt~ file in that the TXT file is freeform
+This is distinct from a `.txt` file in that the TXT file is freeform
 and no parsing is intended. The file is intended to be read by a user
 as-is.
 

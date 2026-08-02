@@ -1,4 +1,4 @@
-* 014: Project & Maintainence Intentions for OSS
+# 014: Project & Maintainence Intentions for OSS
 
 Also including understanding of the software in its lifecycle stage.
 
@@ -24,5 +24,4 @@ Should have a table in the general info and README/front page.
              way, will require some finangling
  - mature
  - prototyping ::
- - Incubating :: 
-
+ - Incubating ::

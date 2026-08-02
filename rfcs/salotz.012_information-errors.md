@@ -1,13 +1,13 @@
-* 012: Errors as Information
+# 012: Errors as Information
 
 The idea is to be able to put exceptions and errors on an event log.
 
 Additionally, the distinction in error codes is designed so that each
 maps closely to next actions handler code would take.
 
-** Previous Art
+## Previous Art
 
-*** Java Exception Hierarchy
+### Java Exception Hierarchy
 
 - Object
   - Throwable
@@ -19,9 +19,9 @@ maps closely to next actions handler code would take.
       - Exception
         - ...
 
-*** Python Exception Hierarchy
+### Python Exception Hierarchy
 
-*** HTTP Status Codes
+### HTTP Status Codes
 
 - 1XX :: information
 - 2XX :: success
@@ -30,9 +30,9 @@ maps closely to next actions handler code would take.
 - 5XX :: server error
 
 
-*** Hall and Oates song
+### Hall and Oates song
 
-** Types
+## Types
 
 Error types:
 

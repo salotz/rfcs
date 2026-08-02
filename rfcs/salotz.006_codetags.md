@@ -1,8 +1,8 @@
 
-* 006: Codetags
+# 006: Codetags
 
 This proposal draws on ideas from other projects and proposals most
-pre-eminently: [[https://www.python.org/dev/peps/pep-0350/][PEP 350]]
+pre-eminently: [PEP 350](https://www.python.org/dev/peps/pep-0350/)
 
 In this proposal we define a format for codetags as well as a standard
 set of code tags along with their meanings and interpretations.
@@ -11,37 +11,37 @@ The format is more important than the actual set of tags a team may
 adopt. But we provide them as "sane defaults" since these proposals
 are meant to be useful on their own.
 
-** Code Tags
+## Code Tags
 
-*** Format
+### Format
 
 Code tags take the form of a comment on a line preceding an area of
-concern. For example in ~python~ comments are lines started with a ~#~
+concern. For example in `python` comments are lines started with a `#`
 symbol. The simplest example would be:
 
-#+begin_src python
+```python
   # TODO: remove hard-coding of number of iterations
   for i in range(10):
       print(i)
-#+end_src
+```
 
 This codetag with comment fits on a single line and refers to a
 section of code below it which should be evident from the context of
 the code tag comment.
 
 Most code-tags are context dependent and thus should have a comment to
-explain that context. For example, ~TODO~ tags should explain what
+explain that context. For example, `TODO` tags should explain what
 there is to do. Others may not that don't need extra context or will
-only live for a short time in between commits, e.g. the ~DEBUG~ tag
+only live for a short time in between commits, e.g. the `DEBUG` tag
 which is simply meant to mark something for removal after debugging.
 
 So this would be an "invalid" code tag for obvious reasons:
 
-#+begin_src python
+```python
   # TODO
   for i in range(10):
       print(i)
-#+end_src
+```
 
 
 ---
@@ -49,22 +49,22 @@ So this would be an "invalid" code tag for obvious reasons:
 If you have separate issues with the same "region" of code use
 separate code tags rather than conjunctions in prose. I.e. prefer:
 
-#+begin_src python
+```python
   # TODO: remove hard-coding of number of iterations
   # TODO: rename 'i' variable to something meaningful
   for i in range(10):
       print(i)
-#+end_src
+```
 
 
 Over:
 
-#+begin_src python
+```python
   # TODO: remove hard-coding of number of iterations and rename 'i'
   # variable to something meaningful
   for i in range(10):
       print(i)
-#+end_src
+```
 
 
 ---
@@ -79,12 +79,12 @@ If your language does not start the first line of the "block" with the
 code tag and every line after that beginning with a line comment
 character up until a white space line or a commented line beginning
 with a code tag will be interpreted as a block. You can escape code
-tag literals with either org mode or markdown verbatim syntax (~~TAG~~
-or ~`TAG`~).
+tag literals with either org mode or markdown verbatim syntax (~`TAG`~
+or ``TAG``).
 
 For example this is fine:
 
-#+begin_src python
+```python
   # TODO: remove hard-coding of number of iterations, this is good
   # practice and you need to do it, tisk tisk
   # TODO: rename 'i' variable to something meaningful, you can escape
@@ -92,11 +92,11 @@ For example this is fine:
   # of the line break
   for i in range(10):
       print(i)
-#+end_src
+```
 
 and so is this:
 
-#+begin_src python
+```python
   # TODO: remove hard-coding of number of iterations, this is good
   # practice and you need to do it, tisk tisk
 
@@ -105,42 +105,42 @@ and so is this:
   # of the line break
   for i in range(10):
       print(i)
-#+end_src
+```
 
 
 You can also add paragraphs within a single block by just prefixing
 with a line comment:
 
-#+begin_src python
+```python
   # TODO: rename 'i' variable to something meaningful.
   #
   # You can escape ~TODO~ like this. Which is only useful if it falls at
   # the beginning of the line break
   for i in range(10):
       print(i)
-#+end_src
+```
 
 
 ---
 
 Code tags can be parametrized (tagged) as well:
 
-#+begin_src bash
+```bash
   # TODO(paramA, paramB, keyC=paramC): here is teh comment
   a = 8
-#+end_src
+```
 
 Where the parameters follow python semantics, except that all of them
 must be keyword arguments. The first few can still have the
 positionality inferred though, like as in a function definition like:
 
-#+begin_src python
+```python
 
   def TODO(keyA, keyB, *, keyC=None):
       pass
-#+end_src
+```
 
-** Categories:
+## Categories:
 
 - tasks :: things that have been scheduled for attention
 - warnings :: things that degrade the quality of the code but have not
@@ -155,7 +155,7 @@ positionality inferred though, like as in a function definition like:
 The presence of tags from each category have implications for what can
 get put into production or master branches, we call this "production".
 
-*** Tasks
+### Tasks
 Tasks should ideally never be put into production and should always
 have an associated issue in an issue tracker (i.e. scheduled).
 
@@ -169,7 +169,7 @@ Task tags:
 - REFACT :: A refactoring of code is necessary and scheduled, but
   otherwise not broken
 
-*** Warnings
+### Warnings
 
 
 Distinct from tasks but still indicating negativity, warnings can be
@@ -195,7 +195,7 @@ Warning tags:
 - GOTCHA :: interfacing with a particular piece of code may be
   difficult or unintuitive.
 
-*** Resolved
+### Resolved
 
 
 Resolved tags, for the most part shouldn't actually be in the code,
@@ -222,7 +222,7 @@ Resolved tags:
   is in a "stable" state.
 
 
-*** Temporary
+### Temporary
 
 Temporary tags are used by someone writing code when they need to
 resolve certain small things before they check it in. For example
@@ -235,7 +235,7 @@ Temporary tags:
 - QUEST :: "question"; for marking up code when trying to understand a
   code base.
 
-*** Growth
+### Growth
 
 Growth tags are for an author or reviewer to place in observations on
 how specific pieces of code could be improved in the future, but are
@@ -258,7 +258,7 @@ Growth tags:
   behavior that hasn't been reified to a requirements system in the
   code (like proofs, formatl models etc.)
 
-*** Statements
+### Statements
 
 Neutral statements about a piece of code.
 
@@ -269,21 +269,21 @@ Statement Tags:
 - NOTE :: A neutral statement about code. Without a tag this is
   assumed (by tooling).
 
-*** Review
+### Review
 
 
 Providing commentary and discussion on a region. For instance might take this flow:
 
 Request for review:
 
-#+begin_src python
+```python
   # TOREV(req="salotz"): not sure this is the right way to do things
   from numpy import *
-#+end_src
+```
 
 Then the requested reviewer comments:
 
-#+begin_src python
+```python
   # TOREV(asker="newb", req="salotz"): not sure this is the right way to do things
 
   # REV("salotz", req="newb"): no its not, should either specifically
@@ -293,37 +293,37 @@ Then the requested reviewer comments:
 
   # REV, SNIPPET: or
   # import numpy as np
-#+end_src
+```
 
 
 Asker resolves things:
 
-#+begin_src python
+```python
   # REVD(newb)
   import numpy as np
-#+end_src
+```
 
 Reviewer can sign off:
 
-#+begin_src python
+```python
   # REVD(newb, salotz)
   import numpy as np
-#+end_src
+```
 
 Should be committed and then can be removed.
 
-#+begin_src python
+```python
   import numpy as np
-#+end_src
+```
 
 
-** Outstanding Issues
+## Outstanding Issues
 
-*** Referencing Code Tags
+### Referencing Code Tags
 
 There are a few possibilities for indexing and referencing code tags.
 
-**** Unique UUID
+#### Unique UUID
 
 The first is that each code tag could be assigned a unique UUID.
 
@@ -347,15 +347,15 @@ desired or necessary.
 
 I.e. if you start with:
 
-#+begin_src python
+```python
   # TODO, salotz: do this thing
   a = 8
-#+end_src
+```
 
 
 Then it becomes a bigger issue that will take time to resolve:
 
-#+begin_src python
+```python
   # TODO, salotz, #001_BugZeroDay, 8be99f47-958a-44aa-b3ce-18ded085e898:
   # do this thing
   a = 8
@@ -364,9 +364,9 @@ Then it becomes a bigger issue that will take time to resolve:
   # TODO, salotz, #001_BugZeroDay, 6bf19569-0adc-44af-ac64-c6dc9719f7ea
   # do this other thing
   b = a + 7
-#+end_src
+```
 
-Using ~uuid~ on the command line and ~uuidgen~ in emacs isn't so bad
+Using `uuid` on the command line and `uuidgen` in emacs isn't so bad
 though just newbs will complain. Also well supported in python.
 
 Could use something cleaner than UUID but would need access to project
@@ -375,7 +375,7 @@ like to avoid that.
 
 
 
-**** Locator Based
+#### Locator Based
 
 This is an implicit kind of indexing. IMO this should be available no
 matter what and could be used internally by editor tools and for
@@ -383,16 +383,12 @@ auto-generating URLs for people.
 
 This would use a hybrid approach of an address following the form of:
 
-#+begin_example
 (commit_hash, rel_file_path, line_number_spec)
-#+end_example
 
 This admits a unique ordering via topological sort so that within a
 commit you can have only:
 
-#+begin_example
 (commit_hash, tag_idx)
-#+end_example
 
 If you wanted.
 
@@ -400,7 +396,7 @@ Of course this is very unstable wrt to commits etc. and so would
 likely need to be used in tandem to the UUID + issue assignment
 approach.
 
-*** Block Delimiting Tags
+### Block Delimiting Tags
 
 It might be interesting to support blocks delimiting the beginning and
 end of the area of concern of a block if not obvious from the normal
@@ -408,13 +404,13 @@ programming language scopes.
 
 There are a few options here.
 
-**** UUIDs
+#### UUIDs
 
 I have previously floated this idea for tools being able to do
 substitutions in "live" source code. That is you just make a block
 identified by a single UUID.
 
-#+begin_src bash
+```bash
 
   # BEGIN=31df1513-50ad-4aeb-8a4d-e82d29dabfce
 
@@ -423,12 +419,12 @@ identified by a single UUID.
   And here some other stuff.
 
   # END=31df1513-50ad-4aeb-8a4d-e82d29dabfce
-#+end_src
+```
 
 
 This allows you to do funky stuff like interleaving them:
 
-#+begin_src bash
+```bash
 
   # BEGIN=31df1513-50ad-4aeb-8a4d-e82d29dabfce
 
@@ -442,7 +438,7 @@ This allows you to do funky stuff like interleaving them:
   And finally some stuff here.
 
   # END=f3d3d0b2-5479-4055-9a13-90f7ee46f28b
-#+end_src
+```
 
 
 
@@ -450,9 +446,9 @@ This allows you to do funky stuff like interleaving them:
 although the comments are really ugly and same issues with generating 
 
 
-**** Hierarchically
+#### Hierarchically
 
-#+begin_src python
+```python
   #### TODO: this is in the outer scope
 
   ### TODO: one more inside
@@ -471,7 +467,7 @@ although the comments are really ugly and same issues with generating
   something = func("hello")
 
   ####
-#+end_src
+```
 
 
 IDK..

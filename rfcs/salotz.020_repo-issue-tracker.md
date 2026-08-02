@@ -1,60 +1,54 @@
-* 020: In-Repo Issue Tracking Schema
+# 020: In-Repo Issue Tracking Schema
 
 
-** Configuration file
+## Configuration file
 
 Configuring the details of the layout etc. should be done in a file in
-the toplevel ~issues.toml~.
+the toplevel `issues.toml`.
 
 Things to configure:
 
 - location of issues directory
 - schema of issue files
 
-** File layout
+## File layout
 
-Issues by default should be kept in a directory called ~issues~.
+Issues by default should be kept in a directory called `issues`.
 
-This and ~.issues~ will be checked automatically by tools.
+This and `.issues` will be checked automatically by tools.
 
 The actual issue files will live in flatly in another subdir called
-~tickets~.
+`tickets`.
 
-Each *ticket* should be a file name following ~rfc:salotz.004_nexps~.
+Each **ticket** should be a file name following `rfc:salotz.004_nexps`.
 
 The sections of the name should be:
 
-#+begin_example
 <issue_id>.issue.<schema>
-#+end_example
 
-Where ~issue_id~ and ~schema~ are replaced by a unique identifier for
+Where `issue_id` and `schema` are replaced by a unique identifier for
 the ticket name and the name of the schema which determines the actual
 format of the issue.
 
 Examples:
 
-#+begin_example
 0.issue.toml
 000001.issue.toml
 000002_issue-key.issue.txt
 my-important-issue.issue.json
-#+end_example
 
 
 This RFC does not interdict to how the actual contents of the ticket
 itself, although we will in another RFC make suggestions for the
 minimal data fields that must be present in some form or another to
-allow for interoperability with major *forge* implementations (like
+allow for interoperability with major **forge** implementations (like
 Gitlab, Github, or SourceHut).
 
-Sidecar data for each issue should be in the ~attachments~ subdir and
-have the same ~issue_id~ name as the issue it refers to in the
+Sidecar data for each issue should be in the `attachments` subdir and
+have the same `issue_id` name as the issue it refers to in the
 following template:
 
-#+begin_example
 <issue_id>.d
-#+end_example
 
 There are no restrictions the contents of this folder and how the
-contents are referenced is up to the ~schema~ of the issue.
+contents are referenced is up to the `schema` of the issue.
