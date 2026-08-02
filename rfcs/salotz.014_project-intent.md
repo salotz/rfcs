@@ -1,4 +1,4 @@
-# 014: Project & Maintainence Intentions for OSS
+# 014: Project & Maintenance Intentions for OSS
 
 Also including understanding of the software in its lifecycle stage.
 
@@ -16,12 +16,12 @@ Should have a table in the general info and README/front page.
  - stalled :: started working on it and due to priorities isn't being
               worked on, still considered useful
  - Stub
- - Arhival :: just cloned from someone elses in order to make sure it
+ - Archival :: just cloned from someone else's in order to make sure it
               exists somewhere
- - deprecated/retired/superceded :: probably usable in some sense but
+ - deprecated/retired/superseded :: probably usable in some sense but
       not maintained
  - usable :: not yet mature but can be used or is used in a personal
-             way, will require some finangling
+             way, will require some finagling
  - mature
  - prototyping ::
  - Incubating ::

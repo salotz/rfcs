@@ -126,7 +126,7 @@ with a line comment:
 Code tags can be parametrized (tagged) as well:
 
 ```bash
-  # TODO(paramA, paramB, keyC=paramC): here is teh comment
+  # TODO(paramA, paramB, keyC=paramC): here is the comment
   a = 8
 ```
 
@@ -215,7 +215,7 @@ Resolved tags:
   determined by author. Usually means that if someone else fixes it
   and makes it frictionless to integrate and fully tested it can be
   changed though.
-- CANTFIX :: Code that cant be fixed due to limitations in either the
+- CANTFIX :: Code that can't be fixed due to limitations in either the
   requirements, language, or tools itself.
 - DONTFIX :: Indicates that a piece of code is extremely delicate in
   it's organization and is highly unintuitive to fix, but nonetheless
@@ -286,7 +286,7 @@ Then the requested reviewer comments:
 ```python
   # TOREV(asker="newb", req="salotz"): not sure this is the right way to do things
 
-  # REV("salotz", req="newb"): no its not, should either specifically
+  # REV("salotz", req="newb"): no it's not, should either specifically
   # import things or create a namespace that is more convenient
 
   from numpy import array

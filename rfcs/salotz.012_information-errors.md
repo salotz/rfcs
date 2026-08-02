@@ -50,7 +50,7 @@ Example responses:
 
 - unavailable :: wait for availability, query for next availability
 - interrupted :: try again, query cause, adjust parameters
-- incorrect :: propogate error for telemetrics or debugging
+- incorrect :: propagate error for telemetrics or debugging
 - forbidden :: ask user for password, try other credentials
 - unsupported :: try another method, try another query
 - not_found :: 
