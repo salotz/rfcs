@@ -50,10 +50,12 @@ In a small project it might contain all context but for larger
 projects this should only contain a "table of contents" of where to
 find instructions and content.
 
-(TODO)
+A template is provided alongside this document as
+[AGENTS.md](AGENTS.md).
 
-Later in this document we provide a template `AGENTS.md` that
-supports this RFC.
+For small projects it can be expanded with more inline context. For larger
+projects it should act primarily as a table of contents pointing to
+`design/`, `contributing/`, and other relevant files.
 
 ### Design
 
@@ -184,4 +186,3 @@ Structure for skills is TBD.
 
 All structure should support recursive definition for large repos
 (like monorepos) with multiple sub-projects.
-
