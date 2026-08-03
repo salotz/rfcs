@@ -1,4 +1,8 @@
-# AGENTS.md
+# Project Description
+
+Put in a brief description of the project.
+
+# Standard Project Layout
 
 This file is the primary **bootloader** for AI agents and coding assistants.
 
