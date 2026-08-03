@@ -150,3 +150,21 @@ Executive Summary:
 > `wip!` prefix for work-in-progress commits, issue reference trailers
 > (Completes/Progresses/References) with namespaced values, and
 > project domains.
+
+
+### 022: AI Coding Repository Structures {#rfc-022}
+
+- nexp :: `salotz.022_ai-coding-structure`
+- status :: DRAFT
+
+Proposal: [rfcs/salotz.022_ai-coding-structure/README.md](rfcs/salotz.022_ai-coding-structure/README.md)
+
+Executive Summary:
+
+> Provides a standard for structuring repositories to make them useful
+> for AI-enhanced coding. Includes standard naming and schemas for
+> folders, filenames, and content of those files. The goal is to
+> provide useful, incremental context for LLMs that are built up for a
+> specific coding repository.
+
+### 023: {#rfc-023}
