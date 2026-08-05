@@ -1,4 +1,3 @@
-
 # AI Coding Repository Structures
 
 - nexp :: `salotz.022_ai-coding-structure`
@@ -51,11 +50,31 @@ projects this should only contain a "table of contents" of where to
 find instructions and content.
 
 A template is provided alongside this document as
-[AGENTS.md](AGENTS.md).
+[AGENTS.md](agents_md_template.md).
 
-For small projects it can be expanded with more inline context. For larger
-projects it should act primarily as a table of contents pointing to
-`design/`, `contributing/`, and other relevant files.
+For small projects it can be expanded with more inline context. For
+larger projects it should act primarily as a table of contents
+pointing to other context directories like `.agents/`, `design/`,
+`contributing/`, and other relevant files.
+
+### Agent Specific Context
+
+Most other directories are dual-use for humans and agents. Additional agent
+specific context should be placed in the `.agents/` directory.
+
+This should be used for context that is too large for the Bootloader
+file, should be disclosed progressively, or is a standardized form of
+context understood by most coding agent harnesses.
+
+This includes the external /de facto/ standards:
+
+- `skills/`: For agent skills defined by the [agentskills.io](https://agentskills.io/home) specification (agents see summary description in this [file](./agentskills_summary.md))
+- `agents/`: For defining custom agents. See [this page](https://goose-docs.ai/docs/guides/context-engineering/custom-agents).
+
+
+Additionally this RFC adds:
+
+- `context/`: Which is simply a collection of arbitrary context discoverable by agents. This is treated like an extension of the Bootloader context to reduce context loaded in each session.
 
 ### Design
 
