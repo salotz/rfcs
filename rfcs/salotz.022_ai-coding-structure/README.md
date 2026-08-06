@@ -111,10 +111,17 @@ Glossary should follow this format:
 
 # Glossary
 
-**Term** Write the definition here.
+## Term A
 
-You can write more here if you need.
+Write the definition here.
+
+## Term B
+
+Similar to [Term A](#term-a), but different.
+
 ```
+
+The subheading approach is preferred because you can then link between them in definitions.
 
 #### Architecture
 
