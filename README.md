@@ -167,4 +167,16 @@ Executive Summary:
 > provide useful, incremental context for LLMs that are built up for a
 > specific coding repository.
 
-### 023: {#rfc-023}
+### 023: Local Agent Context {#rfc-023}
+
+- nexp :: `salotz.023_local-agent-context`
+- status :: DRAFT
+
+Proposal: [rfcs/salotz.023_local-agent-context/README.md](rfcs/salotz.023_local-agent-context/README.md)
+
+Executive Summary:
+
+> Provides a standard for specifying local AI agent context injection.
+> Includes standardization of standard linux style home directories and
+> mechanisms for local overrides of git repo context.
+
