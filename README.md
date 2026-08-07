@@ -180,3 +180,14 @@ Executive Summary:
 > Includes standardization of standard linux style home directories and
 > mechanisms for local overrides of git repo context.
 
+
+### 024: Extended XDG Base Directory Specification {#rfc-024}
+
+- nexp :: `salotz.024_extended_xdg_base_directory`
+- status :: DRAFT
+
+Proposal: [rfcs/salotz.024_extended_xdg_base_directory/README.md](rfcs/salotz.024_extended_xdg_base_directory/README.md)
+
+Executive Summary:
+
+> This RFC extends the XDG Base Directory Specification with additional user-local directories and environment variables (prefixed `XDGX_`) for common use cases not covered by the base spec. It defines `~/.local/opt` (or `XDGX_OPT_HOME`) for ad-hoc user-managed software installs, `~/.local/tmp` (`XDGX_TMP_HOME`) as a user-local temporary directory distinct from the system `/tmp`, `~/.local/scratch` (`XDGX_SCRATCH_HOME`) for ephemeral batch-process scratch space, and `~/.local/var` for variable/persistent data akin to the FHS `/var`. Includes recommendations for snapshotting, cleanup policies, and usage to improve system organization, backup strategies, and performance.
