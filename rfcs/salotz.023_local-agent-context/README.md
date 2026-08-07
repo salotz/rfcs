@@ -60,11 +60,50 @@ you can have the possible configuration:
         └── AGENTS.md
 ```
 
-## Precedence
+### Precedence
 
 Precedence is towards the local configuration closest to the project. For instance if the home context in `~/.agents/installation.md` recommends installing ad hoc tools into `~/opt` but a project or directory local context (e.g. `~/dev/projects/.agents/projects.md`) recommends installing in `~/software` the agent should obey the `~/dev/projects/.agents/projects.md` advice.
 
 When there are contradictions agents should explicitly ask for feedback and make it clear to the user before taking action.
+
+## Agent Derived Resources
+
+A common pattern is for agents to fetch or generate additional resources on a host for use within multiple projects.
+
+For instance an agent skill might implement caching of repositories to the host to avoid excessive network calls. Or an agent might provide an outline of a users host machine resources for later reference.
+
+This is similar to classical software which has long had standards for organizing this data. One can look at the POSIX standards for system-wide directories under `/` or the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir/latest/) as examples.
+
+We provide an additional level of specification for agents that builds on the extension to the XDG Base Directory Specification in [RFC 24](../salotz.023_extended_xdg_base_directory/README.md).
+
+A brief review
+
+### Motivation
+
+The utility of such organization is:
+
+#### Namespace Pollution
+
+By providing sub-namespaces it limits the "pollution" of common "namespaces" like a users `$HOME` directory with dozens or hundreds of application specific directories (e.g. `.emacs`, `.tmux.conf`, etc.).
+
+Pollution of common namespaces can make tool usage complex. For instance if you wanted to get the disk usage of all configuration or cache directories you would need to distinguish between content directories in `$HOME` and which configuration directories have cache data.
+
+#### Content Indexing
+
+Create clear expectations for where to look for specific kinds of information which will have have vastly different indexing requirements.
+
+For instance you may want to include PDFs stored in a content repository under `~/.local/share` to be indexed by system wide search but not cached (`~/.cache`) or operational data (`~/.local/var`).
+
+#### Storage Needs
+
+Different types of data have different storage needs.
+
+For example you would want to include regular snapshotting of configuration directories (`~/.config`) but not cached data (`~/.cache`).
+
+Users should be able to easily configure filesystems to match these requirements using the standardized directories.
+
+This is difficult or impossible if all applications use their own custom directories for this content which can lead to system stability problems if left unconfigured.
+
 
 ## Template Context
 
