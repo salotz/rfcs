@@ -74,9 +74,25 @@ For instance an agent skill might implement caching of repositories to the host 
 
 This is similar to classical software which has long had standards for organizing this data. One can look at the POSIX standards for system-wide directories under `/` or the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir/latest/) as examples.
 
-We provide an additional level of specification for agents that builds on the extension to the XDG Base Directory Specification in [RFC 24](../salotz.023_extended_xdg_base_directory/README.md).
+We leverage the additional level of specification for user local layouts from the XDG Base Directory Specification extension in [RFC 24](../salotz.024_extended_xdg_base_directory/README.md).
 
-A brief review
+Under RFC 24 agents should use a sub-directory in the appropriate locations with the name `xagents` (for 'eXtended Agents'). This avoids using the plain `agents` which is a plain english word and ambiguous, despite some efforts at standardization elsewhere.
+
+For example you might have skills that use the cache directory like this:
+
+```markdown
+/home/salotz/.cache/xagents
+├── papers
+│   ├── d5np00041f.pdf
+│   ├── HSA-Runtime-1.2.pdf
+│   └── mmc2.pdf
+└── repos
+    └── rfcs
+```
+
+Otherwise agents should utilize the meanings of the directories from the other specifications. Many of them will not be for agent actions and for generated software.
+
+Note that the `xagents` directories are specifically for agent generated resources compared to operator based resources in `AGENTS.md` and `.agents` directories.
 
 ### Motivation
 
