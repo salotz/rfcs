@@ -191,3 +191,14 @@ Proposal: [rfcs/salotz.024_extended_xdg_base_directory/README.md](rfcs/salotz.02
 Executive Summary:
 
 > This RFC extends the XDG Base Directory Specification with additional user-local directories and environment variables (prefixed `XDGX_`) for common use cases not covered by the base spec. It defines `~/.local/opt` (or `XDGX_OPT_HOME`) for ad-hoc user-managed software installs, `~/.local/tmp` (`XDGX_TMP_HOME`) as a user-local temporary directory distinct from the system `/tmp`, `~/.local/scratch` (`XDGX_SCRATCH_HOME`) for ephemeral batch-process scratch space, and `~/.local/var` for variable/persistent data akin to the FHS `/var`. Includes recommendations for snapshotting, cleanup policies, and usage to improve system organization, backup strategies, and performance.
+
+### 025: Host Domain Organization {#rfc-025}
+
+- nexp :: `salotz.025_host-domain-organization`
+- status :: DRAFT
+
+Proposal: [rfcs/salotz.025_host-domain-organization/README.md](rfcs/salotz.025_host-domain-organization/README.md)
+
+Executive Summary:
+
+> Provides guidelines for organizing project work on host systems. Distinguishes local (host-only) and remote (shared/persisted, e.g. git) work. Defines scratch space, domains (e.g. personal vs work contexts), inboxes, and staging ("outbox") areas. Recommends `~/scratch` and `~/local/work` for local; `~/tree/<domain>/` (with `devel/`, `projects/`, `admin/`) for remote work organized by domain; and inbox/outbox under `~/Downloads`, `~/local/`, or domain trees.
