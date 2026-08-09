@@ -202,3 +202,14 @@ Proposal: [rfcs/salotz.025_host-domain-organization/README.md](rfcs/salotz.025_h
 Executive Summary:
 
 > Provides guidelines for organizing project work on host systems. Distinguishes local (host-only) and remote (shared/persisted, e.g. git) work. Defines scratch space, domains (e.g. personal vs work contexts), inboxes, and staging ("outbox") areas. Recommends `~/scratch` and `~/local/work` for local; `~/tree/<domain>/` (with `devel/`, `projects/`, `admin/`) for remote work organized by domain; and inbox/outbox under `~/Downloads`, `~/local/`, or domain trees.
+
+### 026: Domain Local Configuration {#rfc-026}
+
+- nexp :: `salotz.026_domain-local-configuration`
+- status :: DRAFT
+
+Proposal: [rfcs/salotz.026_domain-local-configuration/README.md](rfcs/salotz.026_domain-local-configuration/README.md)
+
+Executive Summary:
+
+> Provides a standard mechanism for host-local, domain-scoped configuration using a `.local` directory alongside project trees (e.g. `~/tree/<domain>/...`). Enables sharing configuration across git worktrees or sub-projects without duplication. Complements tools like direnv for managing per-directory overrides that are intentionally not committed to remote repositories.
