@@ -13,7 +13,7 @@ Here is some configuration which maps useful colorings to code tags:
         ("TOREV" . "#cc9393")
         ("TODOC" . "#B22222")
         ("REFACT" . "#cc9393")
-        ("BUG" . "#cc9393")
+        ("ASK" . "#Ff0000")
         ("REVD" . "#Ff00ff")
         ("WONTFIX" . "#Ff00ff")
         ("CANTFIX" . "#Ff00ff")
@@ -34,6 +34,7 @@ Here is some configuration which maps useful colorings to code tags:
         ("SMELL" . "#Ff4500")
         ("UGLY" . "#Ff4500")
         ("GOTCHA" . "#Ff4500")
+        ("BUG" . "#Ff4500")
         )
       )
 

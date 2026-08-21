@@ -187,6 +187,7 @@ Task tags:
 - TODOC :: indicates that a portion of code is undocumented
 - REFACT :: A refactoring of code is necessary and scheduled, but
   otherwise not broken
+- ASK :: Request for implementation of something (commonly for agents).
 
 ### Warnings
 
@@ -200,6 +201,7 @@ Warning tags:
 
 - ALERT :: indication that some edge-cases might not be handled but
   they have not yet been formally enumerated or tested for
+- BUG :: There is a known bug in the code.
 - HACK :: a piece of code was not structured according to best design
   practices, but is still useful for its utility. Indicates desire for
   a rewrite.
