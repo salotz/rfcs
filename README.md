@@ -213,3 +213,14 @@ Proposal: [rfcs/salotz.026_domain-local-configuration/README.md](rfcs/salotz.026
 Executive Summary:
 
 > Provides a standard mechanism for host-local, domain-scoped configuration using a `.local` directory alongside project trees (e.g. `~/tree/<domain>/...`). Enables sharing configuration across git worktrees or sub-projects without duplication. Complements tools like direnv for managing per-directory overrides that are intentionally not committed to remote repositories.
+
+### 027: Environment Variable Name Expressions {#rfc-027}
+
+- nexp :: `salotz.027_env-nexps`
+- status :: DRAFT
+
+Proposal: [rfcs/salotz.027_env-nexps.md](rfcs/salotz.027_env-nexps.md)
+
+Executive Summary:
+
+> Adapts name expressions (nexps) to UNIX-style environment variable names. Defines screaming-snake-case names with single underscores separating words and double underscores (dunders) separating fields, plus conventions for leading underscores to mark user-configured vs application-internal "hidden" variables. Covers names only, not values, and is designed to coexist with shell variables in the global environment namespace.
