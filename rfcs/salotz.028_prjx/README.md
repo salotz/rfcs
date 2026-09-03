@@ -1,7 +1,7 @@
-# PRJX: Project Layout and Specifications
+# PRJX: Project Layout and Specification
 
-- nexp :: `salotz.028_project-local-layout`
-- long name :: PRJX: Project Layout and Specifications
+- nexp :: `salotz.028_prjx`
+- long name :: PRJX: Project Layout and Specification
 - executive summary :: Extends project-local layout conventions beyond the PRJ Base Directory Spec under the name PRJX ("Project Spec Extended"). Defines project-root discovery (`PRJX_ROOT` / `.prjx-root`), portable vs host-local directories (`.config` / `.local`), fully qualified project and replica names, project IDs, XDG/XDGX integration under a `prjx/` namespace, and project-local environment variables prefixed `PRJX__`.
 
 This RFC builds on the [PRJ Base Directory
@@ -184,7 +184,14 @@ then it should be ignored.
 
 The `.prjx-root` file should be empty and all contents should be ignored.
 
-Only the first `.prjx-root` file is recognized.
+Only the first `.prjx-root` file found walking upward from the starting
+directory is recognized.
+
+**Nested sentinels are not supported.** If a tree contains more than one
+`.prjx-root` (for example a monorepo sub-tree that also has a marker),
+tools still resolve a single root: the closest match when searching
+upward, or `PRJX_ROOT` when set. Deeper markers are not treated as
+nested project scopes; behavior is as if nesting did not exist.
 
 In this document we refer to the project root as simply the
 environment variable for simplicity,
@@ -227,6 +234,9 @@ I.e. this is not gitignored.
 #### Local directory
 
 The local directory defaults to `${PRJX_ROOT}/.local`.
+
+It can be overridden by setting the environment variable
+`PRJX_LOCAL_CONFIG_HOME`, which must be an absolute path.
 
 The local directory is a special directory that contains host-specific data.
 
@@ -272,12 +282,14 @@ namespace = "acme.engineering"
 
 ### Project host local directories
 
-All host local data is under the `.local` directory.
+All host local data is under the local directory
+(`${PRJX_LOCAL_CONFIG_HOME}`, default `${PRJX_ROOT}/.local`).
 
 #### Host local config
 
 You can override and add configuration that is host and replica
-specific with the file `.local/_config.toml`.
+specific with the file `${PRJX_LOCAL_CONFIG_HOME}/_config.toml`
+(default `.local/_config.toml`).
 
 For instance in a particular replica you can hard code the replica
 distinguisher with the following section:
@@ -297,6 +309,15 @@ name = "wumpus-other"
 namespace = "work"
 ```
 
+**Merge rules:** host local `_config.toml` is **deep-merged** onto
+portable `_project-meta.toml`. Nested tables are merged key-by-key;
+values in the local file win on conflict. The local file does not
+replace the portable file wholesale.
+
+Every setting defined in `_project-meta.toml` is overridable this way,
+including `[project]`, `[project.env-vars]`, and any future sections.
+Omitted keys keep their portable values.
+
 Additional configuration options are documented in the relevant sections below.
 
 ### Project ID
@@ -308,8 +329,8 @@ identify a project replica on a host.
 In order of precedence the project ID is determined by:
 
 1. The environment variable `PRJX_ID`
-2. The value `replica.id` in `.local/_config.toml`
-3. Combination of values from `replica.distinguisher` (from `.local/_config.toml`) and `project.name` and `project.namespace` (from `.config/_project-meta.toml`)
+2. The value `replica.id` in `${PRJX_LOCAL_CONFIG_HOME}/_config.toml`
+3. Combination of values from `replica.distinguisher` (from local config) and `project.name` and `project.namespace` (from merged project metadata)
 4. Tool determined dynamically (e.g. git branch name)
 
 Following the [PRJ Spec](https://github.com/numtide/prj-spec) the value must pass the regular expression `^[a-zA-Z0-9_-]{1,32}$`.
@@ -329,7 +350,9 @@ The `PRJX_ID` should be set when you need global resources (e.g. [XDG integratio
 project, but is otherwise not required.
 
 Note that it is up to the tool implementing the `PRJX_ID` to figure out
-what the `replica.distinguisher` is. Typically, this is something like a git branch name, but also see [host local configuration](#project-host-local-directories) for another option.
+what the `replica.distinguisher` is when none is configured. Typically,
+this is something like a git branch name, but also see [host local
+configuration](#project-host-local-directories) for another option.
 
 ### XDG and XDGX integration
 
@@ -337,37 +360,48 @@ In addition to the project local directories this specification also
 provides for utilizing the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir/latest/) and [XDGX (RFC 24)](../salotz.024_extended_xdg_base_directory/README.md) standards in
 an organized manner.
 
-This requires that the `PRJX_ID` can be resolved.
-
 This RFC provides a consistent subfolder for XDG style directories as
-`prjx` for which each project can place data.
+`prjx` under which tools place per-project data.
 
-There can then be a `prjx` folder under each of the following XDG and
-XDGX directories overridable by an environment variable:
+For each XDG / XDGX kind below, the **PRJX home** is the directory that
+contains the `prjx` tree (or is that tree after override). Environment
+variables override that PRJX home — that is, the folder corresponding to
+defaults like `~/.cache/prjx` — **not** a single dynamic
+`.../prjx/${PRJX_ID}` leaf. Leaves under the PRJX home remain tool- and
+ID-dependent.
 
-| Type        | Default Directory  | Env Var Override        | Spec |
-|-------------|--------------------|-------------------------|------|
-| host config | `~/.config`        | `PRJX_HOST_CONFIG_HOME` | XDG  |
-| cache       | `~/.cache`         | `PRJX_CACHE_HOME`       | XDG  |
-| share       | `~/.local/share`   | `PRJX_DATA_HOME`        | XDG  |
-| tmp         | `~/.local/tmp`     | `PRJX_TMP_HOME`         | XDGX |
-| scratch     | `~/.local/scratch` | `PRJX_SCRATCH_HOME`     | XDGX |
-| var         | `~/.local/var`     | `PRJX_VAR_HOME`         | XDGX |
+| Type        | Default PRJX home   | Env Var Override        | Spec |
+|-------------|---------------------|-------------------------|------|
+| host config | `~/.config/prjx`    | `PRJX_HOST_CONFIG_HOME` | XDG  |
+| cache       | `~/.cache/prjx`     | `PRJX_CACHE_HOME`       | XDG  |
+| share       | `~/.local/share/prjx` | `PRJX_DATA_HOME`      | XDG  |
+| tmp         | `~/.local/tmp/prjx` | `PRJX_TMP_HOME`         | XDGX |
+| scratch     | `~/.local/scratch/prjx` | `PRJX_SCRATCH_HOME` | XDGX |
+| var         | `~/.local/var/prjx` | `PRJX_VAR_HOME`         | XDGX |
 
-Resolved per-project paths are of the form:
+Under a PRJX home, tools choose subdirectory names. Common patterns:
 
-`${PRJX_<TYPE>_HOME}/prjx/${PRJX_ID}`
+- **Replica-scoped** leaf using `PRJX_ID`, e.g.
+  `${PRJX_CACHE_HOME}/acme_wumpus_test-bed` (when `PRJX_CACHE_HOME`
+  defaults to `~/.cache/prjx`).
+- **Project-scoped** leaf using the FQ project name encoded as a
+  filesystem-safe `namespace_name` (dots to underscores), **without**
+  the replica distinguisher, e.g. `${PRJX_CACHE_HOME}/acme_wumpus` for
+  data shared among all replicas of `acme.wumpus`.
 
-For example `~/.cache/prjx` would contain caches for each project and/or project replica:
+`PRJX_ID` is required only when using replica-scoped leaves. Project-scoped
+leaves need only enough metadata to form `namespace_name`.
 
-- `~/.cache/prjx/acme_wumpus` for caches shared among all replicas
-- `~/.cache/prjx/acme_wumpus_test-bed` for a specific replica
+For example with defaults:
 
-Note that the config directory is "host config" as each project
-replica already has project portable configuration in the
-`${PRJX_ROOT}/.config` directory.
+- `~/.cache/prjx/acme_wumpus` — caches shared among all replicas
+- `~/.cache/prjx/acme_wumpus_test-bed` — caches for a specific replica
 
-All directories retain their meanings from their respective specs.
+Note that "host config" here is distinct from portable project
+configuration in `${PRJX_CONFIG_HOME}` (default `${PRJX_ROOT}/.config`).
+
+All directory *kinds* retain their meanings from their respective XDG /
+XDGX specs; only the PRJX namespacing under them is added here.
 
 ### Project local environment variables
 
@@ -405,18 +439,25 @@ From this we can see the `OP_SERVICE_ACCOUNT_TOKEN` and
 `PULUMI_ACCESS_TOKEN` are part of the `secrets` group and
 `PULUMI_ACCESS_TOKEN` is also part of the `infra` grouping.
 
-The meanings of the groups is up to the tools that use them.
+**Groups are normative for tools**, not documentation-only. A tool that
+understands a group name should treat membership as the contract for
+which variables to load or require for that group. The meaning of each
+group name is defined by the tools (or project conventions) that
+interpret it.
 
 Typically not all environment variables are needed for all tasks you
 may be performing in a project and some may be reserved only for
-certain operator roles (like admins). Groups provide a way for
-documenting which variables are needed for such roles.
+certain operator roles (like admins). Groups provide a way for tools
+and operators to select the subset needed for a role or task.
 
-You do not need to specify groups instead using special markers:
+You do not need to specify groups; instead you can use special markers:
 
-`""` the empty string is the default group
-`"-"` means a required environment variable
-`"*"` indicates an optional variable that does not belong to a group
+| Marker | Meaning |
+|--------|---------|
+| `""` (empty string) | Default group |
+| `"-"` | Required environment variable |
+| `"*"` | Optional variable that does not belong to a named group |
+| `"name"` or `"a,b"` | Member of the named group(s). **Assumed optional outside** any tool context that is actively interpreting those groups |
 
 So if you don't want to come up with group tags for each variable you
 can start with making them all optional:
@@ -430,9 +471,6 @@ ENV_NAME = "*"
 DATA_PATH = "*"
 ```
 
-Providing a group name implies it is optional outside the context of
-any particular group.
-
 Each variable defined in the TOML table corresponds to the `PRJX__`
 prefixed environment variable in an actual process, e.g. the above
 table would provide in a shell:
@@ -444,6 +482,9 @@ PRJX__PULUMI_ACCESS_TOKEN=...
 PRJX__ENV_NAME=...
 PRJX__DATA_PATH=...
 ```
+
+As with other metadata, `[project.env-vars]` may be extended or changed
+in `${PRJX_LOCAL_CONFIG_HOME}/_config.toml` via deep merge.
 
 ---
 

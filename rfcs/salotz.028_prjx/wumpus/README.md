@@ -12,7 +12,7 @@ wumpus/                         # project root
 ├── .config/                    # portable config (tracked)
 │   └── _project-meta.toml      # name, namespace, declared PRJX__ env vars
 ├── .local/                     # host-local (gitignored)
-│   └── _config.toml            # replica distinguisher / overrides
+│   └── _config.toml            # replica distinguisher / deep-merge overrides
 ├── .gitignore-template         # shows that .local/ is ignored
 ├── src/
 │   └── wumpus.py               # ordinary project content
@@ -26,6 +26,7 @@ wumpus/                         # project root
 | `project.namespace` | `acme` |
 | `project.name` | `wumpus` |
 | FQ project name | `acme.wumpus` |
+| Path form `namespace_name` | `acme_wumpus` |
 | `replica.distinguisher` | `test-bed` |
 | FQ replica name | `acme.wumpus.test-bed` |
 | Recommended `PRJX_ID` | `acme_wumpus_test-bed` |
@@ -47,16 +48,23 @@ wumpus/                         # project root
 These depend on the host environment or tooling rather than files in
 the example tree:
 
-- `PRJX_ROOT` / `PRJX_ID` / `PRJX_CONFIG_HOME` env overrides
-- XDG/XDGX paths under `~/{.config,.cache,.local/...}/prjx/${PRJX_ID}`
+- `PRJX_ROOT` / `PRJX_ID` / `PRJX_CONFIG_HOME` / `PRJX_LOCAL_CONFIG_HOME` env overrides
+- PRJX homes such as `~/.cache/prjx` (override: `PRJX_CACHE_HOME`)
+- Project-scoped leaf `.../prjx/acme_wumpus` vs replica leaf `.../prjx/acme_wumpus_test-bed`
 - Dynamic ID from git branch when `replica.distinguisher` is unset
 - Actual process env with `PRJX__*` values populated
+- Deep-merge of local `_config.toml` onto portable metadata at runtime
 
 A tool implementing PRJX would resolve, for this tree:
 
 ```text
-PRJX_ROOT = <abs path to this directory>
-PRJX_CONFIG_HOME = ${PRJX_ROOT}/.config
-PRJX_ID = acme_wumpus_test-bed
-PRJX_CACHE_HOME default usage => ~/.cache/prjx/acme_wumpus_test-bed
+PRJX_ROOT              = <abs path to this directory>
+PRJX_CONFIG_HOME       = ${PRJX_ROOT}/.config
+PRJX_LOCAL_CONFIG_HOME = ${PRJX_ROOT}/.local
+PRJX_ID                = acme_wumpus_test-bed
+
+# default PRJX homes (overrides replace these directories wholesale):
+PRJX_CACHE_HOME        ~ ~/.cache/prjx
+# project-scoped leaf:  ${PRJX_CACHE_HOME}/acme_wumpus
+# replica-scoped leaf:  ${PRJX_CACHE_HOME}/acme_wumpus_test-bed
 ```

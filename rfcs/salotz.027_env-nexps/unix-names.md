@@ -231,16 +231,16 @@ Often lowercase. A special case.
 
 Very common and collision-prone.
 
-| Name | Role |
-| --- | --- |
-| `DEBUG` | Debug flag |
-| `VERBOSE` | Verbose flag |
-| `DRY_RUN` | Dry run |
-| `TRACE` | Tracing |
-| `LOG_LEVEL` | Log verbosity |
-| `FORCE_COLOR` | Force color |
-| `CI` | Running in CI |
-| `NODE_ENV` | Node environment (`production` / `development`) |
+| Name          | Role                                            |
+|---------------|-------------------------------------------------|
+| `DEBUG`       | Debug flag                                      |
+| `VERBOSE`     | Verbose flag                                    |
+| `DRY_RUN`     | Dry run                                         |
+| `TRACE`       | Tracing                                         |
+| `LOG_LEVEL`   | Log verbosity                                   |
+| `FORCE_COLOR` | Force color                                     |
+| `CI`          | Running in CI                                   |
+| `NODE_ENV`    | Node environment (`production` / `development`) |
 
 ### 12-factor / PaaS
 

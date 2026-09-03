@@ -225,12 +225,12 @@ Executive Summary:
 
 > Adapts name expressions (nexps) to UNIX-style environment variable names. Defines screaming-snake-case names with single underscores separating words and double underscores (dunders) separating fields, plus conventions for leading underscores to mark user-configured vs application-internal "hidden" variables. Covers names only, not values, and is designed to coexist with shell variables in the global environment namespace.
 
-### 028: PRJX Project Layout and Specifications {#rfc-028}
+### 028: PRJX Project Layout and Specification {#rfc-028}
 
-- nexp :: `salotz.028_project-local-layout`
+- nexp :: `salotz.028_prjx`
 - status :: DRAFT
 
-Proposal: [rfcs/salotz.028_project-local-layout/README.md](rfcs/salotz.028_project-local-layout/README.md)
+Proposal: [rfcs/salotz.028_prjx/README.md](rfcs/salotz.028_prjx/README.md)
 
 Executive Summary:
 

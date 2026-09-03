@@ -18,7 +18,7 @@ paths that are not part of the work product.
 
 Absolute directory path to the [project](#project) sub-tree. Discovered
 via `PRJX_ROOT` or the `.prjx-root` sentinel. See [project host
-path](#project-host-path).
+path](#project-host-path). Nested sentinels are not supported.
 
 ## project host path
 
@@ -36,6 +36,8 @@ Short name of the [project](#project) (e.g. `wumpus`), stored as
 Namespaced project identity, typically `{namespace}.{name}` (e.g.
 `acme.wumpus`). Also called **FQ name**. Built from `project.namespace`
 and [project name](#project-name) in [project metadata](#project-metadata).
+Encoded for paths as `namespace_name` (dots to underscores), e.g.
+`acme_wumpus`.
 
 ## project replica
 
@@ -48,7 +50,8 @@ distinguisher](#replica-distinguisher).
 
 Token that distinguishes one [project replica](#project-replica) from
 another (e.g. a git branch name, or `replica.distinguisher` in [host
-local config](#host-local-config)).
+local config](#host-local-config)). If unset, tools decide how to form
+a [project ID](#project-id).
 
 ## fully qualified project replica name
 
@@ -59,7 +62,7 @@ local config](#host-local-config)).
 ## project ID
 
 Host-specific identifier for a [project replica](#project-replica), used
-for global resources such as XDG/XDGX paths under a `prjx/` namespace.
+for replica-scoped leaves under [PRJX home](#prjx-home) directories.
 Exposed as `PRJX_ID`. Must match `^[a-zA-Z0-9_-]{1,32}$`. See the main
 README for resolution precedence.
 
@@ -67,7 +70,15 @@ README for resolution precedence.
 
 "Project Spec Extended" — the short name of this layout specification
 and the namespace for its environment variables (`PRJX_*`, `PRJX__*`).
-Nexp: `salotz.028_project-local-layout`.
+Nexp: `salotz.028_prjx`. Long name: PRJX: Project Layout and Specification.
+
+## PRJX home
+
+Directory under which tools store host-global PRJX data for a given XDG
+or XDGX kind (e.g. default cache PRJX home `~/.cache/prjx`). Overridden
+as a whole by variables such as `PRJX_CACHE_HOME` — not as a single
+`${PRJX_ID}` leaf. Leaves under a PRJX home are either project-scoped
+(`namespace_name`) or replica-scoped ([project ID](#project-id)).
 
 ## config directory
 
@@ -77,8 +88,9 @@ metadata](#project-metadata).
 
 ## local directory
 
-Host-specific data under `${PRJX_ROOT}/.local`. Not tracked in version
-control (gitignored). Holds [host local config](#host-local-config).
+Host-specific data under `${PRJX_ROOT}/.local` (override:
+`PRJX_LOCAL_CONFIG_HOME`). Not tracked in version control (gitignored).
+Holds [host local config](#host-local-config).
 
 ## project metadata
 
@@ -86,23 +98,28 @@ Portable metadata in `.config/_project-meta.toml` within the [config
 directory](#config-directory): [project name](#project-name), namespace,
 declared [project-local environment
 variables](#project-local-environment-variables), and related fields.
+Deep-merged with [host local config](#host-local-config).
 
 ## host local config
 
-Host- and replica-specific overrides in `.local/_config.toml` within the
-[local directory](#local-directory). May set `replica.distinguisher`,
-`replica.id`, and overrides of [project metadata](#project-metadata)
-sections.
+Host- and replica-specific overrides in `_config.toml` within the
+[local directory](#local-directory). Deep-merged onto [project
+metadata](#project-metadata); local keys win. May set
+`replica.distinguisher`, `replica.id`, and any portable section
+including `[project.env-vars]`.
 
 ## project-local environment variables
 
 Process environment variables prefixed `PRJX__`, declared under
 `[project.env-vars]` in [project metadata](#project-metadata). Leaf
-names map to `PRJX__<LEAF>`. Group tags and markers document which
-variables apply to which roles or tasks.
+names map to `PRJX__<LEAF>`. [Env-var groups](#env-var-group) select
+subsets for tools.
 
 ## env-var group
 
 Tag(s) on a declared project-local environment variable (e.g. `secrets`,
-`infra`) used by tools to select subsets of variables. Special markers:
-`""` (default group), `"-"` (required), `"*"` (optional, ungrouped).
+`infra`). **Normative for tools** that interpret the group name: membership
+is the contract for which variables to load or require. Variables with a
+named group are assumed optional outside tool contexts that are actively
+interpreting those groups. Special markers: `""` (default group), `"-"`
+(required), `"*"` (optional, ungrouped).

@@ -147,5 +147,14 @@ Terms for this RFC. See also the shared agent-guidelines glossary.
 ## project ID
 
 Host-specific identifier for a project replica. Exposed as `PRJX_ID`.
-Normative rules: [RFC 28](./salotz.028_project-local-layout/README.md).
+Normative rules: [RFC 28](./salotz.028_prjx/README.md).
 ```
+
+## Relationship to other RFCs
+
+- **[RFC 22](./salotz.022_ai-coding-structure/README.md)** — Requires a
+  project `design/glossary.md` and defers format details to this RFC.
+- **[RFC 3](./salotz.003_rfc-specs.md)** — RFCs may include a glossary
+  as supporting material; when they do, use this format.
+- **[RFC 28](./salotz.028_prjx/README.md)** — Example of an RFC-local
+  `glossary.md` following this format.
