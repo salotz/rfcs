@@ -1,0 +1,14 @@
+[project]
+
+name = "wumpus"
+namespace = "acme"
+# FQ name => "acme.wumpus"
+
+[project.env-vars]
+
+# groups: comma-separated; special markers: "" default, "-" required, "*" optional ungrouped
+OP_SERVICE_ACCOUNT_TOKEN = "secrets"
+PULUMI_ACCESS_TOKEN = "secrets,infra"
+ENV_NAME = "integration-testing"
+DATA_PATH = "functional-testing"
+OPTIONAL_DEBUG = "*"

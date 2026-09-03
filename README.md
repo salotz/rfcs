@@ -219,8 +219,24 @@ Executive Summary:
 - nexp :: `salotz.027_env-nexps`
 - status :: DRAFT
 
-Proposal: [rfcs/salotz.027_env-nexps.md](rfcs/salotz.027_env-nexps.md)
+Proposal: [rfcs/salotz.027_env-nexps/README.md](rfcs/salotz.027_env-nexps/README.md)
 
 Executive Summary:
 
 > Adapts name expressions (nexps) to UNIX-style environment variable names. Defines screaming-snake-case names with single underscores separating words and double underscores (dunders) separating fields, plus conventions for leading underscores to mark user-configured vs application-internal "hidden" variables. Covers names only, not values, and is designed to coexist with shell variables in the global environment namespace.
+
+### 028: PRJX Project Layout and Specifications {#rfc-028}
+
+- nexp :: `salotz.028_project-local-layout`
+- status :: DRAFT
+
+Proposal: [rfcs/salotz.028_project-local-layout/README.md](rfcs/salotz.028_project-local-layout/README.md)
+
+Executive Summary:
+
+> Extends project-local layout conventions beyond the PRJ Base Directory
+> Spec under the name PRJX ("Project Spec Extended"). Defines project-root
+> discovery (`PRJX_ROOT` / `.prjx-root`), portable vs host-local directories
+> (`.config` / `.local`), fully qualified project and replica names, project
+> IDs, XDG/XDGX integration under a `prjx/` namespace, and project-local
+> environment variables prefixed `PRJX__`.

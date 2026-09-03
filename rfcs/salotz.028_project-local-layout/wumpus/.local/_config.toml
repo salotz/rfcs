@@ -1,0 +1,12 @@
+# Host- and replica-specific overrides (gitignored via .local/).
+# Composed PRJX_ID recommendation: acme_wumpus_test-bed
+
+[replica]
+
+distinguisher = "test-bed"
+# id = "acme_wumpus_test-bed"  # optional explicit ID (takes precedence over composition)
+
+# Optional overrides of portable [.config/_project-meta.toml] metadata for this replica:
+# [project]
+# name = "wumpus-other"
+# namespace = "work"

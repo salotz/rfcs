@@ -1,0 +1,4 @@
+# What .gitignore would look like if this were a real project adopting PRJX.
+# The .local directory holds host-specific data and must not be tracked.
+
+.local/
