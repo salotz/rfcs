@@ -1,9 +1,12 @@
 # Glossary
 
 Terms defined by this RFC. Drawn from the main [README](./README.md).
-Cross-links use the subheading form so definitions can reference each
-other (see [RFC 22](../salotz.022_ai-coding-structure/README.md#glossary)
-and the shared agent-guidelines glossary format).
+
+Format: [RFC 29: Glossary Format](../salotz.029_glossary-format.md)
+(`## term` subheadings with cross-links). Placement of this file as
+RFC supporting material follows that RFC's informative patterns; project
+design glossaries are described in
+[RFC 22](../salotz.022_ai-coding-structure/README.md#glossary).
 
 ## project
 

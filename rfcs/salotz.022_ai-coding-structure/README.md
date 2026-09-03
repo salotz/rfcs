@@ -105,10 +105,14 @@ You can also reference other glossaries that are relevant to the project.
 
 The glossary should be in the file `glossary.md`.
 
-Glossary should follow this format:
+Glossary entries must follow the Markdown format in
+[RFC 29: Glossary Format](../salotz.029_glossary-format.md): a `# Glossary`
+title, one `## term` subheading per entry, short definition bodies, and
+in-document cross-links between terms (not a table-as-glossary).
+
+Minimal example:
 
 ```markdown
-
 # Glossary
 
 ## Term A
@@ -118,10 +122,7 @@ Write the definition here.
 ## Term B
 
 Similar to [Term A](#term-a), but different.
-
 ```
-
-The subheading approach is preferred because you can then link between them in definitions.
 
 #### Architecture
 

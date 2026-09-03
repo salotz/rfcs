@@ -240,3 +240,18 @@ Executive Summary:
 > (`.config` / `.local`), fully qualified project and replica names, project
 > IDs, XDG/XDGX integration under a `prjx/` namespace, and project-local
 > environment variables prefixed `PRJX__`.
+
+### 029: Glossary Format {#rfc-029}
+
+- nexp :: `salotz.029_glossary-format`
+- status :: DRAFT
+
+Proposal: [rfcs/salotz.029_glossary-format.md](rfcs/salotz.029_glossary-format.md)
+
+Executive Summary:
+
+> Defines a simple Markdown format for glossaries: a top-level `# Glossary`
+> heading, one `## term` subheading per entry, short definition bodies, and
+> in-document cross-links between terms. Prefer this over tables so
+> definitions remain linkable. Originally specified inline in RFC 22;
+> extracted here for reuse across RFCs, projects, and shared agent guidelines.
