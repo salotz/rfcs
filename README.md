@@ -165,7 +165,8 @@ Executive Summary:
 > for AI-enhanced coding. Includes standard naming and schemas for
 > folders, filenames, and content of those files. The goal is to
 > provide useful, incremental context for LLMs that are built up for a
-> specific coding repository.
+> specific coding repository. Companion to RFC 23 for host-local
+> context and overrides.
 
 ### 023: Local Agent Context {#rfc-023}
 
@@ -177,8 +178,10 @@ Proposal: [rfcs/salotz.023_local-agent-context/README.md](rfcs/salotz.023_local-
 Executive Summary:
 
 > Provides a standard for specifying local AI agent context injection.
-> Includes standardization of standard linux style home directories and
-> mechanisms for local overrides of git repo context.
+> Includes standardization of Linux-style home directories, bootloading
+> guidance for tools, `xagents` placement under XDG/XDGX paths for
+> agent-derived resources, and mechanisms for local overrides of git
+> repo context (`.agents.local`).
 
 
 ### 024: Extended XDG Base Directory Specification {#rfc-024}

@@ -2,7 +2,7 @@
 
 - nexp :: `salotz.022_ai-coding-structure`
 - long name :: AI Coding Repository Structures
-- executive summary :: Provides a standard for structuring repositories to make them useful for AI-enhanced coding. Includes standard naming and schemas for folders, filenames, and content of those files. The goal is to provide useful, incremental context for LLMs that are built up for a specific coding repository.
+- executive summary :: Provides a standard for structuring repositories to make them useful for AI-enhanced coding. Includes standard naming and schemas for folders, filenames, and content of those files. The goal is to provide useful, incremental context for LLMs that are built up for a specific coding repository. Companion to RFC 23 for host-local context and overrides.
 
 ## Goals
 
@@ -14,20 +14,22 @@ LLMs do best when you can provide clear guidelines with minimal
 context that is incrementally divulged when necessary.
 
 The content written for AI coding systems should also be *mostly*
-useful for humans, as well as in understanding the details of how to
-work on a project. There will be content that is specifically for the
-AI systems.
+useful for humans who need to understand how to work on the project.
+Some content will still be specifically for AI systems.
 
 When possible we support and prioritize open standards that are
-supported by common implementations. But we don't slavishly obey them
-where it makes sense not to.
+supported by common implementations, without following them slavishly
+where they do not fit.
 
 Not all components of this RFC need to be used by all projects. As a
 project grows in size and complexity you will use more components as
 context limits allow.
 
-## Components
+For host-local agent context (outside the repository) and local
+overrides of repository context, see
+[RFC 23: Local Agent Context](../salotz.023_local-agent-context/README.md).
 
+## Components
 
 ### Generic Rules
 
@@ -38,14 +40,14 @@ See that RFC for details on what the fields in the names should mean.
 
 ### Bootloader
 
-There should be a file that should be present at the root of the
-project that any AI system can always load to provide context.
+There should be a file at the root of the project that any AI system
+can always load to provide context.
 
 For this we stick to the standard [`AGENTS.md`](https://agents.md/) file.
 
 The content of the file should depend on the size and scope of the project.
 
-In a small project it might contain all context but for larger
+In a small project it might contain all context, but for larger
 projects this should only contain a "table of contents" of where to
 find instructions and content.
 
@@ -57,24 +59,26 @@ larger projects it should act primarily as a table of contents
 pointing to other context directories like `.agents/`, `design/`,
 `contributing/`, and other relevant files.
 
-### Agent Specific Context
+### Agent-Specific Context
 
-Most other directories are dual-use for humans and agents. Additional agent
-specific context should be placed in the `.agents/` directory.
+Most other directories are dual-use for humans and agents. Additional
+agent-specific context should be placed in the `.agents/` directory.
 
 This should be used for context that is too large for the Bootloader
 file, should be disclosed progressively, or is a standardized form of
 context understood by most coding agent harnesses.
 
-This includes the external /de facto/ standards:
+This includes the external *de facto* and semi-formal standards:
 
-- `skills/`: For agent skills defined by the [agentskills.io](https://agentskills.io/home) specification (agents see summary description in this [file](./agentskills_summary.md))
-- `agents/`: For defining custom agents. See [this page](https://goose-docs.ai/docs/guides/context-engineering/custom-agents).
-
+- `skills/`: For agent skills defined by the [agentskills.io](https://agentskills.io/home) specification (agents see the summary description in this [file](./agentskills_summary.md))
+- `plugins/`: For standardized agent plugins defined by [Agent Plugins](https://agent-plugins.org/)
+- `agents/`: For defining custom agents. See [this page](https://goose-docs.ai/docs/guides/context-engineering/custom-agents)
 
 Additionally this RFC adds:
 
-- `context/`: Which is simply a collection of arbitrary context discoverable by agents. This is treated like an extension of the Bootloader context to reduce context loaded in each session.
+- `context/`: A collection of arbitrary context discoverable by
+  agents. This is treated like an extension of the Bootloader context
+  to reduce context loaded in each session.
 
 ### Design
 
@@ -99,7 +103,7 @@ project.
 
 #### Glossary
 
-A glossary should be used to define any project specific terminology.
+A glossary should be used to define any project-specific terminology.
 
 You can also reference other glossaries that are relevant to the project.
 
@@ -131,8 +135,8 @@ describe the current architecture of the system.
 
 The needs in this directory should be tuned to your project's needs.
 
-This folder should only be the current state. For historical
-background on why certain decisions were made see the Decisions
+This folder should only describe the current state. For historical
+background on why certain decisions were made, see the Decisions
 section.
 
 #### Decisions
@@ -184,30 +188,28 @@ What are the consequences of this decision?
 Each project has instructions, processes, and guidelines for
 contributing to the project.
 
-This information is housed in the `contributing/` folder or for
-smaller projects a `CONTRIBUTING.md` file. If the `contributing/`
-folder is present the `CONTRIBUTING.md` file should not be present.
+This information is housed in the `contributing/` folder or, for
+smaller projects, a `CONTRIBUTING.md` file. If the `contributing/`
+folder is present, the `CONTRIBUTING.md` file should not be present.
 
 The `contributing/` directory should contain a `README.md` (and an
 optional `AGENTS.md` file) with generic considerations.
 
-Additional files should contain documentation on specific work
-processes for the project. These can be for specific tasks or
-roles. For instance you might have task-based processes for releases,
-migrations, etc. which you should name descriptively `releases.md`,
-`migrations.md` (or more fully `process_releases.md`,
-`process_migrations.md`). Or roles like engineer, product manager,
-site reliability engineer (named `role_engineer.md`,
-`role_product-manager.md`, `role_sre.md`).
+Additional files should document specific work processes for the
+project. These can be for specific tasks or roles. For instance you
+might have task-based processes for releases, migrations, and so on,
+named descriptively `releases.md`, `migrations.md` (or more fully
+`process_releases.md`, `process_migrations.md`). Or roles such as
+engineer, product manager, and site reliability engineer (named
+`role_engineer.md`, `role_product-manager.md`, `role_sre.md`).
 
-For the full names of each the fields are (document type, name).
+For the full names of each, the fields are (document type, name).
 
 Processes should be made available as specific skills to agents
 according to [agentskills.io](https://agentskills.io/).
 
 (TODO)
 Structure for skills is TBD.
-
 
 ## Generic Structural Considerations
 

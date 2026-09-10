@@ -47,8 +47,12 @@ Design docs live under `design/`:
 Large, progressive, or agent-specific context goes in the `.agents/` directory:
 
 - `skills/`: Agent skills per [agentskills.io](https://agentskills.io/home) (see summary in [agentskills_summary.md](agentskills_summary.md)).
+- `plugins/`: Standardized agent plugins per [Agent Plugins](https://agent-plugins.org/).
 - `agents/`: Custom agent definitions (see [this page](https://goose-docs.ai/docs/guides/context-engineering/custom-agents)).
 - `context/`: Arbitrary additional context files (treated as an extension of this bootloader to reduce per-session load).
+
+For host-local preferences and `.agents.local` overrides, see
+[RFC 23: Local Agent Context](https://github.com/salotz/rfcs/blob/master/rfcs/salotz.023_local-agent-context/README.md).
 
 ## Contributing Processes
 
