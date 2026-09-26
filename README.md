@@ -84,19 +84,21 @@ Executive Summary:
 > categories. Maps error types to next actions for handlers.
 > Inspired by Stuart Halloway.
 
-### 014: Project & Maintenance Intentions for OSS {#rfc-014}
+### 014: Project Declarations {#rfc-014}
 
-- nexp :: `salotz.014_project-intent`
+- nexp :: `salotz.014_project-declarations`
 - status :: DRAFT
 
-Proposal: [rfcs/salotz.014_project-intent.md](rfcs/salotz.014_project-intent.md)
+Proposal: [rfcs/salotz.014_project-declarations.md](rfcs/salotz.014_project-declarations.md)
 
 Executive Summary:
 
-> A proposal for a best practice that includes a clear statement of
-> intent on open source projects (lifecycle phase + maintenance intent)
-> so consumers better understand the current state and intentions of
-> developers. Includes suggested vocabulary for common phases.
+> A best practice for publishing short, structured project declarations
+> so consumers and contributors can judge fitness, risk, and expected
+> quality at a glance. Topics include lifecycle phase, maintenance
+> intent, authorship method (e.g. AI-assisted or AI-authored),
+> contribution stance, and support. Includes suggested vocabularies and a
+> README table convention.
 
 ### 016: Nearly Trivial Plaintext Formats {#rfc-016}
 
