@@ -260,3 +260,41 @@ Executive Summary:
 > in-document cross-links between terms. Prefer this over tables so
 > definitions remain linkable. Originally specified inline in RFC 22;
 > extracted here for reuse across RFCs, projects, and shared agent guidelines.
+
+### 030: Application Info {#rfc-030}
+
+- nexp :: `salotz.030_application-info`
+- status :: DRAFT
+
+Proposal: [rfcs/salotz.030_application-info/README.md](rfcs/salotz.030_application-info/README.md)
+
+Executive Summary:
+
+> Defines a static, machine- and human-readable application info document for
+> software products: context and usage metadata that operators, agents, and
+> tools can consume without scraping READMEs or CLI help strings. The default
+> path is `.appinfo/meta.toml` at the application project root. The format is
+> a small TOML core (`version`, optional `[project]`, `[products.*]`) plus an
+> open extension rule: new concerns add their own top-level or per-product
+> tables and define their own shape—no `[tool.*]` namespace. Environment
+> variable registries are specified in RFC 031. Complementary to jdx packslip
+> (signed release / supply-chain install metadata) and RFC 28 PRJX
+> project-management metadata (`.config/_project-meta.toml`), not a
+> replacement for either.
+
+### 031: Application Environment Registry {#rfc-031}
+
+- nexp :: `salotz.031_application-env`
+- status :: DRAFT
+
+Proposal: [rfcs/salotz.031_application-env/README.md](rfcs/salotz.031_application-env/README.md)
+
+Executive Summary:
+
+> Defines environment-variable declaration tables for RFC 030 application
+> info documents (`.appinfo/meta.toml`). Products document shared and
+> per-product env prefixes and variable maps (`[env]` / `[products.<id>.env]`)
+> with short- and long-form entries so humans, agents, and help tooling can
+> discover what a product reads without executing it. Descriptive by default;
+> name form follows RFC 27. Does not own project-local `PRJX__*` leaves
+> (RFC 28).
