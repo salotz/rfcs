@@ -1,9 +1,9 @@
 # Plan: Application Common Core RFCs
 
 **Date:** 2026-09-27  
-**Status:** planning only (no normative RFC drafts yet)  
+**Status:** 032 v0 complete and citable; next leaf is 033  
 **Repo:** `salotz/rfcs`  
-**Hold:** do not draft leaf control RFCs until **032 value semantics** is settled enough to cite
+**Hold:** none on 032 — leaf RFCs may cite `salotz.032_env-value-types`
 
 ## One-line intent
 
@@ -29,7 +29,7 @@ spin out later if it ever needs a wider home.
 
 | # | Working nexp | Title (working) | Role |
 |---|--------------|-----------------|------|
-| **032** | `salotz.032_env-values` | Environment variable value semantics | Foundation: types, empty, invalid, reporting |
+| **032** | `salotz.032_env-value-types` | Environment variable value types | **Done** — foundation: types, empty, value policy, reporting |
 | **033** | `salotz.033_color-env` | Terminal color environment variables | One color RFC: NO_COLOR + FORCE_COLOR + preferred policy var |
 | **034** | `salotz.034_temp-env` | Temporary directory environment variables | `TMPDIR` / `TEMP` / `TMP` |
 | **035** | `salotz.035_log-env` | Logging environment variables | `LOG_LEVEL` (and core-prefixed twin) |
@@ -112,50 +112,49 @@ fine for RFC-stage work.
 
 ---
 
-## RFC 032 — Environment variable value semantics
+## RFC 032 — Environment variable value types
 
-**Working nexp:** `salotz.032_env-values`
+**Working nexp:** `salotz.032_env-value-types` (nexp **env-value-types**; long name locked)  
+**Spec:** [rfcs/salotz.032_env-value-types/README.md](../../rfcs/salotz.032_env-value-types/README.md) (**done**)
 
 ### Problem
 
 Values are strings. Ecosystems disagree on empty vs unset, bools,
 enums, and how to report garbage. Leaf RFCs must not each invent this.
 
-### Goals
+### Goals (locked in draft)
 
-- Type catalog used by 033–036 and 037
-- Empty / unset rules
-- Invalid value policy and **reporting** (when, where, how loud)
-- Distinguish **presence flags** vs **booleans** vs **enums**
-- Name-agnostic (027 owns form)
+- **Value types** + token grammars (not a broad “semantics” dump)
+- **Empty ≡ missing** (not typed null)
+- Single per-variable **value policy**: `silent` | `warn` | `strict` |
+  `required` (default **`warn`**); non-`required` declare a **default**
+- Invalid handling is part of that policy (quiet / warn+default / exit);
+  channel not mandated
+- Types: **`boolean`**, **`enum`**, **`string`**, **`null`**,
+  **`nullable-enum`**; missing=absent|empty; enum kebab-case
+- **Presence-only is not a 032 type** — counterexample only; legacy
+  carve-outs (e.g. NO_COLOR / FORCE_COLOR) live in **033**
+- Name-agnostic; **stand-alone** (no forward leaf RFC names)
 
 ### Non-goals (v0)
 
 - Full schema DSL / JSON Schema for all env
-- List/int deep design can be stubbed if not needed by leaves
-- Secret redaction framework
+- int / float / list (todo later)
+- Secret redaction; mandated stderr/log channel
+- First-class presence-flag type
+- Process-wide strict/lenient switch that overrides per-variable policy
 
-### Types (checklist)
+### Locked for v0 (032)
 
-1. Unset / empty (lean: empty ≡ unset)
-2. Presence flag (non-empty ⇒ set) — color legacy
-3. Boolean (token allow-list; **not** presence)
-4. Enum (case-insensitive canonical tokens; optional aliases later)
-5. Path (non-empty string)
+- Empty-as-data: **app-specific**; no portable sentinel
+- `strict` ≠ `required`: default on missing; hard-fail only on invalid
+- Default `policy=warn`; large aliases optional child tables
+- Types + value policy as in draft; citable from leaves
 
-### Invalid values (must specify)
+### Deferred (post-032)
 
-- Only when set and non-empty but not in grammar
-- Default lean for optional controls: **warn once + fallback default**
-- Channel lean: CLI → stderr; libraries → documented warn hook / log
-- No universal “Python warnings” requirement; define **message fields**
-  (name, value, expected grammar, fallback)
-- Do not spam per log line
-
-### Workshop later (do not block the plan on tokens)
-
-- Exact bool tokens (`true/false/1/0/yes/no/on/off` ± Go `t`/`f`)
-- Hard-fail vs warn-fallback profiles
+- [ ] **Later:** int / float / list value forms
+- [ ] Machine-readable type/policy fields in env registries (031+)
 
 ---
 
@@ -164,11 +163,19 @@ enums, and how to report garbage. Leaf RFCs must not each invent this.
 **Working nexp:** `salotz.033_color-env`  
 **Depends:** 032
 
+### Stance (operator)
+
+- **033** explicitly carves out `NO_COLOR` / `FORCE_COLOR` as legacy
+  **presence-only** reads (not a 032 type).
+- **Recommend** a typed **enum** policy var as the preferred control.
+- When both legacy flags are set: **NO_COLOR wins** (Rich) + report once.
+
 ### One RFC, three layers
 
-1. **Adopt** `NO_COLOR` (no-color.org) — presence → policy `never` for color
-2. **Adopt** `FORCE_COLOR` (force-color.org) — presence → policy `always`
-3. **Preferred policy var** — enum only: `never` | `always` | `auto`
+1. **Preferred:** policy **enum** — canonical `NEVER` | `ALWAYS` | `AUTO`
+2. **Legacy carve-out:** `NO_COLOR` (no-color.org) — presence → `NEVER`
+3. **Legacy carve-out:** `FORCE_COLOR` (force-color.org) — presence → `ALWAYS`
+   (presence only; not chalk depth levels)
 
 ### Policy model
 
@@ -194,9 +201,12 @@ twin defined in **037** (e.g. `<CORE>__COLOR_WHEN`).
 
 1. App CLI / config (`--color=always|never|auto`)
 2. Preferred policy var if valid (`COLOR_WHEN` or chosen name)
-3. Else legacy: non-empty `NO_COLOR` → `never`; else non-empty `FORCE_COLOR` → `always`; else `auto`
-4. If **both** NO_COLOR and FORCE_COLOR non-empty → **`never`** + warn once (Rich-compatible; safer disable)
-5. Under `auto` only: TTY + `TERM` / `COLORTERM` capability heuristics
+2. Preferred policy enum if set and valid
+3. Else legacy carve-outs: non-empty `NO_COLOR` → `NEVER`; else non-empty `FORCE_COLOR` → `ALWAYS`; else `AUTO`
+4. If **both** NO_COLOR and FORCE_COLOR non-empty → **`NEVER`** (NO_COLOR wins, Rich) + report once
+5. Under `AUTO` only: TTY + `TERM` / `COLORTERM` capability heuristics
+
+(Step numbers assume CLI is still step 1; preferred enum outranks legacy.)
 
 ### FORCE_COLOR: presence only
 
@@ -259,7 +269,7 @@ ecosystems in the normative sections.)
 ## RFC 034 — Temporary directory environment variables
 
 **Working nexp:** `salotz.034_temp-env`  
-**Depends:** 032 (path/empty) lightly
+**Depends:** 032 (string/empty) lightly
 
 ### Normative env order (Python `tempfile`)
 
@@ -418,25 +428,37 @@ Process environment
 
 | Topic | Lean |
 |-------|------|
-| Values before leaves | 032 first |
-| Color both-legacy set | `never` + warn |
-| FORCE_COLOR levels | reject as API; appendix explains |
-| Capability | auto best-effort from terminal; not a 0–3 ladder on FORCE_COLOR |
-| COLOR bare name | no; prefer `COLOR_WHEN` or core-prefixed |
+| Values before leaves | 032 first; **done / citable** |
+| 032 title | **Value Types** (types + grammars); not broad “semantics” |
+| Empty string | ≡ **missing** (same as absent); not typed null; **keep** |
+| Presence flags | **not** a 032 type; counterexample only; carve-out in **033** |
+| NO_COLOR / FORCE_COLOR | **033** explicit legacy carve-out; recommend enum policy |
+| Both legacy color set | **NO_COLOR wins** (`NEVER`) + report once (Rich) |
+| FORCE_COLOR levels | reject as depth API; appendix in 033 |
+| Capability | auto best-effort from terminal; not a 0–3 ladder |
+| COLOR bare name | no; prefer policy enum name or core-prefixed |
 | DEBUG | bool mode, not filters |
+| Bool tokens | frozen in 032: true/false + yes/on/1/t/y and no/off/0/f/n |
+| Enum canonical form | **lowercase kebab-case**; case-insensitive match |
+| Enum aliases | explicit maps, not prose; no default FATAL→ERROR |
+| String | non-empty opaque body; path etc. are domain use |
+| int/float/list | **todo later**; not blocking 032 v0 |
+| Value policy | per variable: `silent` / `warn` / `strict` / `required` (default `warn`); not a process-wide switch |
+| Invalid reporting | per policy; **no** mandated channel |
+| 032 scope | stand-alone; **no** forward refs to leaf RFCs |
 | LOG_* sinks/format | out |
 | Tracing | out |
 | Prefixed twins | yes, owned by 037 |
-| Reporting invalid | 032; stderr/warn once |
 
 ## Open workshop items (do not block plan structure)
 
-1. 032 bool/enum token tables  
-2. Final `COLOR_WHEN` vs other policy name  
-3. Final `<CORE>` prefix string and branding  
-4. 037 precedence A vs B  
-5. Whether `<CORE>__NO_COLOR` exists or only policy enum twin  
-6. TTY capability RFC timing and names  
+1. Final color policy name (`COLOR_WHEN` vs other)  
+3. 035: whether `FATAL`/`CRITICAL` appear in ladder or stay out  
+4. Final `<CORE>` prefix string and branding  
+5. 037 precedence A vs B  
+6. Whether any `<CORE>__NO_COLOR` twin exists or **only** policy enum  
+7. TTY capability RFC timing and names  
+8. **Todo later:** int / float / list value forms (post-032 v0)  
 
 ## Future: TTY capability
 
@@ -469,8 +491,8 @@ Org idea:
 
 - [x] **030** Application Info — done (prerequisite; far-future polish out of plan)
 - [x] **031** Application Environment Registry — done (prerequisite; cross-cutting open Q → 032–037)
-- [ ] Workshop and draft **032** ← **current**
-- [ ] Draft **033** (incl. polite appendix on FORCE_COLOR depth overload)
+- [x] Workshop and draft **032** — complete at `rfcs/salotz.032_env-value-types/`; citable
+- [ ] Draft **033** (allow NO_COLOR/FORCE_COLOR; prefer enum; Rich precedence; FORCE_COLOR depth appendix)
 - [ ] Draft **034**, **035**, **036**
 - [ ] Workshop prefix name; draft **037**
 - [ ] Index + 031 links

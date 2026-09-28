@@ -298,3 +298,21 @@ Executive Summary:
 > discover what a product reads without executing it. Descriptive by default;
 > name form follows RFC 27. Does not own project-local `PRJX__*` leaves
 > (RFC 28).
+
+### 032: Environment Variable Value Types {#rfc-032}
+
+- nexp :: `salotz.032_env-value-types`
+- status :: DRAFT
+
+Proposal: [rfcs/salotz.032_env-value-types/README.md](rfcs/salotz.032_env-value-types/README.md)
+
+Executive Summary:
+
+> Defines a small type system and value grammar for environment variable
+> strings. Normative type names are `boolean`, `enum`, `string`, `null`, and
+> composite `nullable-enum`. Missing means absent or empty string (not typed
+> null). Each variable has a single value policy (`silent` | `warn` |
+> `strict` | `required`, default `warn`) plus a default when not required.
+> Covers token matching, invalid-value handling, and a documentation table
+> pattern (name, type, policy, default, canonical values, aliases). Name
+> form stays in RFC 027; stand-alone.
