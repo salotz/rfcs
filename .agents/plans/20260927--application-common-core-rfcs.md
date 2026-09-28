@@ -467,7 +467,9 @@ Org idea:
 
 ## Session checklist
 
-- [ ] Workshop and draft **032**
+- [x] **030** Application Info — done (prerequisite; far-future polish out of plan)
+- [x] **031** Application Environment Registry — done (prerequisite; cross-cutting open Q → 032–037)
+- [ ] Workshop and draft **032** ← **current**
 - [ ] Draft **033** (incl. polite appendix on FORCE_COLOR depth overload)
 - [ ] Draft **034**, **035**, **036**
 - [ ] Workshop prefix name; draft **037**
