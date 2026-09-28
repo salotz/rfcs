@@ -178,7 +178,7 @@ WUMPUS_API__DATABASE_URI = "Database connection URI"
 ## Open questions
 
 1. Follow-on RFC for cross-cutting control semantics (`NO_COLOR`, `DEBUG`, …)?
-3. JSON Schema / typify for env tables?
+2. JSON Schema / typify for env tables?
 
 ## Revision notes
 

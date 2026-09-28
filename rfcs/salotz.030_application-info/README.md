@@ -155,7 +155,7 @@ version = "v0"
 6. Experimental additions **SHOULD** use a clear prefix (e.g. `x-` in the
    table name) until standardized.
 
-For an example of extension see the application environment registry in 
+For an example of an extension, see the application environment registry in
 [RFC 031](../salotz.031_application-env/README.md).
 
 ### Core schema
