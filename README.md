@@ -294,10 +294,12 @@ Executive Summary:
 > Defines environment-variable declaration tables for RFC 030 application
 > info documents (`.appinfo/meta.toml`). Products document shared and
 > per-product env prefixes and variable maps (`[env]` / `[products.<id>.env]`)
-> with short- and long-form entries so humans, agents, and help tooling can
-> discover what a product reads without executing it. Descriptive by default;
-> name form follows RFC 27. Does not own project-local `PRJX__*` leaves
-> (RFC 28).
+> as per-name subtables so humans, agents, and help tooling can discover what
+> a product reads without executing it. Entries MAY carry RFC 032 value
+> metadata: `type`, `policy`, structured `default` (`value` and/or
+> `resolution`), enum `values`, and `aliases` as canonical → alias list.
+> Descriptive by default; name form follows RFC 27. Does not own
+> project-local `PRJX__*` leaves (RFC 28).
 
 ### 032: Environment Variable Value Types {#rfc-032}
 
@@ -314,5 +316,6 @@ Executive Summary:
 > null). Each variable has a single value policy (`silent` | `warn` |
 > `strict` | `required`, default `warn`) plus a default when not required.
 > Covers token matching, invalid-value handling, and a documentation table
-> pattern (name, type, policy, default, canonical values, aliases). Name
-> form stays in RFC 027; stand-alone.
+> pattern (name, type, policy, default, canonical values, aliases). Machine-
+> readable registry fields for those columns live in RFC 031. Name form
+> stays in RFC 027.

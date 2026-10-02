@@ -87,8 +87,9 @@ share one grammar.
 
 Name spelling, fields, and prefixes live in
 [RFC 027](../salotz.027_env-nexps/README.md).
-Declaring what a product reads lives in application info / env registry
-conventions (for example RFC 031).
+Declaring what a product reads, and the machine-readable registry
+fields for type/policy/default/enum values, is not in scope for this RFC.
+See [RFC 031](../salotz.031_application-env/README.md) for a specific (recommended) implementation.
 **Value types, token grammar, value policy, and validation** are this RFC.
 Which cross-cutting controls to honor lives in separate control
 conventions that **cite** this RFC by type name and policy (e.g. “type
@@ -569,7 +570,7 @@ Columns (normative recommendation for human docs citing this RFC):
 | **Policy**           | `silent`, `warn`, `strict`, or `required` (default of this field if omitted in prose: `warn`) |
 | **Default**          | Canonical default when policy is not `required`; use `—` or `n/a` when `required`          |
 | **Canonical values** | For `enum` / `nullable-enum`: closed list of canonical tokens (and `null` if nullable)     |
-| **Aliases**          | Explicit alias → canonical map; omit column or cell if none                                |
+| **Aliases**          | Explicit alias map; omit column or cell if none. Human tables often show alias→canonical; machine registries (RFC 031) store canonical→`[alias, …]` |
 | **Description**      | Short prose (optional but recommended)                                                     |
 
 Illustrative product docs:
@@ -588,8 +589,12 @@ Alias cells may use a compact notation.
 When the alias map is large, docs **SHOULD** move it to a **child table
 or subsection** per enum rather than overcrowding the main declaration
 table; a separate “Aliases” section is optional, not mandatory.
-Machine-readable registries (e.g. RFC 031) may map these columns to
-fields later; this section is the **human docs** pattern.
+Machine-readable encoding of these columns is specified in
+[RFC 031](../salotz.031_application-env/README.md)
+(`type`, `policy`, structured `default` with `value` / `resolution`,
+`values`, and `aliases` as canonical → alias list). This section remains
+the **human docs** pattern; doc tables may keep alias→canonical cells
+even though the registry inverts the map.
 
 ### Example evaluations
 
@@ -696,12 +701,18 @@ Out of scope for this revision; may appear in later RFCs or registry work:
 
 1. **`integer`**, **`number`**, and array/list value forms (JSON
    Schema-aligned names reserved for consistency).
-2. Machine-readable encoding of type names, `policy`, and defaults in
-   application env registries (RFC 031 or follow-on).
 
 
 ## Revision notes
 
+- **v0.2:** Note RFC 031 registry details: `aliases` as canonical →
+  alias arrays; structured `default` (`value` / `resolution`). Human docs
+  table may still show alias→canonical. (RFC 031 later dropped string
+  short-form vars; see 031 v0.3.)
+- **v0.1:** RFC 031 registry fields now encode `type`, `policy`,
+  `default`, enum `values`, and `aliases`. Deferred item on
+  machine-readable registry encoding is closed; human docs table still
+  lives here.
 - **v0 (complete):** nexp `salotz.032_env-value-types`; types `boolean`,
   `enum`, `string`, `null`, composite **`nullable-enum`**; missing =
   absent or empty; single per-variable **value policy**
