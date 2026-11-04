@@ -335,3 +335,8 @@ Should be committed and then can be removed.
 ```python
   import numpy as np
 ```
+
+## Schemas
+
+CUE schemas for tag names, categories, and parsed code tags are in
+[schemas](schemas/).

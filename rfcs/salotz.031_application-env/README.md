@@ -76,6 +76,9 @@ consumers **MUST** interpret them per RFC 032. Name form remains
 
 ## Config rules (normative)
 
+CUE definitions for these tables are in [schemas](schemas/) (`#EnvTable`,
+`#EnvVar`, `#AppInfo`). They import RFC 030, RFC 032, and RFC 027.
+
 ### Location
 
 | Table                 | Role                                                        |
@@ -381,12 +384,16 @@ type = "string"
 policy = "required"
 ```
 
+## Schemas
+
+CUE definitions for env registry tables are in [schemas](schemas/)
+(`#EnvTable`, `#EnvVar`, `#AppInfo`). They import RFC 030, RFC 032,
+and RFC 027.
+
 ## Open questions
 
 1. Follow-on RFC for cross-cutting control semantics (`NO_COLOR`, `DEBUG`, …)?
-2. JSON Schema / typify for env tables (including RFC 032 field enums,
-   structured `default`, and `aliases` arrays)?
-3. Allow `default.value` to carry a non-wire “template string” for display
+2. Allow `default.value` to carry a non-wire “template string” for display
    while `resolution` remains authoritative—or keep templates only inside
    `resolution` prose?
 

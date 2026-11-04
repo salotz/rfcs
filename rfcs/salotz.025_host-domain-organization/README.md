@@ -128,3 +128,8 @@ Putting it altogether you will have something like this:
         ├── outbox
         └── projects
 ```
+
+## Schemas
+
+CUE schemas for host layout paths and domain subdirectories are in
+[schemas](schemas/).

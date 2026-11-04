@@ -3,17 +3,27 @@ quality control that goes into this project.
 
 ## RFC File Layout Convention
 
-- Use a **directory** (containing `README.md` plus any supporting files)
-  only when the RFC needs additional assets beyond a single document.
-  Examples of supporting files: `implementation-advice.md`,
-  format summary documents, examples, etc.
+Each RFC lives in a **directory** named after its nexp, with `README.md`
+as the proposal document. Additional assets go alongside the README:
+implementation advice, format summaries, examples, glossaries, and
+machine-readable schemas.
 
-- Use a **single flat `.md` file** for simple RFCs that are self-contained
-  in one document.
+CUE schemas for validating data that follows an RFC live in `schemas/`
+inside that RFC directory. Each RFC is its own CUE module
+(`schemas/cue.mod`, path `salotz.info/rfcs/<number>_<short-name>`).
 
-Current examples:
-- Directories: `salotz.002_semantic-changelog/`, `salotz.006_codetags/`,
-  `salotz.021_git-commit-messages/`
-- Flat files: most others (e.g. `salotz.003_rfc-specs.md`)
+Third-party standards that RFCs cite (Keep a Changelog, XDG Base
+Directory, PRJ Spec, …) have their own modules under [external/](../external/).
 
-This convention keeps the tree simple while allowing complexity when needed.
+When one schema imports another, the dependency is wired locally with
+a `cue.mod/pkg/` overlay (a symlink to the other module's
+`schemas.cue`). CUE 0.15 has no module-replace for unpublished local
+modules; the overlay is how imports resolve without a registry.
+
+Use a directory even for short RFCs so schemas and later supporting files
+have a stable home.
+
+## Editing
+
+See [editing.md](editing.md) for the editor checklist (links, metadata,
+spelling/grammar, and index updates).

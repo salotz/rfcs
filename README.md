@@ -35,7 +35,7 @@ Executive Summary:
 - nexp :: `salotz.003_rfc-specs`
 - status :: DRAFT
 
-Proposal: [rfcs/salotz.003_rfc-specs.md](rfcs/salotz.003_rfc-specs.md)
+Proposal: [rfcs/salotz.003_rfc-specs/README.md](rfcs/salotz.003_rfc-specs/README.md)
 
 Executive Summary:
 
@@ -48,7 +48,7 @@ Executive Summary:
 - nexp :: `salotz.004_nexps`
 - status :: DRAFT
 
-Proposal: [rfcs/salotz.004_nexps.md](rfcs/salotz.004_nexps.md)
+Proposal: [rfcs/salotz.004_nexps/README.md](rfcs/salotz.004_nexps/README.md)
 
 Executive Summary:
 
@@ -72,10 +72,10 @@ Executive Summary:
 
 ### 012: Errors as Information {#rfc-012}
 
-- nexp :: `012_information-errors`
+- nexp :: `salotz.012_information-errors`
 - status :: DRAFT
 
-Proposal: [rfcs/salotz.012_information-errors.md](rfcs/salotz.012_information-errors.md)
+Proposal: [rfcs/salotz.012_information-errors/README.md](rfcs/salotz.012_information-errors/README.md)
 
 Executive Summary:
 
@@ -89,7 +89,7 @@ Executive Summary:
 - nexp :: `salotz.014_project-declarations`
 - status :: DRAFT
 
-Proposal: [rfcs/salotz.014_project-declarations.md](rfcs/salotz.014_project-declarations.md)
+Proposal: [rfcs/salotz.014_project-declarations/README.md](rfcs/salotz.014_project-declarations/README.md)
 
 Executive Summary:
 
@@ -105,7 +105,7 @@ Executive Summary:
 - nexp :: `salotz.016_trivial-plaintext-formats`
 - status :: DRAFT
 
-Proposal: [rfcs/salotz.016_trivial-plaintext-formats.md](rfcs/salotz.016_trivial-plaintext-formats.md)
+Proposal: [rfcs/salotz.016_trivial-plaintext-formats/README.md](rfcs/salotz.016_trivial-plaintext-formats/README.md)
 
 Executive Summary:
 
@@ -118,7 +118,7 @@ Executive Summary:
 - nexp :: `salotz.017_bunker`
 - status :: DRAFT
 
-Proposal: [rfcs/salotz.017_bunker.md](rfcs/salotz.017_bunker.md)
+Proposal: [rfcs/salotz.017_bunker/README.md](rfcs/salotz.017_bunker/README.md)
 
 Executive Summary:
 
@@ -132,7 +132,7 @@ Executive Summary:
 - nexp :: `salotz.020_repo-issue-tracker`
 - status :: DRAFT
 
-Proposal: [rfcs/salotz.020_repo-issue-tracker.md](rfcs/salotz.020_repo-issue-tracker.md)
+Proposal: [rfcs/salotz.020_repo-issue-tracker/README.md](rfcs/salotz.020_repo-issue-tracker/README.md)
 
 Executive Summary:
 
@@ -195,7 +195,7 @@ Proposal: [rfcs/salotz.024_extended_xdg_base_directory/README.md](rfcs/salotz.02
 
 Executive Summary:
 
-> This RFC extends the XDG Base Directory Specification with additional user-local directories and environment variables (prefixed `XDGX_`) for common use cases not covered by the base spec. It defines `~/.local/opt` (or `XDGX_OPT_HOME`) for ad-hoc user-managed software installs, `~/.local/tmp` (`XDGX_TMP_HOME`) as a user-local temporary directory distinct from the system `/tmp`, `~/.local/scratch` (`XDGX_SCRATCH_HOME`) for ephemeral batch-process scratch space, and `~/.local/var` for variable/persistent data akin to the FHS `/var`. Includes recommendations for snapshotting, cleanup policies, and usage to improve system organization, backup strategies, and performance.
+> This RFC extends the XDG Base Directory Specification with additional user-local directories and environment variables (prefixed `XDGX_`) for common use cases not covered by the base spec. It defines `~/.local/opt` (or `XDGX_OPT_HOME`) for ad-hoc user-managed software installs, `~/.local/tmp` (`XDGX_TMP_HOME`) as a user-local temporary directory distinct from the system `/tmp`, `~/.local/scratch` (`XDGX_SCRATCH_HOME`) for ephemeral batch-process scratch space, and `~/.local/var` (`XDGX_VAR_HOME`) for variable/persistent data akin to the FHS `/var`. Includes recommendations for snapshotting, cleanup policies, and usage to improve system organization, backup strategies, and performance.
 
 ### 025: Host Domain Organization {#rfc-025}
 
@@ -251,7 +251,7 @@ Executive Summary:
 - nexp :: `salotz.029_glossary-format`
 - status :: DRAFT
 
-Proposal: [rfcs/salotz.029_glossary-format.md](rfcs/salotz.029_glossary-format.md)
+Proposal: [rfcs/salotz.029_glossary-format/README.md](rfcs/salotz.029_glossary-format/README.md)
 
 Executive Summary:
 

@@ -1,0 +1,1 @@
+../../../../../../../external/keep-a-changelog/1.1.0/schemas/schemas.cue

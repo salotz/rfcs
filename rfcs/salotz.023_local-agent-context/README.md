@@ -203,3 +203,8 @@ Use `xagents/` under XDG/XDGX locations (see RFC 24), e.g. `~/.cache/xagents`, n
 Explicitly reference upward context files from repo `AGENTS.md` / `.agents/context/*.md` so agents discover them.
 ```
 
+## Schemas
+
+CUE schemas for local agent paths and override names are in
+[schemas](schemas/). XDG variables are imported from
+[external/xdg-base-directory](../../external/xdg-base-directory/schemas/).

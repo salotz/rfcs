@@ -34,7 +34,7 @@ overrides of repository context, see
 ### Generic Rules
 
 Files and folders should be named according to name expressions ([RFC
-salotz.004_nexps](../salotz.004_nexps.md)).
+salotz.004_nexps](../salotz.004_nexps/README.md)).
 
 See that RFC for details on what the fields in the names should mean.
 
@@ -110,7 +110,7 @@ You can also reference other glossaries that are relevant to the project.
 The glossary should be in the file `glossary.md`.
 
 Glossary entries must follow the Markdown format in
-[RFC 29: Glossary Format](../salotz.029_glossary-format.md): a `# Glossary`
+[RFC 29: Glossary Format](../salotz.029_glossary-format/README.md): a `# Glossary`
 title, one `## term` subheading per entry, short definition bodies, and
 in-document cross-links between terms (not a table-as-glossary).
 
@@ -215,3 +215,8 @@ Structure for skills is TBD.
 
 All structure should support recursive definition for large repos
 (like monorepos) with multiple sub-projects.
+
+## Schemas
+
+CUE schemas for repository paths and ADR records are in [schemas](schemas/).
+ADR basenames and glossary filenames import RFC 4 and RFC 29.

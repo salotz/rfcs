@@ -6,7 +6,7 @@
 
 
 This RFC is inspired by "name expressions" (nexp) [RFC
-4](../salotz.004_nexps.md) but adapting the particular constraints of
+4](../salotz.004_nexps/README.md) but adapting the particular constraints of
 UNIX style environment variables and some other *ad hoc, de facto*
 standards common to the community.
 
@@ -191,3 +191,10 @@ namespace they are using. We also encourage the development of a
 separate, but derivative standard which provides a machine readable
 data schema for declaring and publishing environment variables and
 variable patterns for public dispersal.
+
+## Schemas
+
+CUE schemas for environment variable name form and parsed anatomy
+(namespace, fields, words) are in [schemas](schemas/). Reserved name
+catalogs are imported from [external/env](../../external/env/) packages,
+plus XDG and PRJ Spec directory modules.

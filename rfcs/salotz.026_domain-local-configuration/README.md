@@ -62,4 +62,6 @@ export APPTAINER_CACHE_PATH="~/.local/cache/widget-cache"
 
 Overriding the previously set path.
 
+## Schemas
 
+CUE schemas for `.local` layout names are in [schemas](schemas/).

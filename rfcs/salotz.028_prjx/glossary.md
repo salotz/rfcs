@@ -2,7 +2,7 @@
 
 Terms defined by this RFC. Drawn from the main [README](./README.md).
 
-Format: [RFC 29: Glossary Format](../salotz.029_glossary-format.md)
+Format: [RFC 29: Glossary Format](../salotz.029_glossary-format/README.md)
 (`## term` subheadings with cross-links). Placement of this file as
 RFC supporting material follows that RFC's informative patterns; project
 design glossaries are described in

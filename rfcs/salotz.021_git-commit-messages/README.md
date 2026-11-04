@@ -92,3 +92,7 @@ These are:
 Projects can define their own domains as well (perhaps via Code
 Ownership), as long as they do not conflict with the above.
 
+## Schemas
+
+CUE schemas for WIP subjects, issue references, domains, and trailers
+are in [schemas](schemas/).

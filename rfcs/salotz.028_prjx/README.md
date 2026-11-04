@@ -100,7 +100,7 @@ namespaces that can be reused across those systems.
 
 For instance if you are building and registering container images
 locally for each project they would be `me.wumpus` and `acme.wumpus`
-(using [RFC 4](../salotz.004_nexps.md) convention). If you are setting up a preview
+(using [RFC 4](../salotz.004_nexps/README.md) convention). If you are setting up a preview
 environment the Kubernetes resources should each be in their own
 namespaces like `me` and `acme`. And so on.
 
@@ -122,7 +122,7 @@ Each replica has a **replica distinguisher** which in combination with the FQ pr
 For git worktrees the natural replica distinguisher is the branch
 name, as this is guaranteed to be at least locally unique.
 
-So the FQ replica names would be (using [RFC 4](../salotz.004_nexps.md) nexp notation):
+So the FQ replica names would be (using [RFC 4](../salotz.004_nexps/README.md) nexp notation):
 
 - `acme.wumpus.main`
 - `acme.wumpus.bugfix-1`
@@ -337,7 +337,7 @@ Following the [PRJ Spec](https://github.com/numtide/prj-spec) the value must pas
 
 We recommend setting the project ID as
 `{project.namespace}_{project.name}_{replica.distinguisher}` from the project metadata,
-replacing `.` with `_` but otherwise following [nexp RFC 4](../salotz.004_nexps.md)
+replacing `.` with `_` but otherwise following [nexp RFC 4](../salotz.004_nexps/README.md)
 conventions.
 
 If this is too long tools can follow the Kubernetes conventions of
@@ -501,3 +501,9 @@ Future extensions may be providing more metadata on each environment variable su
 For example a tool like `fnox` may manage all the secrets and be
 declared in `fnox.toml` but others may need to be manually set by
 operators in their local configuration.
+
+## Schemas
+
+CUE schemas for project metadata TOML, IDs, and `PRJX` / `PRJX__`
+names are in [schemas](schemas/). They import RFC 4, RFC 27, and
+[PRJ Spec](../../external/prj-spec/schemas/).

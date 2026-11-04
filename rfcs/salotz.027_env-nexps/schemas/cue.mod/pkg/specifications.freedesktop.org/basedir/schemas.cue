@@ -1,0 +1,1 @@
+../../../../../../../external/xdg-base-directory/schemas/schemas.cue

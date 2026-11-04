@@ -311,6 +311,9 @@ spellings (lowercase ASCII, as shown):
 | `null`          | base      | [`null`](#null)                   |
 | `nullable-enum` | composite | [`nullable-enum`](#nullable-enum) |
 
+CUE encodings of these names, policies, and tokens are in
+[schemas](schemas/).
+
 Do not substitute synonyms in formal citations (`bool`, `str`,
 `enumeration`, `enum | null` as the *name*, `Optional[Enum]`, …).
 Prose MAY describe the composite as “nullable enum” in running text;
@@ -702,6 +705,11 @@ Out of scope for this revision; may appear in later RFCs or registry work:
 1. **`integer`**, **`number`**, and array/list value forms (JSON
    Schema-aligned names reserved for consistency).
 
+
+## Schemas
+
+CUE encodings of type names, policies, and tokens are in
+[schemas](schemas/). Variable names import RFC 27.
 
 ## Revision notes
 

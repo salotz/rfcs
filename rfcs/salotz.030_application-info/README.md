@@ -127,6 +127,7 @@ register product prefixes under `[project.env-vars]`.
 - Encoding: UTF-8
 - Format: TOML
 - Path: `.appinfo/meta.toml` (see above)
+- CUE schema: [schemas](schemas/) (`#AppInfo`)
 
 ### Header
 
@@ -229,10 +230,14 @@ summary = "HTTP API server for wumpus"
 Extensions (for example `[env]` from RFC 031) may appear in the same file;
 core-only consumers ignore them.
 
+## Schemas
+
+CUE definitions for `.appinfo/meta.toml` are in [schemas](schemas/).
+The core document type is `#AppInfo` (open for extensions).
+
 ## Open questions
 
 1. Multiple commands per product in core vs extension?
-2. JSON Schema / typify for consumers?
 
 ## Revision notes
 

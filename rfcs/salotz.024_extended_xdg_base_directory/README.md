@@ -2,7 +2,7 @@
 
 - nexp :: `salotz.024_extended_xdg_base_directory`
 - long name :: Extended XDG Base Directory Specification
-- executive summary :: This RFC extends the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir/latest/) with additional user-local directories and environment variables (prefixed `XDGX_`) for common use cases not covered by the base spec. It defines `~/.local/opt` (or `XDGX_OPT_HOME`) for ad-hoc user-managed software installs, `~/.local/tmp` (`XDGX_TMP_HOME`) as a user-local temporary directory distinct from the system `/tmp`, `~/.local/scratch` (`XDGX_SCRATCH_HOME`) for ephemeral batch-process scratch space, and `~/.local/var` for variable/persistent data akin to the FHS `/var`. Includes recommendations for snapshotting, cleanup policies, and usage to improve system organization, backup strategies, and performance.
+- executive summary :: This RFC extends the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir/latest/) with additional user-local directories and environment variables (prefixed `XDGX_`) for common use cases not covered by the base spec. It defines `~/.local/opt` (or `XDGX_OPT_HOME`) for ad-hoc user-managed software installs, `~/.local/tmp` (`XDGX_TMP_HOME`) as a user-local temporary directory distinct from the system `/tmp`, `~/.local/scratch` (`XDGX_SCRATCH_HOME`) for ephemeral batch-process scratch space, and `~/.local/var` (`XDGX_VAR_HOME`) for variable/persistent data akin to the FHS `/var`. Includes recommendations for snapshotting, cleanup policies, and usage to improve system organization, backup strategies, and performance.
 
 This RFC adds some minor extensions to the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir/latest/) to cover a wider variety of use cases.
 
@@ -115,6 +115,8 @@ This directory can be cleaned on system reboot.
 
 Similar to the [FHS](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) standard for the `/var` directory this standard adds the `~/.local/var` directory for the same purpose as `/var` but for user installed applications.
 
+This can be overridden with the environment variable `XDGX_VAR_HOME`.
+
 We note that under the XDG standard *many* applications misuse the `~/.local/share` for what should be a `~/.local/var`.
 
 #### Recommendations
@@ -123,3 +125,8 @@ It is recommended to snapshot the var directory for backup purposes.
 
 The var directory should not be automatically cleaned up and should persist between system reboots.
 
+## Schemas
+
+CUE schemas for XDGX directories and environment variables are in
+[schemas](schemas/). XDG Base Directory types are imported from
+[external/xdg-base-directory](../../external/xdg-base-directory/schemas/).

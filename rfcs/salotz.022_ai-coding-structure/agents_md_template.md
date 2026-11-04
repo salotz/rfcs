@@ -69,7 +69,7 @@ Specific processes (e.g. `releases.md`, `role_engineer.md`) may be exposed as ag
 
 Files/directories use **Name Expressions (nexps)**:
 
-- [Name Expressions (nexps) standard](https://github.com/salotz/rfcs/blob/master/rfcs/salotz.004_nexps.md)
+- [Name Expressions (nexps) standard](https://github.com/salotz/rfcs/blob/master/rfcs/salotz.004_nexps/README.md)
 
 Dots (`.`) separate namespaces; underscores/hyphens separate fields.
 

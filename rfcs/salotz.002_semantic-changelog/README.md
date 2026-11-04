@@ -223,6 +223,12 @@ The accepted keys for trailers are:
 | `Change-Full` | yes        | The fully qualified change type | See sub-categories for each category. E.g. `growth/feature`. Optional |
 | `Audience`    | yes        | Name of the audience.           | `users`, `contributors` |
 
+## Schemas
+
+CUE schemas for versions, change categories, trailers, and changelog
+entries are in [schemas](schemas/). Keep a Changelog types are imported
+from [external/keep-a-changelog](../../external/keep-a-changelog/1.1.0/schemas/).
+
 # Inspirations
 
 This is inspired by Rich Hickey and his discussion on "Semantic
