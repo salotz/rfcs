@@ -1,1 +1,0 @@
-../../../../../../../../external/env/gettext/gettext.cue

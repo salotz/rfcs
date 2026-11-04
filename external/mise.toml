@@ -1,0 +1,135 @@
+# Tooling for CUE modules in this folder. Each module has its own
+# vet/fmt tasks so it can be lifted into a standalone repository.
+
+[tools]
+cue = "0.17.1"
+
+[tasks.vet]
+description = "Vet every CUE module"
+depends = [
+	"std:vet",
+	"mime:vet",
+	"semver:vet",
+	"http:vet",
+	"unix:vet",
+	"url:vet",
+	"git:vet",
+	"keep-a-changelog:vet",
+	"prj-spec:vet",
+	"xdg-base-directory:vet",
+]
+
+[tasks.fmt]
+description = "Format every CUE module"
+depends = [
+	"std:fmt",
+	"mime:fmt",
+	"semver:fmt",
+	"http:fmt",
+	"unix:fmt",
+	"url:fmt",
+	"git:fmt",
+	"keep-a-changelog:fmt",
+	"prj-spec:fmt",
+	"xdg-base-directory:fmt",
+]
+
+[tasks."std:vet"]
+description = "Vet salotz.info/std"
+dir = "std"
+run = "cue vet ./..."
+
+[tasks."std:fmt"]
+description = "Format salotz.info/std"
+dir = "std"
+run = "cue fmt ./..."
+
+[tasks."mime:vet"]
+description = "Vet salotz.info/mime"
+dir = "mime"
+run = "cue vet ./..."
+
+[tasks."mime:fmt"]
+description = "Format salotz.info/mime"
+dir = "mime"
+run = "cue fmt ./..."
+
+[tasks."semver:vet"]
+description = "Vet salotz.info/semver"
+dir = "semver"
+run = "cue vet ./..."
+
+[tasks."semver:fmt"]
+description = "Format salotz.info/semver"
+dir = "semver"
+run = "cue fmt ./..."
+
+[tasks."http:vet"]
+description = "Vet salotz.info/http"
+dir = "http"
+run = "cue vet ./..."
+
+[tasks."http:fmt"]
+description = "Format salotz.info/http"
+dir = "http"
+run = "cue fmt ./..."
+
+[tasks."unix:vet"]
+description = "Vet salotz.info/unix"
+dir = "unix"
+run = "cue vet ./..."
+
+[tasks."unix:fmt"]
+description = "Format salotz.info/unix"
+dir = "unix"
+run = "cue fmt ./..."
+
+[tasks."url:vet"]
+description = "Vet salotz.info/url"
+dir = "url"
+run = "cue vet ./..."
+
+[tasks."url:fmt"]
+description = "Format salotz.info/url"
+dir = "url"
+run = "cue fmt ./..."
+
+[tasks."git:vet"]
+description = "Vet salotz.info/git"
+dir = "git"
+run = "cue vet ./..."
+
+[tasks."git:fmt"]
+description = "Format salotz.info/git"
+dir = "git"
+run = "cue fmt ./..."
+
+[tasks."keep-a-changelog:vet"]
+description = "Vet keepachangelog.com/keep-a-changelog"
+dir = "keep-a-changelog"
+run = "cue vet ./..."
+
+[tasks."keep-a-changelog:fmt"]
+description = "Format keepachangelog.com/keep-a-changelog"
+dir = "keep-a-changelog"
+run = "cue fmt ./..."
+
+[tasks."prj-spec:vet"]
+description = "Vet github.com/numtide/prj-spec"
+dir = "prj-spec/schemas"
+run = "cue vet ./..."
+
+[tasks."prj-spec:fmt"]
+description = "Format github.com/numtide/prj-spec"
+dir = "prj-spec/schemas"
+run = "cue fmt ./..."
+
+[tasks."xdg-base-directory:vet"]
+description = "Vet specifications.freedesktop.org/basedir"
+dir = "xdg-base-directory/schemas"
+run = "cue vet ./..."
+
+[tasks."xdg-base-directory:fmt"]
+description = "Format specifications.freedesktop.org/basedir"
+dir = "xdg-base-directory/schemas"
+run = "cue fmt ./..."

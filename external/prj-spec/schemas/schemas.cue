@@ -14,7 +14,7 @@ package schemas
 #IdFilename: "prj_id"
 
 #Defaults: {
-	configHome: "${PRJ_ROOT}/.config"
+	configHome:      "${PRJ_ROOT}/.config"
 	cacheHomeWithID: "${XDG_CACHE_HOME}/prj/${PRJ_ID}"
 	cacheHomeLocal:  "${PRJ_ROOT}/.cache"
 }

@@ -3,20 +3,20 @@ package schemas
 import "list"
 import "strings"
 
-import posix "salotz.info/unix-env/posix"
-import locale "salotz.info/unix-env/locale"
-import gettext "salotz.info/unix-env/gettext"
-import systemd "salotz.info/unix-env/systemd"
-import ssh "salotz.info/unix-env/openssh"
-import nocolor "salotz.info/unix-env/nocolor"
-import x11 "salotz.info/unix-env/x11"
-import defacto "salotz.info/unix-env/defacto"
+import posix "salotz.info/unix/varsets/posix"
+import locale "salotz.info/unix/varsets/locale"
+import gettext "salotz.info/unix/varsets/gettext"
+import systemd "salotz.info/unix/varsets/systemd"
+import ssh "salotz.info/unix/varsets/openssh"
+import nocolor "salotz.info/unix/varsets/nocolor"
+import x11 "salotz.info/unix/varsets/x11"
+import defacto "salotz.info/unix/varsets/defacto"
 import xdg "specifications.freedesktop.org/basedir:schemas"
 import prj "github.com/numtide/prj-spec:schemas"
 
 // salotz.027_env-nexps — UNIX environment variable name form.
 // Values are out of scope (see RFC 032). Reserved catalogs are imported
-// from external/env packages (plus XDG and PRJ Spec directory modules).
+// from salotz.info/unix/varsets (plus XDG and PRJ Spec directory modules).
 
 // POSIX form, minus underscore-only names (reserved for the platform).
 #EnvName: posix.#Form & !~"^_+$"

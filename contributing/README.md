@@ -15,10 +15,11 @@ inside that RFC directory. Each RFC is its own CUE module
 Third-party standards that RFCs cite (Keep a Changelog, XDG Base
 Directory, PRJ Spec, …) have their own modules under [external/](../external/).
 
-When one schema imports another, the dependency is wired locally with
-a `cue.mod/pkg/` overlay (a symlink to the other module's
-`schemas.cue`). CUE 0.15 has no module-replace for unpublished local
-modules; the overlay is how imports resolve without a registry.
+When one schema imports another, declare it in `schemas/cue.mod/module.cue`
+`deps` (module path + version). Local checkouts without a registry use
+`cue.mod/local-module.cue` `replaceWith` relative paths to the other
+module root (sibling RFC `schemas/` or `external/…`). That file is
+gitignored per module (`cue.mod/.gitignore`); it is not published.
 
 Use a directory even for short RFCs so schemas and later supporting files
 have a stable home.

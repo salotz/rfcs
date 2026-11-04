@@ -1,1 +1,0 @@
-../../../../../../../salotz.030_application-info/schemas/schemas.cue

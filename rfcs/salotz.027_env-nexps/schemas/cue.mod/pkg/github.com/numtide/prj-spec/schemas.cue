@@ -1,1 +1,0 @@
-../../../../../../../../external/prj-spec/schemas/schemas.cue

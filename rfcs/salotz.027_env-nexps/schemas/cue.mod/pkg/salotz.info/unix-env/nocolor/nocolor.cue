@@ -1,1 +1,0 @@
-../../../../../../../../external/env/nocolor/nocolor.cue
