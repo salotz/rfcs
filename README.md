@@ -319,3 +319,19 @@ Executive Summary:
 > pattern (name, type, policy, default, canonical values, aliases). Machine-
 > readable registry fields for those columns live in RFC 031. Name form
 > stays in RFC 027.
+
+### 033: Dirshape {#rfc-033}
+
+- nexp :: `salotz.033_dirshape`
+- status :: DRAFT
+
+Proposal: [rfcs/salotz.033_dirshape/README.md](rfcs/salotz.033_dirshape/README.md)
+
+Executive Summary:
+
+> Reusable encoding of directory and filename requirements. Authors write a
+> compact layout spec; a compiler expands it to a strict intermediate tree
+> keyed by on-disk names. One injected root per check. v1 is exact-name
+> constraints; globs (including non-final segments), walk-and-unify, and
+> layout anchors are designed in. Consuming RFCs and `external/` modules
+> import this RFC’s schemas. Content types stay separate from placement.
