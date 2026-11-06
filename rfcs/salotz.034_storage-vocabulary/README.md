@@ -222,7 +222,7 @@ This RFC keeps the words so the contrast is explicit.
 The definitions are normative for now.
 They sit *on* [shares](#share) or [object storage](#object-storage); they do not extend the storage stack.
 
-A later RFC may place stores under directories from [RFC 24](../salotz.024_extended_xdg_base_directory/README.md).
+[RFC 35](../salotz.035_host-resource-store/README.md) places stores under directories in the [RFC 24](../salotz.024_extended_xdg_base_directory/README.md) style (`XDGX_STORE_HOME`, `XDGX_RESOURCE_HOME`).
 That is layout, which this RFC lists as a non-goal.
 
 ### store
@@ -463,6 +463,6 @@ The schema does not invent host paths or mount policy.
 ## Related RFCs
 
 - [RFC 24](../salotz.024_extended_xdg_base_directory/README.md): `XDGX_*` user-local directories.
-  Later RFCs may place [stores](#store) under such directories.
 - [RFC 25](../salotz.025_host-domain-organization/README.md): host work layout (`~/tree`, `~/local`, scratch).
 - [RFC 29](../salotz.029_glossary-format/README.md): glossary heading and cross-link conventions used for the terms above.
+- [RFC 35](../salotz.035_host-resource-store/README.md): host directory layout for stores (`XDGX_STORE_HOME`, `XDGX_RESOURCE_HOME`).

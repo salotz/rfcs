@@ -54,9 +54,9 @@ Local scratch space should be at `~/scratch`.
 
 Local project work is at `~/local/work`.
 
-If you have local resources that you reuse and does not have a
-standard location under `~/.cache` or `~/.local` you can use
-`~/local/resources` directory. 
+If you have miscellaneous local files that you reuse and that do not have a
+standard location under `~/.cache` or `~/.local` you can use the
+`~/local/misc` directory.
 
 For example VM or OS images.
 
@@ -111,7 +111,7 @@ Putting it altogether you will have something like this:
 ├── local
 │   ├── inbox
 │   ├── outbox
-│   ├── resources
+│   ├── misc
 │   └── work
 ├── scratch
 └── tree

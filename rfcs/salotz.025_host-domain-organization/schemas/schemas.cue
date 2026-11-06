@@ -12,13 +12,13 @@ import (
 #DomainSubdir: "devel" | "projects" | "admin" | "inbox" | "outbox"
 
 #Paths: {
-	scratch:        unixpath.#HomeRelativePath & "~/scratch"
-	localWork:      unixpath.#HomeRelativePath & "~/local/work"
-	localResources: unixpath.#HomeRelativePath & "~/local/resources"
-	localInbox:     unixpath.#HomeRelativePath & "~/local/inbox"
-	localOutbox:    unixpath.#HomeRelativePath & "~/local/outbox"
-	tree:           unixpath.#HomeRelativePath & "~/tree"
-	downloads:      unixpath.#HomeRelativePath & "~/Downloads"
+	scratch:     unixpath.#HomeRelativePath & "~/scratch"
+	localWork:   unixpath.#HomeRelativePath & "~/local/work"
+	localMisc:   unixpath.#HomeRelativePath & "~/local/misc"
+	localInbox:  unixpath.#HomeRelativePath & "~/local/inbox"
+	localOutbox: unixpath.#HomeRelativePath & "~/local/outbox"
+	tree:        unixpath.#HomeRelativePath & "~/tree"
+	downloads:   unixpath.#HomeRelativePath & "~/Downloads"
 }
 
 #DomainTree: {
@@ -38,7 +38,7 @@ import (
 			name: "local/"
 			children: {
 				work: {name: "work/"}
-				resources: {name: "resources/", presence: "optional"}
+				misc: {name: "misc/", presence: "optional"}
 				inbox: {name: "inbox/", presence: "optional"}
 				outbox: {name: "outbox/", presence: "optional"}
 			}

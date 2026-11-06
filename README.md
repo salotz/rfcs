@@ -354,3 +354,18 @@ Executive Summary:
 > mean different things by it). Includes what partition tables, fstab, and
 > similar configs map, and mappings from LVM, btrfs, Unraid, iSCSI, NFS, and
 > related systems.
+
+### 035: Host Resource Store Directory Layout {#rfc-035}
+
+- nexp :: `salotz.035_host-resource-store`
+- status :: DRAFT
+
+Proposal: [rfcs/salotz.035_host-resource-store/README.md](rfcs/salotz.035_host-resource-store/README.md)
+
+Executive Summary:
+
+> Defines a directory layout for host home directories for storing and
+> organizing bulk data resources. Distinguishes a physical **store
+> directory** on host-associated storage from a logical **resource
+> directory** that applications use, so data from multiple mounted
+> filesystems can be merged without rewriting application paths.
