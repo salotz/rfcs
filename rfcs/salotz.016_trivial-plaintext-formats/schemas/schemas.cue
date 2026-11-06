@@ -1,5 +1,7 @@
 package schemas
 
+import dirshape "salotz.info/rfcs/033_dirshape:schemas"
+
 // salotz.016_trivial-plaintext-formats — .list / .str files and list lines.
 
 #ListExtension:   "list"
@@ -19,11 +21,28 @@ package schemas
 // A single list line split on the chosen separator.
 #ListLine: {
 	separator: #ListLineSeparator | *","
-	items:     [...string]
+	items: [...string]
+}
+
+// Files whose names end in .list / .str, relative to one injected root.
+#PlaintextLayoutSpec: dirshape.#LayoutSpec & {
+	entries: {
+		list: {
+			name:     "*.list"
+			match:    "glob"
+			presence: "optional"
+		}
+		str: {
+			name:     "*.str"
+			match:    "glob"
+			presence: "optional"
+		}
+	}
 }
 
 _examples: {
 	list: #ListFile & {items: ["alpha", "beta"]}
 	line: #ListLine & {separator: ",", items: ["1", "2", "3", "hello"]}
-	str:  #StringFile & "just a string"
+	str:    #StringFile & "just a string"
+	layout: #PlaintextLayoutSpec
 }

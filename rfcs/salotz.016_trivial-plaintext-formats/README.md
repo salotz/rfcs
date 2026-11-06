@@ -42,3 +42,5 @@ valid character.
 ## Schemas
 
 CUE schemas for `.list` / `.str` parsed forms are in [schemas](schemas/).
+`#PlaintextLayoutSpec` is a [RFC 033](../salotz.033_dirshape/README.md)
+layout for `*.list` / `*.str` under one injected root.

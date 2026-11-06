@@ -9,6 +9,9 @@ deps: {
 	"salotz.info/rfcs/027_env-nexps@v0": {
 		v: "v0.0.1"
 	}
+	"salotz.info/rfcs/033_dirshape@v0": {
+		v: "v0.0.1"
+	}
 	"github.com/numtide/prj-spec@v0": {
 		v: "v0.0.1"
 	}

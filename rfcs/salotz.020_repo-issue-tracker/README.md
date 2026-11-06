@@ -61,4 +61,6 @@ contents are referenced is up to the `schema` of the issue.
 ## Schemas
 
 CUE schemas for ticket filenames and layout names are in [schemas](schemas/).
-Issue IDs import RFC 4 name segments.
+Issue IDs import RFC 4 name segments. `#IssuesLayoutSpec` is a
+[RFC 033](../salotz.033_dirshape/README.md) layout for `issues.toml`,
+`issues/` / `.issues/`, tickets, and attachment sidecars.

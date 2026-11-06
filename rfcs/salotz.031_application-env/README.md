@@ -388,7 +388,8 @@ policy = "required"
 
 CUE definitions for env registry tables are in [schemas](schemas/)
 (`#EnvTable`, `#EnvVar`, `#AppInfo`). They import RFC 030, RFC 032,
-and RFC 027.
+and RFC 027. `#AppInfoLayoutSpec` is RFC 030’s
+[RFC 033](../salotz.033_dirshape/README.md) layout for `.appinfo/meta.toml`.
 
 ## Open questions
 

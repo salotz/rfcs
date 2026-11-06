@@ -20,3 +20,5 @@ tools.
 ## Schemas
 
 CUE schemas for bunker directory names are in [schemas](schemas/).
+Location paths use `salotz.info/unix/path`. `#HomeLayoutSpec` is a
+[RFC 033](../salotz.033_dirshape/README.md) layout for a bunker under `$HOME`.

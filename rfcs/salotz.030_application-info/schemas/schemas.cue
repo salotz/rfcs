@@ -1,5 +1,10 @@
 package schemas
 
+import (
+	urlcore "salotz.info/url/core"
+	dirshape "salotz.info/rfcs/033_dirshape:schemas"
+)
+
 // salotz.030_application-info — `.appinfo/meta.toml` core schema.
 // Unknown top-level and per-product tables are allowed (open extensions).
 
@@ -12,7 +17,7 @@ package schemas
 #Project: {
 	name?:    string
 	summary?: string
-	uri?:     string
+	uri?:     urlcore.#URL
 }
 
 // Recommended product-id form; map keys are not constrained to this.
@@ -23,21 +28,39 @@ package schemas
 	command?:     string
 	summary?:     string
 	description?: string
-	uri?:         string
+	uri?:         urlcore.#URL
 	...
 }
 
 #AppInfo: {
-	version?:  #Version
-	project?:  #Project
+	version?: #Version
+	project?: #Project
 	products?: {[string]: #Product}
 	...
 }
 
+// Injected root is the application project root. Required when the
+// convention is adopted.
+#AppInfoLayoutSpec: dirshape.#LayoutSpec & {
+	entries: {
+		appinfo: {
+			name: ".appinfo/"
+			children: {
+				meta: {name: #Filename}
+			}
+		}
+	}
+}
+
 _examples: {
+	layout: #AppInfoLayoutSpec
 	doc: #AppInfo & {
 		version: "v0"
-		project: {name: "wumpus", summary: "Wumpus client and API tooling"}
+		project: {
+			name:    "wumpus"
+			summary: "Wumpus client and API tooling"
+			uri:     "https://example.com/wumpus"
+		}
 		products: {
 			"wumpus-cli": {
 				name:    "wumpus CLI"

@@ -1,10 +1,14 @@
 package schemas
 
-import rfc027 "salotz.info/rfcs/027_env-nexps:schemas"
-import rfc030 "salotz.info/rfcs/030_application-info:schemas"
-import rfc032 "salotz.info/rfcs/032_env-value-types:schemas"
+import (
+	rfc027 "salotz.info/rfcs/027_env-nexps:schemas"
+	rfc030 "salotz.info/rfcs/030_application-info:schemas"
+	rfc032 "salotz.info/rfcs/032_env-value-types:schemas"
+)
 
 // salotz.031_application-env — env registry tables on RFC 030 appinfo docs.
+
+#AppInfoLayoutSpec: rfc030.#AppInfoLayoutSpec
 
 #TypeName: rfc032.#TypeName
 #Policy:   rfc032.#Policy
@@ -30,8 +34,8 @@ import rfc032 "salotz.info/rfcs/032_env-value-types:schemas"
 	type?:             #TypeName
 	policy:            #Policy | *"warn"
 	external?:         bool
-	groups?:           [...string] | string
-	values?:           [...string]
+	groups?: [...string] | string
+	values?: [...string]
 	aliases?: {[canonical=string]: [...string]}
 	if policy != "required" {
 		default?: #Default
@@ -48,13 +52,13 @@ import rfc032 "salotz.info/rfcs/032_env-value-types:schemas"
 }
 
 #AppInfo: rfc030.#AppInfo & {
-	env?:      #EnvTable
+	env?: #EnvTable
 	products?: {[string]: #Product}
 }
 
 _examples: {
 	prefix: #EnvPrefix & "WUMPUS"
-	flag:   #EnvVar & {
+	flag: #EnvVar & {
 		description: "Extra stderr chatter."
 		type:        "boolean"
 		policy:      "warn"
@@ -70,6 +74,7 @@ _examples: {
 		type:        "string"
 		default: {resolution: "Uses ${XDG_CONFIG_HOME}/wumpus/catalog.toml when available."}
 	}
+	layout: #AppInfoLayoutSpec
 	doc: #AppInfo & {
 		version: "v0"
 		env: {

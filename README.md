@@ -335,3 +335,22 @@ Executive Summary:
 > constraints; globs (including non-final segments), walk-and-unify, and
 > layout anchors are designed in. Consuming RFCs and `external/` modules
 > import this RFC’s schemas. Content types stay separate from placement.
+
+### 034: Storage vocabulary {#rfc-034}
+
+- nexp :: `salotz.034_storage-vocabulary`
+- status :: DRAFT
+
+Proposal: [rfcs/salotz.034_storage-vocabulary/README.md](rfcs/salotz.034_storage-vocabulary/README.md)
+
+Executive Summary:
+
+> Controlled vocabulary for storage as a domain. Three kinds — block,
+> filesystem, and object — which may layer on each other. Defines devices,
+> pools, filesystems (block and virtual), shares, mounting (a filesystem to a
+> path), and attachment (a block target to a host). Store, repository, and
+> resource are an additional application-data vocabulary on those layers, not
+> kinds of storage. Does not use volume (SAN, LVM, Docker, and Kubernetes all
+> mean different things by it). Includes what partition tables, fstab, and
+> similar configs map, and mappings from LVM, btrfs, Unraid, iSCSI, NFS, and
+> related systems.

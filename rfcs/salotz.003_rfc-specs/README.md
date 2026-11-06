@@ -44,4 +44,6 @@ as you see fit.
 ## Schemas
 
 CUE schemas for RFC nexps and required metadata are in [schemas](schemas/).
-They import name expressions from RFC 4.
+They import name expressions from RFC 4. `#ProposalLayoutSpec` is a
+[RFC 033](../salotz.033_dirshape/README.md) layout for one RFC directory
+(`README.md`, optional `schemas/`).

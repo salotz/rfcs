@@ -10,7 +10,7 @@ re-encoding the same types.
 
 | Spec                                                           | Path                                                      | Module                                |
 |----------------------------------------------------------------|-----------------------------------------------------------|---------------------------------------|
-| [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/) | [keep-a-changelog/1.1.0](keep-a-changelog/1.1.0/schemas/) | `keepachangelog.com/keep-a-changelog` |
+| [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/) | [keep-a-changelog/1.1.0](keep-a-changelog/1.1.0/) | `keepachangelog.com/keep-a-changelog` |
 
 ## Directories
 

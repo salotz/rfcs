@@ -208,3 +208,7 @@ Explicitly reference upward context files from repo `AGENTS.md` / `.agents/conte
 CUE schemas for local agent paths and override names are in
 [schemas](schemas/). XDG variables are imported from
 [external/xdg-base-directory](../../external/xdg-base-directory/schemas/).
+Home paths use `salotz.info/unix/path`. Layout specs
+(`#RepoOverrideLayoutSpec`, `#HomeAgentsLayoutSpec`,
+`#XDGConfigAgentsLayoutSpec`, `#XagentsLayoutSpec`) follow
+[RFC 033](../salotz.033_dirshape/README.md) with one injected root per check.

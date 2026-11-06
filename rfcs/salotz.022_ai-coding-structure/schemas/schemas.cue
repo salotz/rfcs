@@ -1,7 +1,11 @@
 package schemas
 
-import rfc004 "salotz.info/rfcs/004_nexps:schemas"
-import rfc029 "salotz.info/rfcs/029_glossary-format:schemas"
+import (
+	rfc004 "salotz.info/rfcs/004_nexps:schemas"
+	rfc029 "salotz.info/rfcs/029_glossary-format:schemas"
+	datetime "salotz.info/std/datetime"
+	dirshape "salotz.info/rfcs/033_dirshape:schemas"
+)
 
 // salotz.022_ai-coding-structure — repository paths, ADR records, glossary placement.
 
@@ -22,7 +26,7 @@ import rfc029 "salotz.info/rfcs/029_glossary-format:schemas"
 
 #ADRStatus: "Proposed" | "Accepted" | "Superseded" | "Deprecated"
 
-#ISODate: string & =~"^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+#ISODate: datetime.#Date
 
 #ADR: {
 	id:           string
@@ -37,11 +41,66 @@ import rfc029 "salotz.info/rfcs/029_glossary-format:schemas"
 
 #ProcessFilename: string // e.g. releases.md, process_releases.md, role_engineer.md
 
+// Injected root is the project / replica root. Not every component is
+// required; AGENTS.md is the bootloader. contributing/ and
+// CONTRIBUTING.md are mutually exclusive in prose (both optional here).
+#RepoLayoutSpec: dirshape.#LayoutSpec & {
+	entries: {
+		bootloader: {name: #Bootloader}
+		agents: {
+			name:     ".agents/"
+			presence: "optional"
+			children: {
+				skills: {name: "skills/", presence: "optional"}
+				plugins: {name: "plugins/", presence: "optional"}
+				agents: {name: "agents/", presence: "optional"}
+				context: {name: "context/", presence: "optional"}
+			}
+		}
+		design: {
+			name:     "design/"
+			presence: "optional"
+			children: {
+				readme: {name: "README.md"}
+				agents: {name: "AGENTS.md", presence: "optional"}
+				goals: {name: "goals.md"}
+				glossary: {name: rfc029.#DefaultFilename, presence: "optional"}
+				architecture: {name: "architecture/", presence: "optional"}
+				decisions: {
+					name:     "decisions/"
+					presence: "optional"
+					children: {
+						adr: {
+							name:     "^[0-9]+_.+\\.md$"
+							match:    "pattern"
+							presence: "optional"
+						}
+					}
+				}
+			}
+		}
+		contributingDir: {
+			name:     "contributing/"
+			presence: "optional"
+			children: {
+				readme: {name: "README.md"}
+				agents: {name: "AGENTS.md", presence: "optional"}
+			}
+		}
+		contributingFile: {
+			name:     #ContributingFile
+			presence: "optional"
+		}
+	}
+}
+
 _examples: {
 	adrBase:  #ADRBasename & "0001_decision-name"
 	adrFile:  #ADRFilename & "0001_decision-name.md"
 	glossary: rfc029.#DefaultFilename & "glossary.md"
-	adr:      #ADR & {
+	date:     #ISODate & "2026-01-01"
+	layout:   #RepoLayoutSpec
+	adr: #ADR & {
 		id:           "0000"
 		name:         "Long Name of Decision"
 		status:       "Proposed"

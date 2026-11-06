@@ -65,3 +65,5 @@ Overriding the previously set path.
 ## Schemas
 
 CUE schemas for `.local` layout names are in [schemas](schemas/).
+`#ParentLayoutSpec` is a [RFC 033](../salotz.033_dirshape/README.md)
+layout for `.local/` under a parent of project folders.

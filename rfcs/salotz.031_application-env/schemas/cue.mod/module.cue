@@ -12,6 +12,12 @@ deps: {
 	"salotz.info/rfcs/032_env-value-types@v0": {
 		v: "v0.0.1"
 	}
+	"salotz.info/rfcs/033_dirshape@v0": {
+		v: "v0.0.1"
+	}
+	"salotz.info/url@v0": {
+		v: "v0.0.1"
+	}
 	"salotz.info/unix@v0": {
 		v: "v0.0.1"
 	}

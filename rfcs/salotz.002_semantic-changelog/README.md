@@ -227,7 +227,10 @@ The accepted keys for trailers are:
 
 CUE schemas for versions, change categories, trailers, and changelog
 entries are in [schemas](schemas/). Keep a Changelog types are imported
-from [external/keep-a-changelog](../../external/keep-a-changelog/1.1.0/schemas/).
+from [external/keep-a-changelog](../../external/keep-a-changelog/).
+Dates use `salotz.info/std/datetime`. Trailer keys use
+`salotz.info/git/trailers`. `#ChangelogLayoutSpec` is a
+[RFC 033](../salotz.033_dirshape/README.md) layout for `CHANGELOG.md`.
 
 # Inspirations
 

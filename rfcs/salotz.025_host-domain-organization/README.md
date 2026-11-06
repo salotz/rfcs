@@ -132,4 +132,5 @@ Putting it altogether you will have something like this:
 ## Schemas
 
 CUE schemas for host layout paths and domain subdirectories are in
-[schemas](schemas/).
+[schemas](schemas/). Paths use `salotz.info/unix/path`. `#HomeLayoutSpec`
+is a [RFC 033](../salotz.033_dirshape/README.md) layout injected at `$HOME`.

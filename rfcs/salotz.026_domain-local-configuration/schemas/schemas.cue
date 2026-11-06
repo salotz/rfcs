@@ -1,5 +1,7 @@
 package schemas
 
+import dirshape "salotz.info/rfcs/033_dirshape:schemas"
+
 // salotz.026_domain-local-configuration — shared host-local `.local` dirs.
 
 #LocalDirName: ".local"
@@ -11,7 +13,24 @@ package schemas
 	projectName: string
 }
 
+// Injected root is the parent of the project folders (e.g. ~/projects).
+#ParentLayoutSpec: dirshape.#LayoutSpec & {
+	entries: {
+		local: {
+			name: ".local/"
+			children: {
+				project: {
+					name:     "*/"
+					match:    "glob"
+					presence: "optional"
+				}
+			}
+		}
+	}
+}
+
 _examples: {
-	dir:    #LocalDirName & ".local"
+	dir: #LocalDirName & ".local"
 	layout: #Layout & {parentLocal: ".local", projectName: "widgets"}
+	spec: #ParentLayoutSpec
 }

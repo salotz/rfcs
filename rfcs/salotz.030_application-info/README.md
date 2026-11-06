@@ -234,6 +234,8 @@ core-only consumers ignore them.
 
 CUE definitions for `.appinfo/meta.toml` are in [schemas](schemas/).
 The core document type is `#AppInfo` (open for extensions).
+`uri` fields use `salotz.info/url/core`. `#AppInfoLayoutSpec` is a
+[RFC 033](../salotz.033_dirshape/README.md) layout for `.appinfo/meta.toml`.
 
 ## Open questions
 

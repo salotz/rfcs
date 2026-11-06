@@ -13,7 +13,13 @@ inside that RFC directory. Each RFC is its own CUE module
 (`schemas/cue.mod`, path `salotz.info/rfcs/<number>_<short-name>`).
 
 Third-party standards that RFCs cite (Keep a Changelog, XDG Base
-Directory, PRJ Spec, …) have their own modules under [external/](../external/).
+Directory, PRJ Spec, git, Unix paths, URLs, …) have their own modules
+under [external/](../external/). RFC schemas import those modules
+instead of re-encoding the same types.
+
+When an RFC requires a directory or filename layout, its schema
+imports [RFC 033 dirshape](../rfcs/salotz.033_dirshape/README.md)
+(`#LayoutSpec`) and keeps content types beside the layout.
 
 When one schema imports another, declare it in `schemas/cue.mod/module.cue`
 `deps` (module path + version). Local checkouts without a registry use

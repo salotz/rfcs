@@ -506,4 +506,7 @@ operators in their local configuration.
 
 CUE schemas for project metadata TOML, IDs, and `PRJX` / `PRJX__`
 names are in [schemas](schemas/). They import RFC 4, RFC 27, and
-[PRJ Spec](../../external/prj-spec/schemas/).
+[PRJ Spec](../../external/prj-spec/schemas/). Absolute paths use
+`salotz.info/unix/path`. `#ProjectLayoutSpec` and `#HostPRJXLayoutSpec`
+are [RFC 033](../salotz.033_dirshape/README.md) layouts for the project
+root and XDG/XDGX `prjx/` homes.

@@ -1,18 +1,24 @@
 package schemas
 
-import xdg "specifications.freedesktop.org/basedir:schemas"
+import (
+	unixpath "salotz.info/unix/path"
+	envvar "salotz.info/unix/envvar"
+	dirshape "salotz.info/rfcs/033_dirshape:schemas"
+	xdg "specifications.freedesktop.org/basedir:schemas"
+)
 
 // salotz.024_extended_xdg_base_directory — XDGX directories and env vars.
 
 #XDGVar: xdg.#Var
 
-#XDGXVar: "XDGX_OPT_HOME" | "XDGX_TMP_HOME" | "XDGX_SCRATCH_HOME" | "XDGX_VAR_HOME"
+#XDGXVar: envvar.#UtilityName & (
+		"XDGX_OPT_HOME" | "XDGX_TMP_HOME" | "XDGX_SCRATCH_HOME" | "XDGX_VAR_HOME")
 
 #Kind: "opt" | "tmp" | "scratch" | "var"
 
 #Directory: {
 	kind:     #Kind
-	default:  string
+	default:  unixpath.#HomeRelativePath
 	env:      #XDGXVar
 	snapshot: bool
 }
@@ -44,9 +50,21 @@ import xdg "specifications.freedesktop.org/basedir:schemas"
 	}
 }
 
+// Default grouping under ~/.local. Each kind may be relocated via its
+// XDGX_* override; check those roots separately.
+#LocalLayoutSpec: dirshape.#LayoutSpec & {
+	entries: {
+		opt: {name: "opt/", presence: "optional"}
+		tmp: {name: "tmp/", presence: "optional"}
+		scratch: {name: "scratch/", presence: "optional"}
+		var: {name: "var/", presence: "optional"}
+	}
+}
+
 _examples: {
 	xdgConfig: #XDGVar & "XDG_CONFIG_HOME"
 	opt:       #XDGXVar & "XDGX_OPT_HOME"
 	var:       #XDGXVar & "XDGX_VAR_HOME"
 	dir:       #Defaults.var
+	layout:    #LocalLayoutSpec
 }

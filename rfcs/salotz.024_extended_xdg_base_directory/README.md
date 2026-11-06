@@ -130,3 +130,7 @@ The var directory should not be automatically cleaned up and should persist betw
 CUE schemas for XDGX directories and environment variables are in
 [schemas](schemas/). XDG Base Directory types are imported from
 [external/xdg-base-directory](../../external/xdg-base-directory/schemas/).
+Default paths use `salotz.info/unix/path`; env names use
+`salotz.info/unix/envvar`. `#LocalLayoutSpec` is a
+[RFC 033](../salotz.033_dirshape/README.md) layout for the default
+`~/.local/{opt,tmp,scratch,var}` grouping.

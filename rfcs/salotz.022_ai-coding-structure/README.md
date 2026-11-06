@@ -220,3 +220,6 @@ All structure should support recursive definition for large repos
 
 CUE schemas for repository paths and ADR records are in [schemas](schemas/).
 ADR basenames and glossary filenames import RFC 4 and RFC 29.
+ADR dates use `salotz.info/std/datetime`. `#RepoLayoutSpec` is a
+[RFC 033](../salotz.033_dirshape/README.md) layout for `AGENTS.md`,
+`.agents/`, `design/`, and contributing paths.

@@ -6,4 +6,7 @@ deps: {
 	"salotz.info/rfcs/004_nexps@v0": {
 		v: "v0.0.1"
 	}
+	"salotz.info/rfcs/033_dirshape@v0": {
+		v: "v0.0.1"
+	}
 }
