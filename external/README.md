@@ -26,6 +26,7 @@ One module, [`unix/`](unix/), path `salotz.info/unix`.
 | Package           | Import                             | Covers                                                                   |
 |-------------------|------------------------------------|--------------------------------------------------------------------------|
 | `path`            | `salotz.info/unix/path`            | Lexical Unix paths, tilde and `$HOME` / `${HOME}` expansion              |
+| `fstab`           | `salotz.info/unix/fstab`           | [fstab(5)](https://man7.org/linux/man-pages/man5/fstab.5.html) records (`#Record`, `#RecordStruct`) and tables (`#Table`); `UUID=`/`LABEL=` tags |
 | `envvar`          | `salotz.info/unix/envvar`          | Env var names (`#Name`, `#UtilityName`) and POSIX sh `$name` / `${name}` |
 | `varsets/all`     | `salotz.info/unix/varsets/all`     | Union of every varset; `#ApplicationName` excludes them                  |
 | `varsets/posix`   | `salotz.info/unix/varsets/posix`   | POSIX/SUS Chapter 8 names and name form                                  |
